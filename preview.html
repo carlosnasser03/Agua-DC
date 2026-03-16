@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AguaDC — Preview</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'agua-deep':  '#003366',
+          'agua-sky':   '#00AEEF',
+          'agua-smoke': '#F5F5F5',
+          'agua-gray':  '#546E7A',
+        }
+      }
+    }
+  }
+</script>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; margin:0; }
+
+  /* ---- Section toggle ---- */
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* ---- Admin pages ---- */
+  .admin-page { display: none; }
+  .admin-page.active { display: block; }
+
+  /* ---- Phone frame ---- */
+  .phone {
+    width: 320px;
+    height: 640px;
+    border-radius: 36px;
+    border: 7px solid #111;
+    background: #f5f5f5;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 32px 64px rgba(0,0,0,0.22), 0 0 0 1px #333 inset;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .phone-screen {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .phone-screen::-webkit-scrollbar { width: 3px; }
+  .phone-screen::-webkit-scrollbar-thumb { background: #ccc; border-radius: 99px; }
+
+  /* ---- Status bar ---- */
+  .status-bar {
+    background: #003366;
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 5px 16px;
+    display: flex;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+
+  /* ---- Bottom tab bar ---- */
+  .tab-bar {
+    display: flex;
+    background: #fff;
+    border-top: 1px solid #eee;
+    flex-shrink: 0;
+  }
+  .tab-bar-item {
+    flex: 1;
+    padding: 8px 4px 6px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 9px;
+    font-weight: 700;
+  }
+
+  /* ---- Nav header toggle buttons ---- */
+  .nav-btn {
+    padding: 8px 18px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    border: 1.5px solid rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.6);
+    background: transparent;
+    transition: all 0.2s;
+  }
+  .nav-btn.active {
+    background: white;
+    color: #003366;
+    border-color: white;
+  }
+
+  /* ---- Admin sidebar buttons ---- */
+  .sidebar-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: none;
+    color: #64748b;
+    transition: all 0.15s;
+  }
+  .sidebar-btn:hover { background: #f8fafc; color: #1e293b; }
+  .sidebar-btn.active { background: #003366; color: white; }
+
+  /* ---- Badge ---- */
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 99px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  /* ---- Animations ---- */
+  .fade-in { animation: fadeUp 0.3s ease; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ---- Scrollbars ---- */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 99px; }
+</style>
+</head>
+<body style="background:#f1f5f9; min-height:100vh;">
+
+<!-- ====================================================
+     TOP NAV
+==================================================== -->
+<div style="background:#003366;" class="sticky top-0 z-50 px-8 py-4 flex items-center justify-between shadow-xl">
+  <div class="flex items-center gap-3">
+    <div style="background:white;color:#003366;" class="w-10 h-10 rounded-xl flex items-center justify-center font-black text-lg">A</div>
+    <div>
+      <h1 class="text-white font-black text-lg tracking-tight">AguaDC — Preview</h1>
+      <p style="color:rgba(255,255,255,0.45);" class="text-xs">Sistema de gestión hídrica · Tegucigalpa</p>
+    </div>
+  </div>
+  <div class="flex gap-2">
+    <button class="nav-btn active" id="btn-admin" onclick="switchSection('admin')">🖥 Panel Admin</button>
+    <button class="nav-btn" id="btn-mobile" onclick="switchSection('mobile')">📱 App Móvil</button>
+  </div>
+</div>
+
+
+<!-- ====================================================
+     ADMIN PANEL SECTION
+==================================================== -->
+<div id="section-admin" class="section active">
+  <div style="display:flex; height:calc(100vh - 64px);">
+
+    <!-- Sidebar -->
+    <aside style="width:220px; background:white; border-right:1px solid #f1f5f9; display:flex; flex-direction:column; padding:16px 12px; gap:4px; flex-shrink:0;">
+      <p style="font-size:10px; font-weight:700; color:#94a3b8; text-transform:uppercase; letter-spacing:.08em; padding: 0 8px; margin-bottom:6px;">Menú Principal</p>
+
+      <button class="sidebar-btn active" id="sb-dashboard" onclick="switchAdminPage('dashboard')">📊 &nbsp;Dashboard</button>
+      <button class="sidebar-btn" id="sb-horarios"  onclick="switchAdminPage('horarios')">📅 &nbsp;Horarios</button>
+      <button class="sidebar-btn" id="sb-reportes"  onclick="switchAdminPage('reportes')">📋 &nbsp;Reportes</button>
+      <button class="sidebar-btn" id="sb-usuarios"  onclick="switchAdminPage('usuarios')">👥 &nbsp;Usuarios</button>
+      <button class="sidebar-btn" id="sb-auditoria" onclick="switchAdminPage('auditoria')">🛡 &nbsp;Auditoría</button>
+
+      <div style="flex:1;"></div>
+      <div style="border-top:1px solid #f1f5f9; padding-top:12px;">
+        <div style="display:flex;align-items:center;gap:10px;padding:8px;">
+          <div style="width:34px;height:34px;background:#003366;border-radius:10px;display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:14px;">A</div>
+          <div><p style="font-size:12px;font-weight:700;color:#1e293b;margin:0;">Administrador</p><p style="font-size:10px;color:#94a3b8;margin:0;">SUPER ADMIN</p></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main area -->
+    <div style="flex:1; display:flex; flex-direction:column; overflow:hidden; background:#f8fafc;">
+
+      <!-- Top bar -->
+      <div style="height:56px; background:white; border-bottom:1px solid #f1f5f9; display:flex; align-items:center; padding:0 32px; flex-shrink:0; box-shadow:0 1px 3px rgba(0,0,0,0.04);">
+        <h2 id="admin-page-title" style="font-size:16px;font-weight:800;color:#1e293b;margin:0;">Dashboard</h2>
+        <div style="margin-left:auto;display:flex;align-items:center;gap:12px;">
+          <div style="text-align:right;">
+            <p style="font-size:13px;font-weight:700;color:#334155;margin:0;">Administrador del Sistema</p>
+            <p style="font-size:10px;color:#94a3b8;margin:0;text-transform:uppercase;letter-spacing:.05em;">Super Admin</p>
+          </div>
+          <div style="width:38px;height:38px;background:#f1f5f9;border-radius:10px;border:1px solid #e2e8f0;display:flex;align-items:center;justify-content:center;font-weight:800;color:#003366;">A</div>
+        </div>
+      </div>
+
+      <!-- Page content -->
+      <div style="flex:1;overflow-y:auto;padding:32px;" class="fade-in" id="admin-content">
+
+
+        <!-- ===== DASHBOARD ===== -->
+        <div id="page-dashboard" class="admin-page active">
+          <div style="margin-bottom:24px;">
+            <h1 style="font-size:22px;font-weight:800;color:#1e293b;margin:0 0 4px;">Bienvenido, Administrador 👋</h1>
+            <p style="color:#64748b;margin:0;font-size:14px;">Resumen operativo del sistema AguaDC · 10 Mar 2026</p>
+          </div>
+
+          <!-- Stats -->
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:24px;">
+            <div style="background:white;border-radius:18px;padding:20px;border:1px solid #f1f5f9;box-shadow:0 1px 4px rgba(0,0,0,0.04);">
+              <p style="font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.07em;margin:0 0 8px;">Reportes Enviados</p>
+              <p style="font-size:32px;font-weight:900;color:#1d4ed8;margin:0 0 6px;">24</p>
+              <p style="font-size:11px;color:#64748b;margin:0;">↑ 3 hoy</p>
+            </div>
+            <div style="background:white;border-radius:18px;padding:20px;border:1px solid #f1f5f9;box-shadow:0 1px 4px rgba(0,0,0,0.04);">
+              <p style="font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.07em;margin:0 0 8px;">En Revisión</p>
+              <p style="font-size:32px;font-weight:900;color:#d97706;margin:0 0 6px;">8</p>
+              <p style="font-size:11px;color:#64748b;margin:0;">Pendientes</p>
+            </div>
+            <div style="background:white;border-radius:18px;padding:20px;border:1px solid #f1f5f9;box-shadow:0 1px 4px rgba(0,0,0,0.04);">
+              <p style="font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.07em;margin:0 0 8px;">Resueltos</p>
+              <p style="font-size:32px;font-weight:900;color:#16a34a;margin:0 0 6px;">47</p>
+              <p style="font-size:11px;color:#64748b;margin:0;">Este mes</p>
+            </div>
+            <div style="background:white;border-radius:18px;padding:20px;border:1px solid #f1f5f9;box-shadow:0 1px 4px rgba(0,0,0,0.04);">
+              <p style="font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.07em;margin:0 0 8px;">Período Activo</p>
+              <p style="font-size:20px;font-weight:900;color:#003366;margin:0 0 6px;">01-15 Mar</p>
+              <p style="font-size:11px;color:#16a34a;font-weight:700;margin:0;">● Publicado</p>
+            </div>
+          </div>
+
+          <!-- Chart placeholder -->
+          <div style="background:white;border-radius:18px;padding:28px;border:1px solid #f1f5f9;box-shadow:0 1px 4px rgba(0,0,0,0.04);height:220px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:#94a3b8;">
+            <span style="font-size:40px;">📈</span>
+            <p style="margin:0;font-size:14px;font-weight:600;">Gráfico de tendencias — próximamente</p>
+          </div>
+        </div>
+
+
+        <!-- ===== HORARIOS ===== -->
+        <div id="page-horarios" class="admin-page">
+          <div style="margin-bottom:24px;">
+            <h1 style="font-size:22px;font-weight:800;color:#1e293b;margin:0 0 4px;">Carga de Horarios Oficiales</h1>
+            <p style="color:#64748b;margin:0;font-size:14px;">Sube el archivo Excel del SANAA para actualizar el sistema móvil.</p>
+          </div>
+
+          <!-- Upload zone -->
+          <div id="h-upload-zone" onclick="doSimUpload()" style="background:white;border:2.5px dashed #e2e8f0;border-radius:24px;padding:56px 32px;display:flex;flex-direction:column;align-items:center;text-align:center;cursor:pointer;transition:all .2s;" onmouseenter="this.style.borderColor='#003366'" onmouseleave="this.style.borderColor='#e2e8f0'">
+            <div style="width:72px;height:72px;background:#f8fafc;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:36px;margin-bottom:18px;box-shadow:0 4px 12px rgba(0,0,0,0.08);">📊</div>
+            <h3 style="font-size:18px;font-weight:800;color:#1e293b;margin:0 0 8px;">Arrastra el archivo Excel aquí</h3>
+            <p style="color:#64748b;font-size:14px;margin:0 0 24px;max-width:360px;line-height:1.5;">El sistema detectará automáticamente el rango de fechas y las columnas de días.</p>
+            <div style="padding:12px 28px;background:white;border:1.5px solid #e2e8f0;border-radius:12px;font-weight:700;font-size:14px;color:#475569;box-shadow:0 1px 3px rgba(0,0,0,0.06);">Seleccionar Archivo .xlsx</div>
+          </div>
+
+          <!-- Validation result (hidden) -->
+          <div id="h-result" style="display:none;" class="fade-in">
+            <div style="background:white;border-radius:24px;border:1px solid #f1f5f9;box-shadow:0 1px 4px rgba(0,0,0,0.04);padding:28px;">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:20px;border-bottom:1px solid #f8fafc;margin-bottom:24px;">
+                <div style="display:flex;align-items:center;gap:14px;">
+                  <div style="width:46px;height:46px;background:#f59e0b;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;">⚠️</div>
+                  <div>
+                    <h3 style="font-size:16px;font-weight:800;color:#1e293b;margin:0 0 3px;">Validación Completada</h3>
+                    <p style="font-size:13px;color:#64748b;margin:0;">Período: 01 - 15 Marzo 2026 · 4 colonias requieren atención</p>
+                  </div>
+                </div>
+                <div style="display:flex;gap:10px;">
+                  <button onclick="doResetUpload()" style="padding:10px;border:none;background:#f8fafc;border-radius:10px;cursor:pointer;font-size:16px;">🔄</button>
+                  <button style="padding:12px 24px;background:#16a34a;color:white;border:none;border-radius:12px;font-weight:700;cursor:pointer;font-size:14px;">Publicar Período</button>
+                </div>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px;">
+                <div style="background:#f8fafc;border-radius:16px;padding:18px;border:1px solid #f1f5f9;"><p style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;margin:0 0 8px;">Período</p><p style="font-size:15px;font-weight:900;color:#1e293b;margin:0;">01-15 Mar</p></div>
+                <div style="background:#f8fafc;border-radius:16px;padding:18px;border:1px solid #f1f5f9;"><p style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;margin:0 0 8px;">Total Colonias</p><p style="font-size:26px;font-weight:900;color:#1e293b;margin:0;">142</p></div>
+                <div style="background:#f8fafc;border-radius:16px;padding:18px;border:1px solid #f1f5f9;"><p style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;margin:0 0 8px;">Válidas</p><p style="font-size:26px;font-weight:900;color:#16a34a;margin:0;">138</p></div>
+                <div style="background:#f8fafc;border-radius:16px;padding:18px;border:1px solid #f1f5f9;"><p style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;margin:0 0 8px;">Conflictos</p><p style="font-size:26px;font-weight:900;color:#d97706;margin:0;">4</p></div>
+              </div>
+              <div style="background:#fffbeb;border-radius:16px;padding:18px;border:1px solid #fde68a;">
+                <p style="font-size:13px;font-weight:700;color:#92400e;margin:0 0 12px;">⚠️ Colonias no reconocidas</p>
+                <div style="display:flex;flex-direction:column;gap:8px;">
+                  <div style="background:rgba(255,255,255,0.7);border-radius:10px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;"><span style="font-size:13px;color:#475569;font-weight:600;">Fila 24: "Kennedy - Sec. 1" no reconocida</span><span style="font-size:11px;color:#d97706;font-weight:700;">Sin vincular</span></div>
+                  <div style="background:rgba(255,255,255,0.7);border-radius:10px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;"><span style="font-size:13px;color:#475569;font-weight:600;">Fila 89: "Res. El Molino" no reconocida</span><span style="font-size:11px;color:#d97706;font-weight:700;">Sin vincular</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- ===== REPORTES ===== -->
+        <div id="page-reportes" class="admin-page">
+          <div style="margin-bottom:24px;display:flex;justify-content:space-between;align-items:flex-end;">
+            <div><h1 style="font-size:22px;font-weight:800;color:#1e293b;margin:0 0 4px;">Reportes Ciudadanos</h1><p style="color:#64748b;margin:0;font-size:14px;">Gestiona los reportes enviados desde la app móvil</p></div>
+            <button style="padding:8px;border:none;background:#f1f5f9;border-radius:10px;cursor:pointer;font-size:16px;">🔄</button>
+          </div>
+          <div style="background:white;border-radius:16px;padding:14px 16px;display:flex;gap:12px;margin-bottom:16px;border:1px solid #f1f5f9;box-shadow:0 1px 3px rgba(0,0,0,0.04);">
+            <input style="flex:1;padding:10px 14px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;font-size:13px;color:#475569;" placeholder="🔍  Buscar por colonia o ID..."/>
+            <select style="padding:10px 14px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;font-size:13px;color:#475569;"><option>Todos los estados</option><option>Enviado</option><option>En Revisión</option><option>Validado</option><option>Resuelto</option><option>Rechazado</option></select>
+          </div>
+          <div style="background:white;border-radius:18px;border:1px solid #f1f5f9;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04);">
+            <table style="width:100%;border-collapse:collapse;font-size:13px;">
+              <thead><tr style="background:#f8fafc;border-bottom:1px solid #f1f5f9;">
+                <th style="text-align:left;padding:12px 20px;font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.07em;">ID</th>
+                <th style="text-align:left;padding:12px 20px;font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.07em;">Colonia</th>
+                <th style="text-align:left;padding:12px 20px;font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.07em;">Tipo</th>
+                <th style="text-align:left;padding:12px 20px;font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.07em;">Estado</th>
+                <th style="text-align:left;padding:12px 20px;font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.07em;">Fecha</th>
+              </tr></thead>
+              <tbody>
+                <tr style="border-bottom:1px solid #fafafa;"><td style="padding:12px 20px;font-family:monospace;font-size:11px;color:#94a3b8;">A1B2C3D4</td><td style="padding:12px 20px;font-weight:700;color:#1e293b;">Loarque</td><td style="padding:12px 20px;color:#475569;">Sin agua</td><td style="padding:12px 20px;"><span class="badge" style="background:#dbeafe;color:#1d4ed8;">Enviado</span></td><td style="padding:12px 20px;color:#94a3b8;">10 Mar 2026</td></tr>
+                <tr style="border-bottom:1px solid #fafafa;"><td style="padding:12px 20px;font-family:monospace;font-size:11px;color:#94a3b8;">E5F6G7H8</td><td style="padding:12px 20px;font-weight:700;color:#1e293b;">Villa Olímpica</td><td style="padding:12px 20px;color:#475569;">Baja presión</td><td style="padding:12px 20px;"><span class="badge" style="background:#fef3c7;color:#d97706;">En Revisión</span></td><td style="padding:12px 20px;color:#94a3b8;">09 Mar 2026</td></tr>
+                <tr style="border-bottom:1px solid #fafafa;"><td style="padding:12px 20px;font-family:monospace;font-size:11px;color:#94a3b8;">I9J0K1L2</td><td style="padding:12px 20px;font-weight:700;color:#1e293b;">Viera</td><td style="padding:12px 20px;color:#475569;">Horario incorrecto</td><td style="padding:12px 20px;"><span class="badge" style="background:#dcfce7;color:#16a34a;">Resuelto</span></td><td style="padding:12px 20px;color:#94a3b8;">08 Mar 2026</td></tr>
+                <tr style="border-bottom:1px solid #fafafa;"><td style="padding:12px 20px;font-family:monospace;font-size:11px;color:#94a3b8;">M3N4O5P6</td><td style="padding:12px 20px;font-weight:700;color:#1e293b;">Buenos Aires</td><td style="padding:12px 20px;color:#475569;">Sin agua</td><td style="padding:12px 20px;"><span class="badge" style="background:#ede9fe;color:#7c3aed;">Validado</span></td><td style="padding:12px 20px;color:#94a3b8;">07 Mar 2026</td></tr>
+                <tr><td style="padding:12px 20px;font-family:monospace;font-size:11px;color:#94a3b8;">Q7R8S9T0</td><td style="padding:12px 20px;font-weight:700;color:#1e293b;">Alhambra</td><td style="padding:12px 20px;color:#475569;">Otro</td><td style="padding:12px 20px;"><span class="badge" style="background:#fee2e2;color:#dc2626;">Rechazado</span></td><td style="padding:12px 20px;color:#94a3b8;">06 Mar 2026</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+
+        <!-- ===== USUARIOS ===== -->
+        <div id="page-usuarios" class="admin-page">
+          <div style="margin-bottom:24px;display:flex;justify-content:space-between;align-items:flex-end;">
+            <div><h1 style="font-size:22px;font-weight:800;color:#1e293b;margin:0 0 4px;">Usuarios y Permisos</h1><p style="color:#64748b;margin:0;font-size:14px;">Administra el acceso al panel de gestión</p></div>
+            <button style="display:flex;align-items:center;gap:8px;padding:10px 18px;background:#003366;color:white;border:none;border-radius:12px;font-weight:700;font-size:13px;cursor:pointer;">+ Nuevo Usuario</button>
+          </div>
+          <div style="background:white;border-radius:18px;border:1px solid #f1f5f9;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04);">
+            <table style="width:100%;border-collapse:collapse;font-size:13px;">
+              <thead><tr style="background:#f8fafc;border-bottom:1px solid #f1f5f9;">
+                <th style="text-align:left;padding:12px 20px;font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.07em;">Nombre</th>
+                <th style="text-align:left;padding:12px 20px;font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.07em;">Correo</th>
+                <th style="text-align:left;padding:12px 20px;font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.07em;">Rol</th>
+                <th style="text-align:left;padding:12px 20px;font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.07em;">Estado</th>
+                <th style="text-align:left;padding:12px 20px;font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.07em;">Acción</th>
+              </tr></thead>
+              <tbody>
+                <tr style="border-bottom:1px solid #fafafa;"><td style="padding:12px 20px;font-weight:700;color:#1e293b;">Administrador del Sistema</td><td style="padding:12px 20px;color:#64748b;">admin@aguadc.hn</td><td style="padding:12px 20px;"><span class="badge" style="background:#dbeafe;color:#1d4ed8;">Super Admin</span></td><td style="padding:12px 20px;"><span class="badge" style="background:#dcfce7;color:#16a34a;">Activo</span></td><td style="padding:12px 20px;font-size:16px;cursor:pointer;">✏️</td></tr>
+                <tr style="border-bottom:1px solid #fafafa;"><td style="padding:12px 20px;font-weight:700;color:#1e293b;">María López</td><td style="padding:12px 20px;color:#64748b;">mlopez@aguadc.hn</td><td style="padding:12px 20px;"><span class="badge" style="background:#dbeafe;color:#1d4ed8;">Admin Operativo</span></td><td style="padding:12px 20px;"><span class="badge" style="background:#dcfce7;color:#16a34a;">Activo</span></td><td style="padding:12px 20px;font-size:16px;cursor:pointer;">✏️</td></tr>
+                <tr><td style="padding:12px 20px;font-weight:700;color:#1e293b;">Juan García</td><td style="padding:12px 20px;color:#64748b;">jgarcia@aguadc.hn</td><td style="padding:12px 20px;"><span class="badge" style="background:#dbeafe;color:#1d4ed8;">Editor de Datos</span></td><td style="padding:12px 20px;"><span class="badge" style="background:#f1f5f9;color:#64748b;">Inactivo</span></td><td style="padding:12px 20px;font-size:16px;cursor:pointer;">✏️</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+
+        <!-- ===== AUDITORÍA ===== -->
+        <div id="page-auditoria" class="admin-page">
+          <div style="margin-bottom:24px;"><h1 style="font-size:22px;font-weight:800;color:#1e293b;margin:0 0 4px;">Bitácora de Auditoría</h1><p style="color:#64748b;margin:0;font-size:14px;">Registro de todas las acciones realizadas en el sistema</p></div>
+          <div style="background:white;border-radius:18px;border:1px solid #f1f5f9;display:flex;flex-direction:column;align-items:center;justify-content:center;height:240px;color:#94a3b8;gap:10px;">
+            <span style="font-size:44px;opacity:.3;">🛡</span>
+            <p style="margin:0;font-size:14px;font-weight:600;">Módulo de auditoría — próximamente</p>
+            <p style="margin:0;font-size:12px;">Los logs se registran automáticamente en cada operación</p>
+          </div>
+        </div>
+
+
+      </div><!-- /admin-content -->
+    </div><!-- /main area -->
+  </div>
+</div><!-- /section-admin -->
+
+
+<!-- ====================================================
+     MOBILE SECTION — 4 teléfonos independientes
+==================================================== -->
+<div id="section-mobile" class="section">
+  <div style="padding:32px 24px;">
+    <div style="text-align:center;margin-bottom:28px;">
+      <h2 style="font-size:20px;font-weight:800;color:#1e293b;margin:0 0 6px;">App Ciudadana — React Native Expo</h2>
+      <p style="color:#64748b;font-size:14px;margin:0;">Cada pantalla es una página independiente dentro de la app móvil</p>
+    </div>
+
+    <!-- 4 phones grid -->
+    <div style="display:flex;gap:28px;justify-content:center;align-items:flex-start;flex-wrap:wrap;">
+
+
+      <!-- =================== PHONE 1: HORARIOS =================== -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:14px;">
+        <div style="background:#003366;color:white;padding:8px 20px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:.04em;">📅 HORARIOS</div>
+        <div class="phone">
+          <div class="status-bar"><span>9:41</span><span>●●●●● 🔋</span></div>
+
+          <!-- Nav header -->
+          <div style="background:#003366;padding:12px 16px 14px;flex-shrink:0;">
+            <h1 style="color:white;font-size:15px;font-weight:800;margin:0 0 10px;">Horarios de Agua</h1>
+            <div style="display:flex;gap:8px;">
+              <input id="ph1-input" style="flex:1;background:white;border:none;border-radius:12px;padding:9px 13px;font-size:13px;color:#1e293b;" placeholder="Busca tu colonia..." oninput="ph1Search(this.value)"/>
+              <button onclick="ph1Search(document.getElementById('ph1-input').value)" style="background:#00AEEF;color:white;border:none;border-radius:12px;padding:9px 14px;font-weight:700;font-size:13px;cursor:pointer;">Ir</button>
+            </div>
+          </div>
+
+          <!-- Results -->
+          <div class="phone-screen" id="ph1-results" style="background:#f5f5f5;flex:1;padding:12px;gap:10px;display:flex;flex-direction:column;">
+            <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;text-align:center;padding:0 20px;">
+              <span style="font-size:48px;margin-bottom:12px;">📅</span>
+              <p style="font-weight:800;color:#374151;font-size:15px;margin:0 0 6px;">Consulta tu horario</p>
+              <p style="color:#6b7280;font-size:13px;margin:0;line-height:1.5;">Escribe el nombre de tu colonia para ver los días y horas de suministro.</p>
+              <div style="margin-top:18px;display:flex;flex-direction:column;gap:6px;width:100%;">
+                <button onclick="document.getElementById('ph1-input').value='Loarque';ph1Search('Loarque')" style="background:white;border:1.5px solid #e5e7eb;border-radius:10px;padding:8px 14px;font-size:12px;font-weight:600;color:#374151;cursor:pointer;">Prueba: Loarque</button>
+                <button onclick="document.getElementById('ph1-input').value='Viera';ph1Search('Viera')" style="background:white;border:1.5px solid #e5e7eb;border-radius:10px;padding:8px 14px;font-size:12px;font-weight:600;color:#374151;cursor:pointer;">Prueba: Viera</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-bar">
+            <div class="tab-bar-item" style="color:#003366;"><div style="font-size:20px;">📅</div>Horarios</div>
+            <div class="tab-bar-item" style="color:#9ca3af;"><div style="font-size:20px;">📢</div>Reportar</div>
+            <div class="tab-bar-item" style="color:#9ca3af;"><div style="font-size:20px;">📋</div>Mis Reportes</div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- =================== PHONE 2: REPORTAR =================== -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:14px;">
+        <div style="background:#dc2626;color:white;padding:8px 20px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:.04em;">📢 REPORTAR</div>
+        <div class="phone">
+          <div class="status-bar"><span>9:41</span><span>●●●●● 🔋</span></div>
+
+          <div style="background:#003366;padding:12px 16px;flex-shrink:0;">
+            <h1 style="color:white;font-size:15px;font-weight:800;margin:0;">Reportar Problema</h1>
+          </div>
+
+          <div class="phone-screen" style="background:#f5f5f5;padding:14px;display:flex;flex-direction:column;gap:14px;">
+            <!-- Colonia seleccionada -->
+            <div>
+              <p style="font-size:11px;font-weight:800;color:#1f2937;margin:0 0 7px;text-transform:uppercase;letter-spacing:.05em;">¿En qué colonia estás?</p>
+              <div style="background:#dbeafe;border:1.5px solid #93c5fd;border-radius:12px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:13px;font-weight:700;color:#1e40af;">📍 Loarque</span>
+                <span style="color:#6b7280;font-size:14px;cursor:pointer;">✕</span>
+              </div>
+            </div>
+            <!-- Tipo -->
+            <div>
+              <p style="font-size:11px;font-weight:800;color:#1f2937;margin:0 0 7px;text-transform:uppercase;letter-spacing:.05em;">¿Cuál es el problema?</p>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                <div style="background:#e8eef5;border:2px solid #003366;border-radius:14px;padding:12px 8px;text-align:center;cursor:pointer;"><div style="font-size:22px;margin-bottom:4px;">🚱</div><p style="font-size:11px;font-weight:700;color:#003366;margin:0;">Sin agua</p></div>
+                <div style="background:white;border:2px solid #e5e7eb;border-radius:14px;padding:12px 8px;text-align:center;cursor:pointer;"><div style="font-size:22px;margin-bottom:4px;">💧</div><p style="font-size:11px;font-weight:600;color:#6b7280;margin:0;">Baja presión</p></div>
+                <div style="background:white;border:2px solid #e5e7eb;border-radius:14px;padding:12px 8px;text-align:center;cursor:pointer;"><div style="font-size:22px;margin-bottom:4px;">⏰</div><p style="font-size:11px;font-weight:600;color:#6b7280;margin:0;">Horario incorrecto</p></div>
+                <div style="background:white;border:2px solid #e5e7eb;border-radius:14px;padding:12px 8px;text-align:center;cursor:pointer;"><div style="font-size:22px;margin-bottom:4px;">❓</div><p style="font-size:11px;font-weight:600;color:#6b7280;margin:0;">Otro</p></div>
+              </div>
+            </div>
+            <!-- Descripción -->
+            <div>
+              <p style="font-size:11px;font-weight:800;color:#1f2937;margin:0 0 7px;text-transform:uppercase;letter-spacing:.05em;">Descripción</p>
+              <textarea style="width:100%;background:white;border:1.5px solid #e5e7eb;border-radius:12px;padding:10px 12px;font-size:12px;color:#374151;resize:none;" rows="3">Hace 3 días que no tenemos agua. El horario indicaba que debía llegar los martes y jueves.</textarea>
+              <p style="font-size:10px;color:#9ca3af;text-align:right;margin:2px 0 0;">87/1000</p>
+            </div>
+            <!-- Botón -->
+            <button style="background:#003366;color:white;border:none;border-radius:14px;padding:14px;font-weight:800;font-size:14px;cursor:pointer;box-shadow:0 4px 12px rgba(0,51,102,0.3);">Enviar Reporte</button>
+            <p style="font-size:10px;color:#9ca3af;text-align:center;margin:0;line-height:1.5;">Tu reporte será revisado por el equipo técnico de la Alcaldía.</p>
+          </div>
+
+          <div class="tab-bar">
+            <div class="tab-bar-item" style="color:#9ca3af;"><div style="font-size:20px;">📅</div>Horarios</div>
+            <div class="tab-bar-item" style="color:#003366;"><div style="font-size:20px;">📢</div>Reportar</div>
+            <div class="tab-bar-item" style="color:#9ca3af;"><div style="font-size:20px;">📋</div>Mis Reportes</div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- =================== PHONE 3: MIS REPORTES =================== -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:14px;">
+        <div style="background:#7c3aed;color:white;padding:8px 20px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:.04em;">📋 MIS REPORTES</div>
+        <div class="phone">
+          <div class="status-bar"><span>9:41</span><span>●●●●● 🔋</span></div>
+
+          <div style="background:#003366;padding:12px 16px;flex-shrink:0;">
+            <h1 style="color:white;font-size:15px;font-weight:800;margin:0;">Mis Reportes</h1>
+          </div>
+
+          <div class="phone-screen" style="background:#f5f5f5;padding:12px;display:flex;flex-direction:column;gap:10px;">
+            <!-- Reporte 1 -->
+            <div style="background:white;border-radius:16px;padding:14px;box-shadow:0 1px 4px rgba(0,0,0,0.06);cursor:pointer;" onclick="scrollToPhone4()">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                <span style="font-size:14px;font-weight:800;color:#003366;">Loarque</span>
+                <span class="badge" style="background:#dbeafe;color:#1d4ed8;font-size:10px;">Enviado</span>
+              </div>
+              <p style="font-size:12px;color:#6b7280;margin:0 0 6px;line-height:1.4;">Hace 3 días que no tenemos agua en el sector...</p>
+              <p style="font-size:10px;color:#9ca3af;margin:0;">10 de marzo de 2026</p>
+            </div>
+            <!-- Reporte 2 -->
+            <div style="background:white;border-radius:16px;padding:14px;box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                <span style="font-size:14px;font-weight:800;color:#003366;">Villa Olímpica</span>
+                <span class="badge" style="background:#dcfce7;color:#16a34a;font-size:10px;">Resuelto</span>
+              </div>
+              <p style="font-size:12px;color:#6b7280;margin:0 0 6px;line-height:1.4;">El agua llegó con muy baja presión durante toda la semana.</p>
+              <p style="font-size:10px;color:#9ca3af;margin:0;">5 de marzo de 2026</p>
+            </div>
+            <!-- Reporte 3 -->
+            <div style="background:white;border-radius:16px;padding:14px;box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                <span style="font-size:14px;font-weight:800;color:#003366;">Loarque</span>
+                <span class="badge" style="background:#fef3c7;color:#d97706;font-size:10px;">En Revisión</span>
+              </div>
+              <p style="font-size:12px;color:#6b7280;margin:0 0 6px;line-height:1.4;">El horario del mes pasado tenía errores, el agua no llegó.</p>
+              <p style="font-size:10px;color:#9ca3af;margin:0;">28 de febrero de 2026</p>
+            </div>
+          </div>
+
+          <div class="tab-bar">
+            <div class="tab-bar-item" style="color:#9ca3af;"><div style="font-size:20px;">📅</div>Horarios</div>
+            <div class="tab-bar-item" style="color:#9ca3af;"><div style="font-size:20px;">📢</div>Reportar</div>
+            <div class="tab-bar-item" style="color:#003366;"><div style="font-size:20px;">📋</div>Mis Reportes</div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- =================== PHONE 4: DETALLE =================== -->
+      <div id="phone4" style="display:flex;flex-direction:column;align-items:center;gap:14px;">
+        <div style="background:#0f766e;color:white;padding:8px 20px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:.04em;">🔍 DETALLE DEL REPORTE</div>
+        <div class="phone">
+          <div class="status-bar"><span>9:41</span><span>●●●●● 🔋</span></div>
+
+          <div style="background:#003366;padding:12px 16px;display:flex;align-items:center;gap:12px;flex-shrink:0;">
+            <span style="color:white;font-size:18px;cursor:pointer;">←</span>
+            <h1 style="color:white;font-size:15px;font-weight:800;margin:0;">Detalle del Reporte</h1>
+          </div>
+
+          <div class="phone-screen" style="background:#f5f5f5;padding:12px;display:flex;flex-direction:column;gap:10px;">
+            <!-- Status hero -->
+            <div style="background:#dbeafe;border-radius:18px;padding:22px 16px;text-align:center;">
+              <span style="font-size:44px;display:block;margin-bottom:8px;">📨</span>
+              <p style="font-size:20px;font-weight:900;color:#1e40af;margin:0 0 4px;">Enviado</p>
+              <p style="font-size:11px;color:#6b7280;font-family:monospace;margin:0;">ID: A1B2C3D4</p>
+            </div>
+            <!-- Info -->
+            <div style="background:white;border-radius:14px;padding:14px;">
+              <p style="font-size:10px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.07em;margin:0 0 10px;">Información</p>
+              <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #f9fafb;"><span style="font-size:12px;color:#6b7280;font-weight:600;">Colonia</span><span style="font-size:12px;font-weight:700;color:#1e293b;">Loarque</span></div>
+              <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #f9fafb;"><span style="font-size:12px;color:#6b7280;font-weight:600;">Tipo</span><span style="font-size:12px;font-weight:700;color:#1e293b;">Sin agua</span></div>
+              <div style="display:flex;justify-content:space-between;padding:7px 0;"><span style="font-size:12px;color:#6b7280;font-weight:600;">Fecha</span><span style="font-size:12px;font-weight:700;color:#1e293b;">10 mar, 09:41</span></div>
+            </div>
+            <!-- Descripción -->
+            <div style="background:white;border-radius:14px;padding:14px;">
+              <p style="font-size:10px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.07em;margin:0 0 8px;">Descripción</p>
+              <p style="font-size:13px;color:#374151;margin:0;line-height:1.5;">Hace 3 días que no tenemos agua en el sector. El horario indicaba que debía llegar los martes y jueves pero no ha llegado.</p>
+            </div>
+            <!-- Historial -->
+            <div style="background:white;border-radius:14px;padding:14px;">
+              <p style="font-size:10px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.07em;margin:0 0 10px;">Historial</p>
+              <div style="display:flex;gap:10px;padding:8px 0;">
+                <div style="width:10px;height:10px;background:#1d4ed8;border-radius:50%;margin-top:3px;flex-shrink:0;"></div>
+                <div><p style="font-size:12px;font-weight:700;color:#1e40af;margin:0 0 2px;">📨 Enviado</p><p style="font-size:10px;color:#9ca3af;margin:0;">10 mar 2026, 09:41</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:11px;color:#94a3b8;text-align:center;margin:0;">← Toca la tarjeta en "Mis Reportes"<br>para ver este detalle</p>
+      </div>
+
+
+    </div><!-- /phones grid -->
+  </div>
+</div><!-- /section-mobile -->
+
+
+<!-- ====================================================
+     SCRIPTS
+==================================================== -->
+<script>
+// Section toggle
+function switchSection(s) {
+  ['admin','mobile'].forEach(id => {
+    document.getElementById('section-'+id).classList.remove('active');
+    var b = document.getElementById('btn-'+id);
+    b.classList.remove('active');
+  });
+  document.getElementById('section-'+s).classList.add('active');
+  document.getElementById('btn-'+s).classList.add('active');
+}
+
+// Admin page toggle
+const adminLabels = {
+  dashboard:'Dashboard', horarios:'Horarios', reportes:'Reportes',
+  usuarios:'Usuarios y Permisos', auditoria:'Auditoría'
+};
+function switchAdminPage(page) {
+  document.querySelectorAll('.sidebar-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.admin-page').forEach(p => p.classList.remove('active'));
+  document.getElementById('sb-'+page).classList.add('active');
+  document.getElementById('page-'+page).classList.add('active');
+  document.getElementById('admin-page-title').textContent = adminLabels[page] || page;
+  document.getElementById('admin-content').classList.remove('fade-in');
+  void document.getElementById('admin-content').offsetWidth;
+  document.getElementById('admin-content').classList.add('fade-in');
+}
+
+// Upload simulation
+function doSimUpload() {
+  var zone = document.getElementById('h-upload-zone');
+  zone.innerHTML = '<div style="font-size:40px;margin-bottom:14px;">⏳</div><p style="font-size:16px;font-weight:700;color:#475569;margin:0;">Procesando archivo Excel...</p><p style="font-size:13px;color:#94a3b8;margin:6px 0 0;">Detectando período y columnas de días</p>';
+  setTimeout(function(){
+    zone.style.display = 'none';
+    document.getElementById('h-result').style.display = 'block';
+  }, 1800);
+}
+function doResetUpload() {
+  document.getElementById('h-result').style.display = 'none';
+  var zone = document.getElementById('h-upload-zone');
+  zone.style.display = 'flex';
+  zone.innerHTML = '<div style="width:72px;height:72px;background:#f8fafc;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:36px;margin-bottom:18px;box-shadow:0 4px 12px rgba(0,0,0,0.08);">📊</div><h3 style="font-size:18px;font-weight:800;color:#1e293b;margin:0 0 8px;">Arrastra el archivo Excel aquí</h3><p style="color:#64748b;font-size:14px;margin:0 0 24px;max-width:360px;line-height:1.5;">El sistema detectará automáticamente el rango de fechas y las columnas de días.</p><div style="padding:12px 28px;background:white;border:1.5px solid #e2e8f0;border-radius:12px;font-weight:700;font-size:14px;color:#475569;box-shadow:0 1px 3px rgba(0,0,0,0.06);">Seleccionar Archivo .xlsx</div>';
+}
+
+// Phone 1 search
+var mockData = {
+  'loarque':      { sector:'PICACHO', days:[{d:'Lun 10 Mar',t:'6AM – 2PM'},{d:'Mié 12 Mar',t:'6AM – 2PM'},{d:'Vie 14 Mar',t:'6AM – 2PM'}] },
+  'viera':        { sector:'PICACHO', days:[{d:'Mar 11 Mar',t:'8AM – 4PM'},{d:'Jue 13 Mar',t:'8AM – 4PM'}] },
+  'alhambra':     { sector:'PICACHO', days:[{d:'Lun 10 Mar',t:'10AM – 6PM'},{d:'Jue 13 Mar',t:'10AM – 6PM'}] },
+  'buenos aires': { sector:'NORTE',   days:[{d:'Mar 11 Mar',t:'7AM – 3PM'},{d:'Sáb 15 Mar',t:'7AM – 3PM'}] },
+};
+function ph1Search(q) {
+  var el = document.getElementById('ph1-results');
+  if (!q || q.trim().length < 2) {
+    el.innerHTML = '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;text-align:center;padding:0 20px;"><span style="font-size:48px;margin-bottom:12px;">📅</span><p style="font-weight:800;color:#374151;font-size:15px;margin:0 0 6px;">Consulta tu horario</p><p style="color:#6b7280;font-size:13px;margin:0;line-height:1.5;">Escribe el nombre de tu colonia.</p></div>';
+    return;
+  }
+  var key = q.toLowerCase().trim();
+  var match = null;
+  var matchName = '';
+  for (var k in mockData) { if (k.includes(key) || key.includes(k)) { match = mockData[k]; matchName = k.toUpperCase(); break; } }
+  if (!match) {
+    el.innerHTML = '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;text-align:center;padding:0 20px;"><span style="font-size:48px;margin-bottom:12px;">🔍</span><p style="font-weight:800;color:#374151;font-size:15px;margin:0 0 6px;">Sin resultados</p><p style="color:#6b7280;font-size:13px;margin:0;">No encontramos horarios para "'+q+'"</p></div>';
+    return;
+  }
+  var html = '<div style="background:white;border-radius:16px;padding:14px;box-shadow:0 1px 4px rgba(0,0,0,0.06);">';
+  html += '<p style="font-size:10px;font-weight:700;color:#00AEEF;text-transform:uppercase;letter-spacing:.06em;margin:0 0 2px;">'+match.sector+'</p>';
+  html += '<p style="font-size:16px;font-weight:800;color:#003366;margin:0 0 12px;">'+matchName+'</p>';
+  match.days.forEach(function(d) {
+    html += '<div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #f9fafb;"><span style="font-size:12px;font-weight:700;color:#374151;">'+d.d+'</span><span style="font-size:12px;color:#6b7280;font-weight:600;">⏰ '+d.t+'</span></div>';
+  });
+  html += '</div>';
+  el.innerHTML = html;
+}
+
+// Scroll to phone 4
+function scrollToPhone4() {
+  document.getElementById('phone4').scrollIntoView({ behavior:'smooth', block:'nearest' });
+}
+</script>
+
+</body>
+</html>

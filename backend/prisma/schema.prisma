@@ -1,0 +1,186 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model AdminUser {
+  id           String           @id @default(uuid())
+  email        String           @unique
+  fullname     String
+  password     String
+  roleId       String
+  status       String           @default("ACTIVE")
+  lastLogin    DateTime?
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+  role         Role             @relation(fields: [roleId], references: [id])
+  auditLogs    AuditLog[]
+  publications PublicationLog[]
+  uploads      Upload[]
+}
+
+model Role {
+  id          String           @id @default(uuid())
+  name        String           @unique
+  description String?
+  users       AdminUser[]
+  permissions RolePermission[]
+}
+
+model Permission {
+  id          String           @id @default(uuid())
+  module      String
+  action      String
+  description String?
+  roles       RolePermission[]
+
+  @@unique([module, action])
+}
+
+model RolePermission {
+  roleId       String
+  permissionId String
+  permission   Permission @relation(fields: [permissionId], references: [id])
+  role         Role       @relation(fields: [roleId], references: [id])
+
+  @@id([roleId, permissionId])
+}
+
+model AuditLog {
+  id          String     @id @default(uuid())
+  userId      String?
+  module      String
+  action      String
+  description String
+  entityId    String?
+  beforeData  Json?
+  afterData   Json?
+  ipAddress   String?
+  userAgent   String?
+  createdAt   DateTime   @default(now())
+  user        AdminUser? @relation(fields: [userId], references: [id])
+}
+
+model Sector {
+  id       String   @id @default(uuid())
+  name     String   @unique
+  colonies Colony[]
+}
+
+model Colony {
+  id        String          @id @default(uuid())
+  name      String          @unique
+  sectorId  String
+  aliases   Alias[]
+  sector    Sector          @relation(fields: [sectorId], references: [id])
+  reports   Report[]
+  schedules ScheduleEntry[]
+}
+
+model Alias {
+  id       String @id @default(uuid())
+  name     String @unique
+  colonyId String
+  colony   Colony @relation(fields: [colonyId], references: [id])
+}
+
+model Period {
+  id          String          @id @default(uuid())
+  startDate   DateTime
+  endDate     DateTime
+  isActive    Boolean         @default(false)
+  publication PublicationLog?
+  schedules   ScheduleEntry[]
+}
+
+model ScheduleEntry {
+  id        String   @id @default(uuid())
+  colonyId  String
+  periodId  String
+  date      DateTime
+  startTime String?
+  endTime   String?
+  colony    Colony   @relation(fields: [colonyId], references: [id])
+  period    Period   @relation(fields: [periodId], references: [id])
+}
+
+model Upload {
+  id           String    @id @default(uuid())
+  filename     String
+  filesize     Int
+  uploadedById String
+  status       String    @default("PENDING")
+  metadata     Json?
+  createdAt    DateTime  @default(now())
+  uploader     AdminUser @relation(fields: [uploadedById], references: [id])
+}
+
+model PublicationLog {
+  id          String    @id @default(uuid())
+  periodId    String    @unique
+  publishedBy String
+  publishedAt DateTime  @default(now())
+  rollback    Boolean   @default(false)
+  rollbackAt  DateTime?
+  period      Period    @relation(fields: [periodId], references: [id])
+  publisher   AdminUser @relation(fields: [publishedBy], references: [id])
+}
+
+model DeviceProfile {
+  id                String   @id @default(uuid())
+  deviceUuid        String   @unique
+  deviceFingerprint String?
+  platform          String?
+  appVersion        String?
+  createdAt         DateTime @default(now())
+  lastSeenAt        DateTime @default(now())
+  reports           Report[]
+}
+
+model Report {
+  id                String                @id @default(uuid())
+  publicId          String                @unique @default(dbgenerated("gen_random_uuid()"))
+  deviceProfileId   String
+  colonyId          String
+  type              String                @default("OTHER")
+  description       String
+  reportDate        DateTime              @default(now())
+  status            String                @default("ENVIADO")
+  createdAt         DateTime              @default(now())
+  updatedAt         DateTime              @updatedAt
+  deviceFingerprint String?
+  ipAddress         String?
+  reporterName      String?
+  reporterPhone     String?
+  colony            Colony                @relation(fields: [colonyId], references: [id])
+  deviceProfile     DeviceProfile         @relation(fields: [deviceProfileId], references: [id])
+  statusHistory     ReportStatusHistory[]
+
+  @@index([status])
+  @@index([reportDate])
+}
+
+model ReportStatusHistory {
+  id           String   @id @default(uuid())
+  reportId     String
+  status       String
+  publicNote   String?
+  internalNote String?
+  changedById  String?
+  changedAt    DateTime @default(now())
+  report       Report   @relation(fields: [reportId], references: [id], onDelete: Cascade)
+}
+
+model GlobalConfig {
+  id          String   @id @default(uuid())
+  key         String   @unique
+  value       String
+  label       String
+  description String?
+  type        String   @default("number")
+  updatedAt   DateTime @updatedAt
+}

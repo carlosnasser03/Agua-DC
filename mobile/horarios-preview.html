@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>HorariosScreen — Preview</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #1a1a2e;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 40px 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  /* ── Contenedor de teléfono ── */
+  .phone {
+    width: 375px;
+    min-height: 780px;
+    background: #F0F8FF;
+    border-radius: 44px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 0 8px #2a2a3e;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  .phone-label {
+    color: #7FDBFF;
+    text-align: center;
+    margin-bottom: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  /* ── Status bar simulada ── */
+  .status-bar {
+    background: #001F3F;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.8);
+    font-weight: 600;
+  }
+
+  /* ── Header gradiente ── */
+  .header {
+    background: linear-gradient(135deg, #001F3F 0%, #003366 50%, #0055A5 100%);
+    padding: 14px 20px 18px;
+  }
+  .header-title {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+  }
+  .header-subtitle {
+    color: #7FDBFF;
+    font-size: 12px;
+    margin-top: 2px;
+    margin-bottom: 14px;
+    opacity: 0.9;
+  }
+  .search-row {
+    display: flex;
+    gap: 10px;
+  }
+  .search-box {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: rgba(255,255,255,0.15);
+    border-radius: 14px;
+    padding: 0 12px;
+    border: 1px solid rgba(127,219,255,0.3);
+    gap: 8px;
+  }
+  .search-box input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 14px;
+    width: 100%;
+    padding: 10px 0;
+  }
+  .search-box input::placeholder { color: #5A7FA8; }
+  .search-icon { font-size: 14px; }
+  .search-btn {
+    background: #7FDBFF;
+    border-radius: 14px;
+    padding: 10px 16px;
+    color: #001F3F;
+    font-weight: 800;
+    font-size: 13px;
+    cursor: pointer;
+    border: none;
+    white-space: nowrap;
+  }
+
+  /* ── Scroll content ── */
+  .scroll {
+    flex: 1;
+    padding: 16px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* ── Section label ── */
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #5A7FA8;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin-bottom: 10px;
+    margin-top: 4px;
+  }
+  .section-label.mt { margin-top: 24px; }
+
+  /* ── TodayCard con agua ── */
+  .today-card {
+    background: linear-gradient(135deg, #003366 0%, #0055A5 55%, #00AAEE 100%);
+    border-radius: 20px;
+    padding: 22px;
+    box-shadow: 0 6px 24px rgba(0,51,102,0.4);
+    animation: pulse 2.2s ease-in-out infinite;
+    margin-bottom: 0;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.88; }
+  }
+  .today-badge {
+    display: inline-flex;
+    background: rgba(255,255,255,0.22);
+    border-radius: 20px;
+    padding: 5px 12px;
+    margin-bottom: 14px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .today-sector {
+    font-size: 10px;
+    color: #7FDBFF;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+  .today-colony {
+    font-size: 22px;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+  .today-time-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .today-time {
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .today-date {
+    font-size: 12px;
+    color: rgba(255,255,255,0.75);
+    font-weight: 500;
+  }
+
+  /* ── TodayCard sin agua ── */
+  .today-empty {
+    background: #E8F4FD;
+    border-radius: 20px;
+    padding: 24px;
+    text-align: center;
+    border: 1px solid rgba(0,119,204,0.15);
+    box-shadow: 0 3px 10px rgba(0,31,63,0.07);
+  }
+  .today-empty-icon { font-size: 34px; margin-bottom: 8px; }
+  .today-empty-title { font-size: 14px; font-weight: 700; color: #001F3F; }
+  .today-empty-sub   { font-size: 12px; color: #5A7FA8; margin-top: 4px; }
+
+  /* ── DayCards ── */
+  .day-card {
+    background: #fff;
+    border-radius: 16px;
+    display: flex;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 12px rgba(0,31,63,0.09);
+    overflow: hidden;
+    animation: slideUp 0.38s ease both;
+  }
+  .day-card:nth-child(1) { animation-delay: 0ms; }
+  .day-card:nth-child(2) { animation-delay: 80ms; }
+  .day-card:nth-child(3) { animation-delay: 160ms; }
+  .day-card:nth-child(4) { animation-delay: 240ms; }
+  .day-card:nth-child(5) { animation-delay: 320ms; }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .card-accent { width: 5px; background: #00AAEE; flex-shrink: 0; }
+  .card-content { flex: 1; padding: 14px; }
+  .card-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+  .sector-badge {
+    background: #E8F4FD;
+    border-radius: 8px;
+    padding: 3px 8px;
+    font-size: 9px;
+    font-weight: 700;
+    color: #0055A5;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .card-date   { font-size: 11px; color: #5A7FA8; font-weight: 600; }
+  .card-colony { font-size: 15px; font-weight: 800; color: #001F3F; margin-bottom: 8px; }
+  .time-pill {
+    display: inline-block;
+    background: #E8F4FD;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 12px;
+    color: #0055A5;
+    font-weight: 600;
+  }
+
+  /* ── Empty state ── */
+  .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 60px;
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+  .float-wrap {
+    animation: float 1.8s ease-in-out infinite;
+    margin-bottom: 20px;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-10px); }
+  }
+  .empty-illustration {
+    width: 96px;
+    height: 96px;
+    border-radius: 48px;
+    background: linear-gradient(180deg, #E8F4FD, #F0F8FF);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+  }
+  .empty-title    { font-size: 19px; font-weight: 800; color: #001F3F; text-align: center; margin-bottom: 10px; }
+  .empty-subtitle { font-size: 13px; color: #5A7FA8; text-align: center; line-height: 1.6; }
+
+  /* ── Bottom tab bar ── */
+  .tab-bar {
+    background: #fff;
+    border-top: 1px solid #e8eef4;
+    display: flex;
+    height: 60px;
+  }
+  .tab {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    font-size: 10px;
+    color: #5A7FA8;
+    cursor: pointer;
+  }
+  .tab.active { color: #003366; }
+  .tab-icon { font-size: 22px; }
+  .tab-label { font-size: 10px; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<!-- ═══ PANTALLA 1: Estado inicial (sin buscar) ═══ -->
+<div>
+  <p class="phone-label">Estado inicial</p>
+  <div class="phone">
+    <div class="status-bar"><span>10:32</span><span>📶 🔋</span></div>
+    <div class="header">
+      <div class="header-title">Horarios de Agua</div>
+      <div class="header-subtitle">Consulta el suministro de tu colonia</div>
+      <div class="search-row">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input placeholder="Colonia o sector..." readonly/>
+        </div>
+        <button class="search-btn">Buscar</button>
+      </div>
+    </div>
+    <div class="scroll">
+      <div class="empty-state">
+        <div class="float-wrap">
+          <div class="empty-illustration">💧</div>
+        </div>
+        <div class="empty-title">¿Cuándo llega el agua?</div>
+        <div class="empty-subtitle">Escribe el nombre de tu colonia o sector para consultar los días y horas de suministro.</div>
+      </div>
+    </div>
+    <div class="tab-bar">
+      <div class="tab active"><span class="tab-icon">📅</span><span class="tab-label">Horarios</span></div>
+      <div class="tab"><span class="tab-icon" style="opacity:.5">📢</span><span class="tab-label">Reportar</span></div>
+      <div class="tab"><span class="tab-icon" style="opacity:.5">📋</span><span class="tab-label">Mis Reportes</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PANTALLA 2: Con resultados (hay agua hoy) ═══ -->
+<div>
+  <p class="phone-label">Con resultados · agua hoy</p>
+  <div class="phone">
+    <div class="status-bar"><span>10:32</span><span>📶 🔋</span></div>
+    <div class="header">
+      <div class="header-title">Horarios de Agua</div>
+      <div class="header-subtitle">Consulta el suministro de tu colonia</div>
+      <div class="search-row">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input value="VIERA" readonly style="color:#fff"/>
+        </div>
+        <button class="search-btn">Buscar</button>
+      </div>
+    </div>
+    <div class="scroll" style="overflow-y:auto; max-height:600px;">
+      <div class="section-label">Estado actual</div>
+      <div class="today-card">
+        <div class="today-badge">💧 Hay agua HOY</div>
+        <div class="today-sector">Sector Norte</div>
+        <div class="today-colony">Col. Viera</div>
+        <div class="today-time-row">
+          <span>⏰</span>
+          <span class="today-time">06:00 — 12:00</span>
+        </div>
+        <div class="today-date">martes, 10 de marzo</div>
+      </div>
+
+      <div class="section-label mt">Próximos días</div>
+
+      <div class="day-card">
+        <div class="card-accent"></div>
+        <div class="card-content">
+          <div class="card-header-row">
+            <span class="sector-badge">Sector Norte</span>
+            <span class="card-date">jue, 12 mar</span>
+          </div>
+          <div class="card-colony">Col. Viera</div>
+          <div class="time-pill">⏰ 06:00 — 12:00</div>
+        </div>
+      </div>
+
+      <div class="day-card">
+        <div class="card-accent"></div>
+        <div class="card-content">
+          <div class="card-header-row">
+            <span class="sector-badge">Sector Norte</span>
+            <span class="card-date">sáb, 14 mar</span>
+          </div>
+          <div class="card-colony">Col. Viera</div>
+          <div class="time-pill">⏰ 07:00 — 13:00</div>
+        </div>
+      </div>
+
+      <div class="day-card">
+        <div class="card-accent"></div>
+        <div class="card-content">
+          <div class="card-header-row">
+            <span class="sector-badge">Sector Norte</span>
+            <span class="card-date">lun, 16 mar</span>
+          </div>
+          <div class="card-colony">Col. Viera</div>
+          <div class="time-pill">⏰ 06:00 — 11:00</div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-bar">
+      <div class="tab active"><span class="tab-icon">📅</span><span class="tab-label">Horarios</span></div>
+      <div class="tab"><span class="tab-icon" style="opacity:.5">📢</span><span class="tab-label">Reportar</span></div>
+      <div class="tab"><span class="tab-icon" style="opacity:.5">📋</span><span class="tab-label">Mis Reportes</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PANTALLA 3: Sin agua hoy ═══ -->
+<div>
+  <p class="phone-label">Sin agua hoy</p>
+  <div class="phone">
+    <div class="status-bar"><span>10:32</span><span>📶 🔋</span></div>
+    <div class="header">
+      <div class="header-title">Horarios de Agua</div>
+      <div class="header-subtitle">Consulta el suministro de tu colonia</div>
+      <div class="search-row">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input value="KENNEDY" readonly style="color:#fff"/>
+        </div>
+        <button class="search-btn">Buscar</button>
+      </div>
+    </div>
+    <div class="scroll">
+      <div class="section-label">Estado actual</div>
+      <div class="today-empty">
+        <div class="today-empty-icon">💧</div>
+        <div class="today-empty-title">Sin suministro programado hoy</div>
+        <div class="today-empty-sub">Revisa los próximos días</div>
+      </div>
+
+      <div class="section-label mt">Próximos días</div>
+
+      <div class="day-card">
+        <div class="card-accent"></div>
+        <div class="card-content">
+          <div class="card-header-row">
+            <span class="sector-badge">Sector Sur</span>
+            <span class="card-date">mié, 11 mar</span>
+          </div>
+          <div class="card-colony">Col. Kennedy</div>
+          <div class="time-pill">⏰ 08:00 — 14:00</div>
+        </div>
+      </div>
+
+      <div class="day-card">
+        <div class="card-accent"></div>
+        <div class="card-content">
+          <div class="card-header-row">
+            <span class="sector-badge">Sector Sur</span>
+            <span class="card-date">vie, 13 mar</span>
+          </div>
+          <div class="card-colony">Col. Kennedy</div>
+          <div class="time-pill">⏰ 08:00 — 13:00</div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-bar">
+      <div class="tab active"><span class="tab-icon">📅</span><span class="tab-label">Horarios</span></div>
+      <div class="tab"><span class="tab-icon" style="opacity:.5">📢</span><span class="tab-label">Reportar</span></div>
+      <div class="tab"><span class="tab-icon" style="opacity:.5">📋</span><span class="tab-label">Mis Reportes</span></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

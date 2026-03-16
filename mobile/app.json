@@ -1,0 +1,45 @@
+{
+  "expo": {
+    "name": "U.M.A.P.S.",
+    "slug": "aguadc-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./src/assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./src/assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#FFFFFF"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.aguadc.hn",
+      "buildNumber": "1"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./src/assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.aguadc.hn",
+      "versionCode": 1,
+      "permissions": [
+        "INTERNET"
+      ]
+    },
+    "web": {
+      "favicon": "./src/assets/favicon.png"
+    },
+    "plugins": [
+      "expo-font"
+    ],
+    "scheme": "aguadc",
+    "newArchEnabled": false,
+    "extra": {
+      "eas": {
+        "projectId": "bb0a6f99-f783-42cb-8643-a3a1c56df905"
+      }
+    },
+    "owner": "cmnasser03"
+  }
+}
