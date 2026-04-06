@@ -1,6 +1,7 @@
 import { Injectable, BadRequestException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { NormalizationService } from './normalization.service';
+import { ExcelValidationService } from './excel-validation.service';
 import * as ExcelJS from 'exceljs';
 
 interface SubProcessResult {
@@ -19,6 +20,7 @@ export class ExcelService {
   constructor(
     private prisma: PrismaService,
     private normalizationService: NormalizationService,
+    private excelValidationService: ExcelValidationService,
   ) {}
 
   async processUpload(fileBuffer: Buffer, originalFilename: string, uploaderId: string) {
@@ -131,22 +133,30 @@ export class ExcelService {
       });
     });
 
+    // Run validation rules from database
+    const validationResult = await this.excelValidationService.validateWithRules(
+      results,
+      { startDate, endDate }
+    );
+
     const upload = await this.prisma.upload.create({
       data: {
         filename: originalFilename || 'HORARIOS_PROCESADOS.xlsx',
         filesize: fileBuffer.length,
         uploadedById: uploaderId,
-        status: results.some(r => !r.isValid) ? 'ERRORED' : 'VALIDATED',
+        status: validationResult.isValid ? 'VALIDATED' : 'ERRORED',
         metadata: {
           period: { startDate, endDate },
           summary: {
             totalRows: results.length,
             validRows: results.filter(r => r.isValid).length,
-            errors: results.filter(r => !r.isValid).length,
+            errors: validationResult.errors.length,
             daysProcessed: dateMapping.length
           },
-          results: results as any
-        }
+          results: results,
+          validationErrors: validationResult.errors,
+          validationWarnings: validationResult.warnings
+        } as any
       }
     });
 

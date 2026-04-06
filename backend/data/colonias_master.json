@@ -1,0 +1,4269 @@
+[
+  {
+    "id": "C0001",
+    "nombre": "VIERA",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0002",
+    "nombre": "BRISAS DEL PICACHO",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0003",
+    "nombre": "CABAÑA (PARTE ALTA)",
+    "sector": "PICACHO",
+    "aliases": [
+      "LA CABAÑA (PARTE ALTA)"
+    ]
+  },
+  {
+    "id": "C0004",
+    "nombre": "ALHAMBRA",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0005",
+    "nombre": "BUENA VISTA",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0006",
+    "nombre": "BUENOS AIRES",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0007",
+    "nombre": "CABAÑA (PARTE)",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0008",
+    "nombre": "CANTERA (PARTE ALTA)",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0009",
+    "nombre": "EDEN No. 2",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0010",
+    "nombre": "EL BOSQUE",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0011",
+    "nombre": "SAN JOSE DE LA MONTAÑA",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0012",
+    "nombre": "FUENTE (ALTA)",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0013",
+    "nombre": "LAS CANTERAS",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0014",
+    "nombre": "LEONA (PARTE)",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0015",
+    "nombre": "LINTON",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0016",
+    "nombre": "PUNTA CALIENTE",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0017",
+    "nombre": "TIERRA COLORADA (PARTE)",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0018",
+    "nombre": "WALTER",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0019",
+    "nombre": "ZARAGOZA",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0020",
+    "nombre": "NUEVA SANTA ROSA",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0021",
+    "nombre": "VIEJA SANTA ROSA",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0022",
+    "nombre": "CONDOMINIOS VIERA (RES.)",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0023",
+    "nombre": "BARRIO LAS COLINAS",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0024",
+    "nombre": "CASAMATA (PARTE ALTA)",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0025",
+    "nombre": "JACARANDAS",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0026",
+    "nombre": "MARISHAL",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0027",
+    "nombre": "SAN PABLO",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0028",
+    "nombre": "REPARTO ABAJO",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0029",
+    "nombre": "REPARTO ARRIBA",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0030",
+    "nombre": "GUILLEN",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0031",
+    "nombre": "JOSE SIMON AZCONA",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0032",
+    "nombre": "SUAZO CORDOVA",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0033",
+    "nombre": "VILLADELMI",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0034",
+    "nombre": "RES. VILLADELMI",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0035",
+    "nombre": "EL PORVENIR (PARTE ALTA)",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0036",
+    "nombre": "SALIDA A OLANCHO",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0037",
+    "nombre": "ESTANZUELA",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0038",
+    "nombre": "CANAAN",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0039",
+    "nombre": "ESPERANZA (PARTE ALTA Y BAJA)",
+    "sector": "LINDEROS",
+    "aliases": []
+  },
+  {
+    "id": "C0040",
+    "nombre": "EL RINCON",
+    "sector": "LINDEROS",
+    "aliases": []
+  },
+  {
+    "id": "C0041",
+    "nombre": "PROCERES",
+    "sector": "LINDEROS",
+    "aliases": []
+  },
+  {
+    "id": "C0042",
+    "nombre": "SANTA ISABEL",
+    "sector": "LINDEROS",
+    "aliases": []
+  },
+  {
+    "id": "C0043",
+    "nombre": "28 DE MARZO (PARTE)",
+    "sector": "LINDEROS",
+    "aliases": []
+  },
+  {
+    "id": "C0044",
+    "nombre": "LEONA DEL RINCON",
+    "sector": "LINDEROS",
+    "aliases": []
+  },
+  {
+    "id": "C0045",
+    "nombre": "21 DE OCTUBRE",
+    "sector": "LINDEROS",
+    "aliases": []
+  },
+  {
+    "id": "C0046",
+    "nombre": "CALDERON",
+    "sector": "LINDEROS",
+    "aliases": []
+  },
+  {
+    "id": "C0047",
+    "nombre": "EL JARDIN",
+    "sector": "LINDEROS",
+    "aliases": []
+  },
+  {
+    "id": "C0048",
+    "nombre": "EL PORTILLO",
+    "sector": "LINDEROS",
+    "aliases": []
+  },
+  {
+    "id": "C0049",
+    "nombre": "GIRASOLES",
+    "sector": "LINDEROS",
+    "aliases": []
+  },
+  {
+    "id": "C0050",
+    "nombre": "LARA",
+    "sector": "LINDEROS",
+    "aliases": []
+  },
+  {
+    "id": "C0051",
+    "nombre": "LARA NORTE",
+    "sector": "LINDEROS",
+    "aliases": []
+  },
+  {
+    "id": "C0052",
+    "nombre": "BOLIVAR",
+    "sector": "LINDEROS",
+    "aliases": []
+  },
+  {
+    "id": "C0053",
+    "nombre": "LA JOYA (RES.)",
+    "sector": "LINDEROS",
+    "aliases": []
+  },
+  {
+    "id": "C0054",
+    "nombre": "VILLAS DEL RIO",
+    "sector": "LINDEROS",
+    "aliases": []
+  },
+  {
+    "id": "C0055",
+    "nombre": "FLORIDA",
+    "sector": "LINDEROS",
+    "aliases": []
+  },
+  {
+    "id": "C0056",
+    "nombre": "FRATERNIDAD",
+    "sector": "LINDEROS",
+    "aliases": []
+  },
+  {
+    "id": "C0057",
+    "nombre": "BOULEVARD MORAZAN",
+    "sector": "LINDEROS",
+    "aliases": []
+  },
+  {
+    "id": "C0058",
+    "nombre": "CASTAÑO",
+    "sector": "LINDEROS",
+    "aliases": []
+  },
+  {
+    "id": "C0059",
+    "nombre": "IZAGUIRRE",
+    "sector": "LINDEROS",
+    "aliases": []
+  },
+  {
+    "id": "C0060",
+    "nombre": "Bv. LOS PROCERES",
+    "sector": "LINDEROS",
+    "aliases": []
+  },
+  {
+    "id": "C0061",
+    "nombre": "PARCALTAGUA",
+    "sector": "LINDEROS",
+    "aliases": []
+  },
+  {
+    "id": "C0062",
+    "nombre": "PUEBLO NUEVO",
+    "sector": "LINDEROS",
+    "aliases": []
+  },
+  {
+    "id": "C0063",
+    "nombre": "SABANAGRANDE",
+    "sector": "LINDEROS",
+    "aliases": []
+  },
+  {
+    "id": "C0064",
+    "nombre": "SANTA ANA",
+    "sector": "LINDEROS",
+    "aliases": []
+  },
+  {
+    "id": "C0065",
+    "nombre": "ALMENDROS",
+    "sector": "LINDEROS",
+    "aliases": []
+  },
+  {
+    "id": "C0066",
+    "nombre": "LINDA VISTA ESTE",
+    "sector": "LINDEROS",
+    "aliases": []
+  },
+  {
+    "id": "C0067",
+    "nombre": "MONTECARLO",
+    "sector": "LINDEROS",
+    "aliases": []
+  },
+  {
+    "id": "C0068",
+    "nombre": "LOMA LAS MINITAS",
+    "sector": "LINDEROS",
+    "aliases": []
+  },
+  {
+    "id": "C0069",
+    "nombre": "MODESTO RODAS ALVARADO",
+    "sector": "LINDEROS",
+    "aliases": []
+  },
+  {
+    "id": "C0070",
+    "nombre": "SANTA MARGARITA",
+    "sector": "LINDEROS",
+    "aliases": []
+  },
+  {
+    "id": "C0071",
+    "nombre": "LOMAS DEL MOLINO (OPERADO POR URBANIZADOR)",
+    "sector": "LINDEROS",
+    "aliases": []
+  },
+  {
+    "id": "C0072",
+    "nombre": "EL SITIO",
+    "sector": "LA SOSA",
+    "aliases": []
+  },
+  {
+    "id": "C0073",
+    "nombre": "ESTADOS UNIDOS",
+    "sector": "LA SOSA",
+    "aliases": []
+  },
+  {
+    "id": "C0074",
+    "nombre": "LA UNION",
+    "sector": "LA SOSA",
+    "aliases": []
+  },
+  {
+    "id": "C0075",
+    "nombre": "TRINIDAD",
+    "sector": "LA SOSA",
+    "aliases": []
+  },
+  {
+    "id": "C0076",
+    "nombre": "LA SOSA",
+    "sector": "LA SOSA",
+    "aliases": []
+  },
+  {
+    "id": "C0077",
+    "nombre": "SECTOR ELVIR (PARTE)",
+    "sector": "LA SOSA",
+    "aliases": []
+  },
+  {
+    "id": "C0078",
+    "nombre": "SANTA MARIA",
+    "sector": "LA SOSA",
+    "aliases": []
+  },
+  {
+    "id": "C0079",
+    "nombre": "SEMPE",
+    "sector": "LA SOSA",
+    "aliases": []
+  },
+  {
+    "id": "C0080",
+    "nombre": "30 DE NOVIEMBRE",
+    "sector": "LA SOSA",
+    "aliases": []
+  },
+  {
+    "id": "C0081",
+    "nombre": "SAN MIGUEL (PARTE BAJA)",
+    "sector": "LA SOSA",
+    "aliases": []
+  },
+  {
+    "id": "C0082",
+    "nombre": "JASMIN",
+    "sector": "LA SOSA",
+    "aliases": []
+  },
+  {
+    "id": "C0083",
+    "nombre": "AURORA",
+    "sector": "LA SOSA",
+    "aliases": []
+  },
+  {
+    "id": "C0084",
+    "nombre": "SANTA ANITA",
+    "sector": "LA SOSA",
+    "aliases": []
+  },
+  {
+    "id": "C0085",
+    "nombre": "SAN MIGUEL (PARTE ALTA)",
+    "sector": "LA SOSA",
+    "aliases": []
+  },
+  {
+    "id": "C0086",
+    "nombre": "LA ERA (SECTOR EL CARBON)",
+    "sector": "LA SOSA",
+    "aliases": []
+  },
+  {
+    "id": "C0087",
+    "nombre": "EL EDEN",
+    "sector": "LA SOSA",
+    "aliases": []
+  },
+  {
+    "id": "C0088",
+    "nombre": "13 DE JULIO",
+    "sector": "LA SOSA",
+    "aliases": []
+  },
+  {
+    "id": "C0089",
+    "nombre": "LOS ALPES",
+    "sector": "TRAVESIA",
+    "aliases": []
+  },
+  {
+    "id": "C0090",
+    "nombre": "ZAPOTE LA TRAVESIA",
+    "sector": "TRAVESIA",
+    "aliases": []
+  },
+  {
+    "id": "C0091",
+    "nombre": "BUENOS AIRES DE ORIENTE",
+    "sector": "TRAVESIA",
+    "aliases": []
+  },
+  {
+    "id": "C0092",
+    "nombre": "SECTOR 6 Y CASAS NUEVAS",
+    "sector": "TRAVESIA",
+    "aliases": []
+  },
+  {
+    "id": "C0093",
+    "nombre": "LA ERA",
+    "sector": "TRAVESIA",
+    "aliases": []
+  },
+  {
+    "id": "C0094",
+    "nombre": "LA LOMITA",
+    "sector": "TRAVESIA",
+    "aliases": []
+  },
+  {
+    "id": "C0095",
+    "nombre": "LA TRAVESIA",
+    "sector": "TRAVESIA",
+    "aliases": []
+  },
+  {
+    "id": "C0096",
+    "nombre": "SAN ISIDRO",
+    "sector": "TRAVESIA",
+    "aliases": []
+  },
+  {
+    "id": "C0097",
+    "nombre": "SECTOR ELVIR",
+    "sector": "TRAVESIA",
+    "aliases": []
+  },
+  {
+    "id": "C0098",
+    "nombre": "SIBONEY",
+    "sector": "CHI",
+    "aliases": []
+  },
+  {
+    "id": "C0099",
+    "nombre": "LOMAS DE SANTA LUCIA",
+    "sector": "CHI",
+    "aliases": []
+  },
+  {
+    "id": "C0100",
+    "nombre": "ALDEA EL CHIMBO",
+    "sector": "CHI",
+    "aliases": []
+  },
+  {
+    "id": "C0101",
+    "nombre": "CERRO AZUL",
+    "sector": "CHI",
+    "aliases": []
+  },
+  {
+    "id": "C0102",
+    "nombre": "VILLA SAN MANUEL",
+    "sector": "CHI",
+    "aliases": []
+  },
+  {
+    "id": "C0103",
+    "nombre": "LA FLORIDA",
+    "sector": "MOL",
+    "aliases": []
+  },
+  {
+    "id": "C0104",
+    "nombre": "ZARAHEMLA",
+    "sector": "MOL",
+    "aliases": []
+  },
+  {
+    "id": "C0105",
+    "nombre": "VILLAS DEL MOLINO",
+    "sector": "MOL",
+    "aliases": []
+  },
+  {
+    "id": "C0106",
+    "nombre": "EL MOLINON",
+    "sector": "MOL",
+    "aliases": []
+  },
+  {
+    "id": "C0107",
+    "nombre": "ZARAHENLA II",
+    "sector": "MOL",
+    "aliases": []
+  },
+  {
+    "id": "C0108",
+    "nombre": "LOMAS DE MAYAB",
+    "sector": "CANAL 11",
+    "aliases": []
+  },
+  {
+    "id": "C0109",
+    "nombre": "LUIS LANDA",
+    "sector": "CANAL 11",
+    "aliases": []
+  },
+  {
+    "id": "C0110",
+    "nombre": "CASABOLA",
+    "sector": "CANAL 11",
+    "aliases": []
+  },
+  {
+    "id": "C0111",
+    "nombre": "PAYAQUI",
+    "sector": "CANAL 11",
+    "aliases": []
+  },
+  {
+    "id": "C0112",
+    "nombre": "ARGENTINA",
+    "sector": "CANAL 11",
+    "aliases": []
+  },
+  {
+    "id": "C0113",
+    "nombre": "CASTAÑO SUR",
+    "sector": "CANAL 11",
+    "aliases": []
+  },
+  {
+    "id": "C0114",
+    "nombre": "AURORA No. 2",
+    "sector": "CANAL 11",
+    "aliases": []
+  },
+  {
+    "id": "C0115",
+    "nombre": "LAS MARIAS",
+    "sector": "CANAL 11",
+    "aliases": []
+  },
+  {
+    "id": "C0116",
+    "nombre": "FLORENCIA SUR (PARTE BAJA)",
+    "sector": "CANAL 11",
+    "aliases": []
+  },
+  {
+    "id": "C0117",
+    "nombre": "FLORENCIA ESTE",
+    "sector": "CANAL 11",
+    "aliases": []
+  },
+  {
+    "id": "C0118",
+    "nombre": "FLORENCIA NORTE",
+    "sector": "CANAL 11",
+    "aliases": []
+  },
+  {
+    "id": "C0119",
+    "nombre": "TRES CAMINOS",
+    "sector": "CANAL 11",
+    "aliases": []
+  },
+  {
+    "id": "C0120",
+    "nombre": "EL TRIANGULO",
+    "sector": "CANAL 11",
+    "aliases": []
+  },
+  {
+    "id": "C0121",
+    "nombre": "LOMAS DEL GUIJARRO",
+    "sector": "CANAL 11",
+    "aliases": []
+  },
+  {
+    "id": "C0122",
+    "nombre": "MINITAS",
+    "sector": "CANAL 11",
+    "aliases": []
+  },
+  {
+    "id": "C0123",
+    "nombre": "LAS PALOMAS",
+    "sector": "CANAL 11",
+    "aliases": []
+  },
+  {
+    "id": "C0124",
+    "nombre": "TEPEYAC",
+    "sector": "CANAL 11",
+    "aliases": []
+  },
+  {
+    "id": "C0125",
+    "nombre": "RUBEN DARIO",
+    "sector": "CANAL 11",
+    "aliases": []
+  },
+  {
+    "id": "C0126",
+    "nombre": "Bo. ABAJO",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0127",
+    "nombre": "Bo. EL CHILE",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0128",
+    "nombre": "Bo. EL JAZMIN",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0129",
+    "nombre": "Bo. EL OLVIDO",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0130",
+    "nombre": "Bo. GUANACASTE",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0131",
+    "nombre": "Bo. LA CONCORDIA",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0132",
+    "nombre": "Bo. LA FUENTE",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0133",
+    "nombre": "Bo. LA HOYA",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0134",
+    "nombre": "Bo. LA ISLA",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0135",
+    "nombre": "Bo. LA MONCADA",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0136",
+    "nombre": "Bo. LA PLAZUELA",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0137",
+    "nombre": "Bo. LA RONDA",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0138",
+    "nombre": "Bo. LAS MERCEDES",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0139",
+    "nombre": "Bo. LAS PALOMAS",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0140",
+    "nombre": "Bo. LOS DOLORES",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0141",
+    "nombre": "CENTRO TEGUCIGALPA",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0142",
+    "nombre": "COL. PALMIRA",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0143",
+    "nombre": "COL. WALTER",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0144",
+    "nombre": "EL PORVENIR (PARTE BAJA)",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0145",
+    "nombre": "JARDIN LAS MERCEDES",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0146",
+    "nombre": "LA CAMPAÑA",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0147",
+    "nombre": "MANCHEN",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0148",
+    "nombre": "MATAMOROS",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0149",
+    "nombre": "MAYA CENTRO",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0150",
+    "nombre": "MEJIA",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0151",
+    "nombre": "REFORMA",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0152",
+    "nombre": "SAN CARLOS",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0153",
+    "nombre": "SAN FELIPE",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0154",
+    "nombre": "SAN RAFAEL",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0155",
+    "nombre": "SECTOR Bo. LA CABAÑA",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0156",
+    "nombre": "SECTOR Bo. LA LEONA",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0157",
+    "nombre": "SECTOR DE CASAMATA",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0158",
+    "nombre": "SECTOR DE GUADALUPE",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0159",
+    "nombre": "LA ALHAMBRA",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0160",
+    "nombre": "LOS MANGOS",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0161",
+    "nombre": "MIRAMESI",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0162",
+    "nombre": "ALTOS DE MIRAMESI",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0163",
+    "nombre": "SECTOR DE LAS DELICIAS",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0164",
+    "nombre": "TIERRA COLORADA",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0165",
+    "nombre": "Bo. LA PEDRERA 1 y 2",
+    "sector": "LA LEONA",
+    "aliases": []
+  },
+  {
+    "id": "C0166",
+    "nombre": "LOMAS DE MIRAFLORES SUR",
+    "sector": "MIRAFLORES",
+    "aliases": []
+  },
+  {
+    "id": "C0167",
+    "nombre": "LOS TULIPANES",
+    "sector": "MIRAFLORES",
+    "aliases": []
+  },
+  {
+    "id": "C0168",
+    "nombre": "JOYA (INVA)",
+    "sector": "MIRAFLORES",
+    "aliases": []
+  },
+  {
+    "id": "C0169",
+    "nombre": "MIRAFLORES NORTE (DE FARMACIA EL AHORRO A INFOP)",
+    "sector": "MIRAFLORES",
+    "aliases": []
+  },
+  {
+    "id": "C0170",
+    "nombre": "VILLA BENETO",
+    "sector": "MIRAFLORES",
+    "aliases": []
+  },
+  {
+    "id": "C0171",
+    "nombre": "JARDINES DE MIRAFLORES",
+    "sector": "MIRAFLORES",
+    "aliases": []
+  },
+  {
+    "id": "C0172",
+    "nombre": "MIRAFLORES NORTE (DE FARMACIA EL AHORRO A BOULEVARD KUWAIT)",
+    "sector": "MIRAFLORES",
+    "aliases": []
+  },
+  {
+    "id": "C0173",
+    "nombre": "MIRAFLORES SUR",
+    "sector": "MIRAFLORES",
+    "aliases": []
+  },
+  {
+    "id": "C0174",
+    "nombre": "SAN JORGE",
+    "sector": "MIRAFLORES",
+    "aliases": []
+  },
+  {
+    "id": "C0175",
+    "nombre": "VILLA CRISTINA",
+    "sector": "MIRAFLORES",
+    "aliases": []
+  },
+  {
+    "id": "C0176",
+    "nombre": "ALTOS DE LA JOYA",
+    "sector": "MIRAFLORES",
+    "aliases": []
+  },
+  {
+    "id": "C0177",
+    "nombre": "SAN JOSE DE LOS LLANOS (PARTE BAJA)",
+    "sector": "MIRAFLORES",
+    "aliases": []
+  },
+  {
+    "id": "C0178",
+    "nombre": "BELLA ORIENTE",
+    "sector": "Y III",
+    "aliases": []
+  },
+  {
+    "id": "C0179",
+    "nombre": "GUAYMURAS",
+    "sector": "Y III",
+    "aliases": []
+  },
+  {
+    "id": "C0180",
+    "nombre": "HATO DE ENMEDIO S: 1 - 9",
+    "sector": "Y III",
+    "aliases": []
+  },
+  {
+    "id": "C0181",
+    "nombre": "JACALEAPA",
+    "sector": "Y III",
+    "aliases": []
+  },
+  {
+    "id": "C0182",
+    "nombre": "LOMAS DE JACALEAPA",
+    "sector": "Y III",
+    "aliases": []
+  },
+  {
+    "id": "C0183",
+    "nombre": "SAN ANGEL",
+    "sector": "Y III",
+    "aliases": []
+  },
+  {
+    "id": "C0184",
+    "nombre": "SAN IGNACIO",
+    "sector": "Y III",
+    "aliases": []
+  },
+  {
+    "id": "C0185",
+    "nombre": "VALENCIA",
+    "sector": "Y III",
+    "aliases": []
+  },
+  {
+    "id": "C0186",
+    "nombre": "VICTOR F. ARDON",
+    "sector": "Y III",
+    "aliases": []
+  },
+  {
+    "id": "C0187",
+    "nombre": "VILLA LAS PALMERAS",
+    "sector": "Y III",
+    "aliases": []
+  },
+  {
+    "id": "C0188",
+    "nombre": "VILLA NUEVA ( ZONA 6)",
+    "sector": "Y III",
+    "aliases": []
+  },
+  {
+    "id": "C0189",
+    "nombre": "RES. GLORIA A DIOS",
+    "sector": "Y III",
+    "aliases": []
+  },
+  {
+    "id": "C0190",
+    "nombre": "JESUS AGUILAR PAZ",
+    "sector": "Y III",
+    "aliases": []
+  },
+  {
+    "id": "C0191",
+    "nombre": "VILLA DE SAN IGNACIO. CIUDAD JARDIN",
+    "sector": "Y III",
+    "aliases": []
+  },
+  {
+    "id": "C0192",
+    "nombre": "LOMAS DE SAN JOSE",
+    "sector": "Y III",
+    "aliases": []
+  },
+  {
+    "id": "C0193",
+    "nombre": "LOMAS DE NAUBOO",
+    "sector": "Y III",
+    "aliases": []
+  },
+  {
+    "id": "C0194",
+    "nombre": "RES VISTA REAL",
+    "sector": "Y III",
+    "aliases": []
+  },
+  {
+    "id": "C0195",
+    "nombre": "KENNEDY",
+    "sector": "Y III",
+    "aliases": []
+  },
+  {
+    "id": "C0196",
+    "nombre": "BERNARDO DAZY",
+    "sector": "Y III",
+    "aliases": []
+  },
+  {
+    "id": "C0197",
+    "nombre": "DIOS PROVEERA",
+    "sector": "Y III",
+    "aliases": []
+  },
+  {
+    "id": "C0198",
+    "nombre": "LAS PALMAS",
+    "sector": "Y III",
+    "aliases": []
+  },
+  {
+    "id": "C0199",
+    "nombre": "RESIDENCIAL PLAZA",
+    "sector": "Y III",
+    "aliases": []
+  },
+  {
+    "id": "C0200",
+    "nombre": "JOYA (ALDEA)",
+    "sector": "Y III",
+    "aliases": []
+  },
+  {
+    "id": "C0201",
+    "nombre": "VILLA NUEVA Z-6 (PARTE)",
+    "sector": "Y III",
+    "aliases": []
+  },
+  {
+    "id": "C0202",
+    "nombre": "VILLAS COLONIAL",
+    "sector": "Y III",
+    "aliases": []
+  },
+  {
+    "id": "C0203",
+    "nombre": "VEGAS DE LA JOYA",
+    "sector": "Y III",
+    "aliases": []
+  },
+  {
+    "id": "C0204",
+    "nombre": "VENECIA",
+    "sector": "Y III",
+    "aliases": []
+  },
+  {
+    "id": "C0205",
+    "nombre": "UTH",
+    "sector": "Y III",
+    "aliases": []
+  },
+  {
+    "id": "C0206",
+    "nombre": "RES. PARIS",
+    "sector": "Y III",
+    "aliases": []
+  },
+  {
+    "id": "C0207",
+    "nombre": "ALTOS DE LA VENECIA",
+    "sector": "Y III",
+    "aliases": []
+  },
+  {
+    "id": "C0208",
+    "nombre": "LAS CAMPANAS",
+    "sector": "KENNED",
+    "aliases": []
+  },
+  {
+    "id": "C0209",
+    "nombre": "LOS PORTALES",
+    "sector": "KENNED",
+    "aliases": []
+  },
+  {
+    "id": "C0210",
+    "nombre": "LOMAS DEL TABLON",
+    "sector": "KENNED",
+    "aliases": []
+  },
+  {
+    "id": "C0211",
+    "nombre": "HONDURAS",
+    "sector": "KENNED",
+    "aliases": []
+  },
+  {
+    "id": "C0212",
+    "nombre": "VILLA NUEVA NORTE Y SUR S: 1",
+    "sector": "KENNED",
+    "aliases": []
+  },
+  {
+    "id": "C0213",
+    "nombre": "8 (OPERADO POR SECTORES)",
+    "sector": "KENNED",
+    "aliases": []
+  },
+  {
+    "id": "C0214",
+    "nombre": "ALTOS DE LOS PINOS (OPERADO POR JUNTA)",
+    "sector": "KENNED",
+    "aliases": []
+  },
+  {
+    "id": "C0215",
+    "nombre": "LOS PINOS (OPERADO POR JUNTA DE AGUA)",
+    "sector": "KENNED",
+    "aliases": []
+  },
+  {
+    "id": "C0216",
+    "nombre": "PLAN DE LOS PINOS",
+    "sector": "KENNED",
+    "aliases": []
+  },
+  {
+    "id": "C0217",
+    "nombre": "DORADO (PARTE BAJA)",
+    "sector": "KENNED",
+    "aliases": []
+  },
+  {
+    "id": "C0218",
+    "nombre": "DORADO (PARTE ALTA)",
+    "sector": "KENNED",
+    "aliases": []
+  },
+  {
+    "id": "C0219",
+    "nombre": "VILLA NUEVA S: 3",
+    "sector": "KENNED",
+    "aliases": []
+  },
+  {
+    "id": "C0220",
+    "nombre": "7 (OPERADO POR SECTORES)",
+    "sector": "KENNED",
+    "aliases": []
+  },
+  {
+    "id": "C0221",
+    "nombre": "COVESPUL",
+    "sector": "HATO II",
+    "aliases": []
+  },
+  {
+    "id": "C0222",
+    "nombre": "RES. SAN JUAN",
+    "sector": "HATO II",
+    "aliases": []
+  },
+  {
+    "id": "C0223",
+    "nombre": "HATO DE ENMEDIO SECTOR 10",
+    "sector": "HATO II",
+    "aliases": []
+  },
+  {
+    "id": "C0224",
+    "nombre": "HATO DE ENMEDIO SECTORES 6a y 9 (ADICIONAL)",
+    "sector": "HATO II",
+    "aliases": []
+  },
+  {
+    "id": "C0225",
+    "nombre": "17 DE SEPTIEMBRE",
+    "sector": "SUYAPITA",
+    "aliases": []
+  },
+  {
+    "id": "C0226",
+    "nombre": "BRISAS DE SUYAPA",
+    "sector": "SUYAPITA",
+    "aliases": []
+  },
+  {
+    "id": "C0227",
+    "nombre": "FEHCOVIL",
+    "sector": "SUYAPITA",
+    "aliases": []
+  },
+  {
+    "id": "C0228",
+    "nombre": "FLORES DE ORIENTE",
+    "sector": "SUYAPITA",
+    "aliases": []
+  },
+  {
+    "id": "C0229",
+    "nombre": "LA LIBERTAD",
+    "sector": "SUYAPITA",
+    "aliases": []
+  },
+  {
+    "id": "C0230",
+    "nombre": "LOS HIGUEROS",
+    "sector": "SUYAPITA",
+    "aliases": []
+  },
+  {
+    "id": "C0231",
+    "nombre": "NUEVA SUYAPA",
+    "sector": "SUYAPITA",
+    "aliases": []
+  },
+  {
+    "id": "C0232",
+    "nombre": "VILLA SAN CARALAMPIO (OPERADO POR SECTORES",
+    "sector": "SUYAPITA",
+    "aliases": []
+  },
+  {
+    "id": "C0233",
+    "nombre": "CON JUNTA DE AGUA)",
+    "sector": "SUYAPITA",
+    "aliases": []
+  },
+  {
+    "id": "C0234",
+    "nombre": "ALDEA SUYAPA (OPERADO POR SECTORES",
+    "sector": "SUYAPITA",
+    "aliases": []
+  },
+  {
+    "id": "C0235",
+    "nombre": "LA HACIENDA",
+    "sector": "SUYAPITA",
+    "aliases": []
+  },
+  {
+    "id": "C0236",
+    "nombre": "VILLAS CARRARA",
+    "sector": "SUYAPITA",
+    "aliases": []
+  },
+  {
+    "id": "C0237",
+    "nombre": "EL TRAPICHE",
+    "sector": "SUYAPITA",
+    "aliases": []
+  },
+  {
+    "id": "C0238",
+    "nombre": "FLORENCIA SUR (PARTE ALTA)",
+    "sector": "SUYAPITA",
+    "aliases": []
+  },
+  {
+    "id": "C0239",
+    "nombre": "UNAH",
+    "sector": "SUYAPITA",
+    "aliases": []
+  },
+  {
+    "id": "C0240",
+    "nombre": "PRADOS UNIVERSITARIOS",
+    "sector": "SUYAPITA",
+    "aliases": []
+  },
+  {
+    "id": "C0241",
+    "nombre": "PRADO VERDE",
+    "sector": "SUYAPITA",
+    "aliases": []
+  },
+  {
+    "id": "C0242",
+    "nombre": "PRADO ALTO",
+    "sector": "SUYAPITA",
+    "aliases": []
+  },
+  {
+    "id": "C0243",
+    "nombre": "PUERTA DEL SOL",
+    "sector": "SUYAPITA",
+    "aliases": []
+  },
+  {
+    "id": "C0244",
+    "nombre": "RES MAYA",
+    "sector": "SUYAPITA",
+    "aliases": []
+  },
+  {
+    "id": "C0245",
+    "nombre": "RES. SUYAPITA",
+    "sector": "SUYAPITA",
+    "aliases": []
+  },
+  {
+    "id": "C0246",
+    "nombre": "ALTOS DEL TRAPICHE (1",
+    "sector": "SUYAPITA",
+    "aliases": []
+  },
+  {
+    "id": "C0247",
+    "nombre": "3 y 4 ETAPA)",
+    "sector": "SUYAPITA",
+    "aliases": []
+  },
+  {
+    "id": "C0248",
+    "nombre": "ALTOS DEL TRAPICHE",
+    "sector": "SUYAPITA",
+    "aliases": []
+  },
+  {
+    "id": "C0249",
+    "nombre": "III ETAPA (PARTE ALTA)",
+    "sector": "SUYAPITA",
+    "aliases": []
+  },
+  {
+    "id": "C0250",
+    "nombre": "UNIVERSIDAD NACIONAL AUTONOMA DE HONDURAS",
+    "sector": "SUYAPITA",
+    "aliases": []
+  },
+  {
+    "id": "C0251",
+    "nombre": "COLONIA IPM",
+    "sector": "LOMAS II",
+    "aliases": []
+  },
+  {
+    "id": "C0252",
+    "nombre": "LOMAS DEL GUIJARRO II ETAPA",
+    "sector": "LOMAS II",
+    "aliases": []
+  },
+  {
+    "id": "C0253",
+    "nombre": "LOMA ALTA",
+    "sector": "LOMAS II",
+    "aliases": []
+  },
+  {
+    "id": "C0254",
+    "nombre": "PUERTA DEL SOL.",
+    "sector": "LOMAS II",
+    "aliases": []
+  },
+  {
+    "id": "C0255",
+    "nombre": "VILLA UNIVERSITARIA II ETAPA",
+    "sector": "LOMAS II",
+    "aliases": []
+  },
+  {
+    "id": "C0256",
+    "nombre": "28 DE MARZO",
+    "sector": "LOMAS II",
+    "aliases": []
+  },
+  {
+    "id": "C0257",
+    "nombre": "LAS CUMBRES",
+    "sector": "LOMAS II",
+    "aliases": []
+  },
+  {
+    "id": "C0258",
+    "nombre": "Bo. LA LOMA",
+    "sector": "LOMAS II",
+    "aliases": []
+  },
+  {
+    "id": "C0259",
+    "nombre": "BRISAS DEL VALLE",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0260",
+    "nombre": "VILLA UNIVERSITARIA I ETAPA",
+    "sector": "UNIV. NOR",
+    "aliases": []
+  },
+  {
+    "id": "C0261",
+    "nombre": "VILLA OLIMPICA",
+    "sector": "UNIV. NOR",
+    "aliases": []
+  },
+  {
+    "id": "C0262",
+    "nombre": "VILLA CENTROAMERICANA",
+    "sector": "UNIV. NOR",
+    "aliases": []
+  },
+  {
+    "id": "C0263",
+    "nombre": "UNIVERSIDAD NORTE",
+    "sector": "UNIV. NOR",
+    "aliases": []
+  },
+  {
+    "id": "C0264",
+    "nombre": "LOS CIRUELOS",
+    "sector": "UNIV. NOR",
+    "aliases": []
+  },
+  {
+    "id": "C0265",
+    "nombre": "MONTE VERDE",
+    "sector": "UNIV. NOR",
+    "aliases": []
+  },
+  {
+    "id": "C0266",
+    "nombre": "LIQUIDAMBAR",
+    "sector": "UNIV. NOR",
+    "aliases": []
+  },
+  {
+    "id": "C0267",
+    "nombre": "OLIMPOS",
+    "sector": "UNIV. NOR",
+    "aliases": []
+  },
+  {
+    "id": "C0268",
+    "nombre": "VILLA TOSCANA",
+    "sector": "UNIV. NOR",
+    "aliases": []
+  },
+  {
+    "id": "C0269",
+    "nombre": "LOMA LINDA NORTE (PARTE ALTA)",
+    "sector": "CENTRO LOMA-JUANA L.",
+    "aliases": []
+  },
+  {
+    "id": "C0270",
+    "nombre": "LOMA VERDE",
+    "sector": "CENTRO LOMA-JUANA L.",
+    "aliases": []
+  },
+  {
+    "id": "C0271",
+    "nombre": "COL. PEREZ",
+    "sector": "CENTRO LOMA-JUANA L.",
+    "aliases": []
+  },
+  {
+    "id": "C0272",
+    "nombre": "COMERCIAL DIAZ",
+    "sector": "CENTRO LOMA-JUANA L.",
+    "aliases": []
+  },
+  {
+    "id": "C0273",
+    "nombre": "HUMUYA",
+    "sector": "CENTRO LOMA-JUANA L.",
+    "aliases": []
+  },
+  {
+    "id": "C0274",
+    "nombre": "PRADO",
+    "sector": "CENTRO LOMA-JUANA L.",
+    "aliases": []
+  },
+  {
+    "id": "C0275",
+    "nombre": "QUEZADA",
+    "sector": "CENTRO LOMA-JUANA L.",
+    "aliases": []
+  },
+  {
+    "id": "C0276",
+    "nombre": "FRACCIONAMIENTO FIALLOS",
+    "sector": "CENTRO LOMA-JUANA L.",
+    "aliases": []
+  },
+  {
+    "id": "C0277",
+    "nombre": "ALTOS DE LA ELVEL",
+    "sector": "CENTRO LOMA-JUANA L.",
+    "aliases": []
+  },
+  {
+    "id": "C0278",
+    "nombre": "ALTOS DE MIRAMONTES",
+    "sector": "CENTRO LOMA-JUANA L.",
+    "aliases": []
+  },
+  {
+    "id": "C0279",
+    "nombre": "ELVEL",
+    "sector": "CENTRO LOMA-JUANA L.",
+    "aliases": []
+  },
+  {
+    "id": "C0280",
+    "nombre": "MIRAMONTES",
+    "sector": "CENTRO LOMA-JUANA L.",
+    "aliases": []
+  },
+  {
+    "id": "C0281",
+    "nombre": "LOMA LINDA NORTE Y SUR",
+    "sector": "CENTRO LOMA-JUANA L.",
+    "aliases": []
+  },
+  {
+    "id": "C0282",
+    "nombre": "ALTAMIRA",
+    "sector": "CENTRO LOMA-JUANA L.",
+    "aliases": []
+  },
+  {
+    "id": "C0283",
+    "nombre": "LA PAGODA",
+    "sector": "CENTRO LOMA-JUANA L.",
+    "aliases": []
+  },
+  {
+    "id": "C0284",
+    "nombre": "MANDOFER",
+    "sector": "CENTRO LOMA-JUANA L.",
+    "aliases": []
+  },
+  {
+    "id": "C0285",
+    "nombre": "MORAZAN",
+    "sector": "CENTRO LOMA-JUANA L.",
+    "aliases": []
+  },
+  {
+    "id": "C0286",
+    "nombre": "PALERMO",
+    "sector": "CENTRO LOMA-JUANA L.",
+    "aliases": []
+  },
+  {
+    "id": "C0287",
+    "nombre": "ALAMEDA",
+    "sector": "CENTRO LOMA-JUANA L.",
+    "aliases": []
+  },
+  {
+    "id": "C0288",
+    "nombre": "ALTOS DE LAS COLINAS",
+    "sector": "CENTRO LOMA-JUANA L.",
+    "aliases": []
+  },
+  {
+    "id": "C0289",
+    "nombre": "COLINAS",
+    "sector": "CENTRO LOMA-JUANA L.",
+    "aliases": []
+  },
+  {
+    "id": "C0290",
+    "nombre": "EL DORADO",
+    "sector": "CENTRO LOMA-JUANA L.",
+    "aliases": []
+  },
+  {
+    "id": "C0291",
+    "nombre": "HOGAR",
+    "sector": "CENTRO LOMA-JUANA L.",
+    "aliases": []
+  },
+  {
+    "id": "C0292",
+    "nombre": "BELEN",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0293",
+    "nombre": "BENDECK",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0294",
+    "nombre": "Bo CONCEPCION",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0295",
+    "nombre": "CENTROAMERICANA",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0296",
+    "nombre": "COUNTRY CLUB",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0297",
+    "nombre": "DIVANNA",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0298",
+    "nombre": "HOLLYWOOD",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0299",
+    "nombre": "INTERAMERICANA",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0300",
+    "nombre": "LOMAS DEL COUNTRY",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0301",
+    "nombre": "MAYANGLE",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0302",
+    "nombre": "MONSEÑOR FIALLOS",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0303",
+    "nombre": "PROGRESO No 1",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0304",
+    "nombre": "SOLEDAD",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0305",
+    "nombre": "VEGAS (Res.)",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0306",
+    "nombre": "VEGAS DEL COUNTRY",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0307",
+    "nombre": "Bo. GUACERIQUE",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0308",
+    "nombre": "Bo. LA BOLSA",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0309",
+    "nombre": "Bo LEMPIRA",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0310",
+    "nombre": "Bo SIPILE",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0311",
+    "nombre": "CAMAGUARA",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0312",
+    "nombre": "CENTRO DE COMAYAGUELA",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0313",
+    "nombre": "CRISTOBAL DIAZ",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0314",
+    "nombre": "EL CALVARIO",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0315",
+    "nombre": "EL OBELISCO",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0316",
+    "nombre": "LA CHIVERA",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0317",
+    "nombre": "VILLA ADELA",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0318",
+    "nombre": "IBERIA (PARTE BAJA)",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0319",
+    "nombre": "COLONIA MAYANGLE",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0320",
+    "nombre": "CAMPOS SONIA",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0321",
+    "nombre": "Divanna y Jardines del Country (cerrada reguladora Comayaguela)",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0322",
+    "nombre": "Moseñor Fiallos",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0323",
+    "nombre": "Altos del Milagro",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0324",
+    "nombre": "El Country",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0325",
+    "nombre": "Holliwod",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0326",
+    "nombre": "Vegas del Country (cerrado Comayaguela)",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0327",
+    "nombre": "ALTOS DE LA DIVANNA",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0328",
+    "nombre": "RODRIGUEZ",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0329",
+    "nombre": "PERPETUO SOCORRO",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0330",
+    "nombre": "MONSEÑOR FIALLOS (ALTA)",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0331",
+    "nombre": "MERCEDES (PARTE)",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0332",
+    "nombre": "HAYA (PARTE)",
+    "sector": "FILTROS",
+    "aliases": []
+  },
+  {
+    "id": "C0333",
+    "nombre": "SATELITE",
+    "sector": "LOARQUE",
+    "aliases": []
+  },
+  {
+    "id": "C0334",
+    "nombre": "RIO GRANDE (P.A.)",
+    "sector": "LOARQUE",
+    "aliases": []
+  },
+  {
+    "id": "C0335",
+    "nombre": "MIRADOR",
+    "sector": "LOARQUE",
+    "aliases": []
+  },
+  {
+    "id": "C0336",
+    "nombre": "LOARQUE",
+    "sector": "LOARQUE",
+    "aliases": []
+  },
+  {
+    "id": "C0337",
+    "nombre": "JARDINES DE LOARQUE",
+    "sector": "LOARQUE",
+    "aliases": []
+  },
+  {
+    "id": "C0338",
+    "nombre": "RIO GRANDE (P.B.)",
+    "sector": "LOARQUE",
+    "aliases": []
+  },
+  {
+    "id": "C0339",
+    "nombre": "LOARQUE VIEJO",
+    "sector": "LOARQUE",
+    "aliases": []
+  },
+  {
+    "id": "C0340",
+    "nombre": "ALDEA EL LOARQUE",
+    "sector": "LOARQUE",
+    "aliases": []
+  },
+  {
+    "id": "C0341",
+    "nombre": "PUENTE DEL LOARQUE",
+    "sector": "LOARQUE",
+    "aliases": []
+  },
+  {
+    "id": "C0342",
+    "nombre": "GERMANIA",
+    "sector": "LOARQUE",
+    "aliases": []
+  },
+  {
+    "id": "C0343",
+    "nombre": "LOARQUE SUR",
+    "sector": "LOARQUE",
+    "aliases": []
+  },
+  {
+    "id": "C0344",
+    "nombre": "ALTOS DEL LOARQUE (PARTE BAJA",
+    "sector": "ALTOS L.",
+    "aliases": []
+  },
+  {
+    "id": "C0345",
+    "nombre": "OPERADO POR JUNTA)",
+    "sector": "ALTOS L.",
+    "aliases": []
+  },
+  {
+    "id": "C0346",
+    "nombre": "ALTOS DEL LOARQUE (PARTE ALTA",
+    "sector": "ALTOS L.",
+    "aliases": []
+  },
+  {
+    "id": "C0347",
+    "nombre": "SAN JOSE DEL LOARQUE (OPERADO POR JUNTA)",
+    "sector": "ALTOS L.",
+    "aliases": []
+  },
+  {
+    "id": "C0348",
+    "nombre": "YAGUACIRE (operado por junta) Bo. EL CENTRO",
+    "sector": "CAÑADA CG",
+    "aliases": []
+  },
+  {
+    "id": "C0349",
+    "nombre": "LA MORA",
+    "sector": "CAÑADA CG",
+    "aliases": []
+  },
+  {
+    "id": "C0350",
+    "nombre": "JOCOMICO",
+    "sector": "CAÑADA CG",
+    "aliases": []
+  },
+  {
+    "id": "C0351",
+    "nombre": "EL RIMCON",
+    "sector": "CAÑADA CG",
+    "aliases": []
+  },
+  {
+    "id": "C0352",
+    "nombre": "YAGUACIRE (operado por junta) Bo. EL CALVARIO",
+    "sector": "CAÑADA CG",
+    "aliases": []
+  },
+  {
+    "id": "C0353",
+    "nombre": "CENTRO P.A.",
+    "sector": "CAÑADA CG",
+    "aliases": []
+  },
+  {
+    "id": "C0354",
+    "nombre": "LIMON",
+    "sector": "CAÑADA CG",
+    "aliases": []
+  },
+  {
+    "id": "C0355",
+    "nombre": "SECTOR EL BADO",
+    "sector": "CAÑADA CG",
+    "aliases": []
+  },
+  {
+    "id": "C0356",
+    "nombre": "VILLEDA MORALES (operado por junta)",
+    "sector": "CAÑADA CG",
+    "aliases": []
+  },
+  {
+    "id": "C0357",
+    "nombre": "LA BALASTRERA",
+    "sector": "CAÑADA CG",
+    "aliases": []
+  },
+  {
+    "id": "C0358",
+    "nombre": "Bo EL CENTRO P.B.",
+    "sector": "CAÑADA CG",
+    "aliases": []
+  },
+  {
+    "id": "C0359",
+    "nombre": "SECTOR LA CANCHITA",
+    "sector": "CAÑADA CG",
+    "aliases": []
+  },
+  {
+    "id": "C0360",
+    "nombre": "LA LEONARDA",
+    "sector": "CAÑADA CG",
+    "aliases": []
+  },
+  {
+    "id": "C0361",
+    "nombre": "LA CABALLERIZA",
+    "sector": "CAÑADA CG",
+    "aliases": []
+  },
+  {
+    "id": "C0362",
+    "nombre": "ESPINAL",
+    "sector": "CAÑADA CG",
+    "aliases": []
+  },
+  {
+    "id": "C0363",
+    "nombre": "OJO DE AGUA",
+    "sector": "CAÑADA CG",
+    "aliases": []
+  },
+  {
+    "id": "C0364",
+    "nombre": "LA JOYA",
+    "sector": "CAÑADA CG",
+    "aliases": []
+  },
+  {
+    "id": "C0365",
+    "nombre": "ALDEA CONCEPCION",
+    "sector": "CAÑADA CG",
+    "aliases": []
+  },
+  {
+    "id": "C0366",
+    "nombre": "LAS MARGARITAS (operado por junta)",
+    "sector": "CAÑADA CG",
+    "aliases": []
+  },
+  {
+    "id": "C0367",
+    "nombre": "CIUDAD TECNOLOGICA ROSA DE LOBO",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0368",
+    "nombre": "ALDEA TIZATILLO",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0369",
+    "nombre": "DORA DE ASFURA (JUNTA DE AGUA)",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0370",
+    "nombre": "VILLA FLORESTA",
+    "sector": "CONCEP.",
+    "aliases": []
+  },
+  {
+    "id": "C0371",
+    "nombre": "ETAPA 3",
+    "sector": "CONCEP.",
+    "aliases": []
+  },
+  {
+    "id": "C0372",
+    "nombre": "ETAPA 1 Y 2",
+    "sector": "CONCEP.",
+    "aliases": []
+  },
+  {
+    "id": "C0373",
+    "nombre": "SAN SEBASTIAN",
+    "sector": "CONCEP.",
+    "aliases": []
+  },
+  {
+    "id": "C0374",
+    "nombre": "PRADERAS DIGNAS",
+    "sector": "CONCEP.",
+    "aliases": []
+  },
+  {
+    "id": "C0375",
+    "nombre": "BUENOS AIRES SUR",
+    "sector": "CONCEP.",
+    "aliases": []
+  },
+  {
+    "id": "C0376",
+    "nombre": "VILLAS CONCEPCION",
+    "sector": "CONCEP.",
+    "aliases": []
+  },
+  {
+    "id": "C0377",
+    "nombre": "RES. CONCEPCION II",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0378",
+    "nombre": "LOMAS DE TONCONTIN (PARTE ALTA)",
+    "sector": "L TONCONTIN",
+    "aliases": []
+  },
+  {
+    "id": "C0379",
+    "nombre": "VILLA CORINTO",
+    "sector": "L TONCONTIN",
+    "aliases": []
+  },
+  {
+    "id": "C0380",
+    "nombre": "RES SAN JORGE",
+    "sector": "L TONCONTIN",
+    "aliases": []
+  },
+  {
+    "id": "C0381",
+    "nombre": "VILLA ALEXA",
+    "sector": "L TONCONTIN",
+    "aliases": []
+  },
+  {
+    "id": "C0382",
+    "nombre": "VILLA ANTIGUA",
+    "sector": "L TONCONTIN",
+    "aliases": []
+  },
+  {
+    "id": "C0383",
+    "nombre": "VILLAS TONCONTIN",
+    "sector": "L TONCONTIN",
+    "aliases": []
+  },
+  {
+    "id": "C0384",
+    "nombre": "LOMAS DE TONCONTIN (PARTE BAJA)",
+    "sector": "L TONCONTIN",
+    "aliases": []
+  },
+  {
+    "id": "C0385",
+    "nombre": "ALTOS DE TONCONTIN",
+    "sector": "L TONCONTIN",
+    "aliases": []
+  },
+  {
+    "id": "C0386",
+    "nombre": "RES. TONCONTIN",
+    "sector": "L TONCONTIN",
+    "aliases": []
+  },
+  {
+    "id": "C0387",
+    "nombre": "PALMA REAL",
+    "sector": "L TONCONTIN",
+    "aliases": []
+  },
+  {
+    "id": "C0388",
+    "nombre": "GODOY",
+    "sector": "L TONCONTIN",
+    "aliases": []
+  },
+  {
+    "id": "C0389",
+    "nombre": "RES. CONCEPCION",
+    "sector": "L TONCONTIN",
+    "aliases": []
+  },
+  {
+    "id": "C0390",
+    "nombre": "LA POPULAR",
+    "sector": "14 MARZO",
+    "aliases": []
+  },
+  {
+    "id": "C0391",
+    "nombre": "PEÑA VIEJA",
+    "sector": "14 MARZO",
+    "aliases": []
+  },
+  {
+    "id": "C0392",
+    "nombre": "ALTOS DE SAN ISIDRO",
+    "sector": "14 MARZO",
+    "aliases": []
+  },
+  {
+    "id": "C0393",
+    "nombre": "MIRADOR SAN ISIDRO",
+    "sector": "14 MARZO",
+    "aliases": []
+  },
+  {
+    "id": "C0394",
+    "nombre": "VISTA HERMOSA",
+    "sector": "14 MARZO",
+    "aliases": []
+  },
+  {
+    "id": "C0395",
+    "nombre": "FERNANDO CORDOVA",
+    "sector": "14 MARZO",
+    "aliases": []
+  },
+  {
+    "id": "C0396",
+    "nombre": "CATORCE DE MARZO",
+    "sector": "14 MARZO",
+    "aliases": []
+  },
+  {
+    "id": "C0397",
+    "nombre": "CATORCE DE MARZO (PARTE ALTA)",
+    "sector": "14 MARZO",
+    "aliases": []
+  },
+  {
+    "id": "C0398",
+    "nombre": "SAN JOSE DE LA PEÑA",
+    "sector": "14 MARZO",
+    "aliases": []
+  },
+  {
+    "id": "C0399",
+    "nombre": "LOS MOLINOS",
+    "sector": "14 MARZO",
+    "aliases": []
+  },
+  {
+    "id": "C0400",
+    "nombre": "PEÑA SECTOR 5",
+    "sector": "14 MARZO",
+    "aliases": []
+  },
+  {
+    "id": "C0401",
+    "nombre": "CALPULES",
+    "sector": "14 MARZO",
+    "aliases": []
+  },
+  {
+    "id": "C0402",
+    "nombre": "SAN JOSE DE LOS LLANOS (PARTE ALTA)",
+    "sector": "MONT",
+    "aliases": []
+  },
+  {
+    "id": "C0403",
+    "nombre": "MONTERREY",
+    "sector": "MONT",
+    "aliases": []
+  },
+  {
+    "id": "C0404",
+    "nombre": "RESIDENCIAL LA CAÑADA (PARTE BAJA)",
+    "sector": "MESITAS",
+    "aliases": []
+  },
+  {
+    "id": "C0405",
+    "nombre": "RESIDENCIAL LA CAÑADA (PARTE ALTA)",
+    "sector": "MESITAS",
+    "aliases": []
+  },
+  {
+    "id": "C0406",
+    "nombre": "ALDEA LA CAÑADA",
+    "sector": "MESITAS",
+    "aliases": []
+  },
+  {
+    "id": "C0407",
+    "nombre": "ZONA 1",
+    "sector": "MESITAS",
+    "aliases": []
+  },
+  {
+    "id": "C0408",
+    "nombre": "PARQUE EMPRESARIAL",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0409",
+    "nombre": "15 DE SEPTIEMBRE",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0410",
+    "nombre": "AEROPUERTO",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0411",
+    "nombre": "AMERICA",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0412",
+    "nombre": "LOS PERIODISTAS",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0413",
+    "nombre": "MODELO",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0414",
+    "nombre": "VENEZUELA",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0415",
+    "nombre": "VILLA LOS LAURELES",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0416",
+    "nombre": "ECONOMICAS EL RETIRO",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0417",
+    "nombre": "EL PROGRESO No.2",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0418",
+    "nombre": "21 DE FEBRERO (PARTE BAJA)",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0419",
+    "nombre": "DELICIAS",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0420",
+    "nombre": "EL COCO",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0421",
+    "nombre": "OLMOS",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0422",
+    "nombre": "NORTE FRESCO",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0423",
+    "nombre": "TORRES Y VENECIA",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0424",
+    "nombre": "LUIS ANDRES ZUNIGA",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0425",
+    "nombre": "LA ROSA",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0426",
+    "nombre": "BO. BOLIVAR",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0427",
+    "nombre": "PRADERA",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0428",
+    "nombre": "SANTA BARBARA",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0429",
+    "nombre": "RES. LA CAÑADA",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0430",
+    "nombre": "INESTROZA",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0431",
+    "nombre": "LA BURRERA",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0432",
+    "nombre": "SAN LUIS",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0433",
+    "nombre": "RIVAS",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0434",
+    "nombre": "JARDINES DE ZUNLACAL",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0435",
+    "nombre": "LLANOS DEL POTRERO",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0436",
+    "nombre": "PREDIOS DEL RECREO",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0437",
+    "nombre": "ALEMAN",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0438",
+    "nombre": "BETANIA",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0439",
+    "nombre": "LAS BRISAS",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0440",
+    "nombre": "MONTES DE SINAI",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0441",
+    "nombre": "MURILLO SOTO",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0442",
+    "nombre": "SANTO DOMINGO",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0443",
+    "nombre": "ZORZALES I y II",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0444",
+    "nombre": "MONTELIMAR",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0445",
+    "nombre": "ALTOS DE SAN JOSE",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0446",
+    "nombre": "RIVERA DEL RIO",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0447",
+    "nombre": "EL CORTIJO",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0448",
+    "nombre": "BRISAS DEL CORTIJO",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0449",
+    "nombre": "SAN JOSE DE LA VEGA",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0450",
+    "nombre": "LOMAS DEL CORTIJO",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0451",
+    "nombre": "OSCAR A. FLORES",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0452",
+    "nombre": "LUIS CORDOVA",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0453",
+    "nombre": "HENRY MERRIAM",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0454",
+    "nombre": "LOMAS DE TILOARQUE",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0455",
+    "nombre": "ALAMO",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0456",
+    "nombre": "ATLANTIS",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0457",
+    "nombre": "TILOARQUE",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0458",
+    "nombre": "TILOARQUE NORTE",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0459",
+    "nombre": "VILLA ESPAÑOLA",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0460",
+    "nombre": "PRIMAVERA",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0461",
+    "nombre": "EL MIRADOR TILOARQUE",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0462",
+    "nombre": "I.H.S.S. (LA GRANJA)",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0463",
+    "nombre": "OSCAR CASTRO TEJEDA",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0464",
+    "nombre": "JARDINES DE TONCONTIN",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0465",
+    "nombre": "SAN JOSE DEL PEDREGAL",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0466",
+    "nombre": "FALDAS DEL PEDREGAL",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0467",
+    "nombre": "PROVIDENCIA",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0468",
+    "nombre": "ROBERTO SUAZO CORDOVA",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0469",
+    "nombre": "PARTE ALTA DE LA GRANJA",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0470",
+    "nombre": "GRANJA",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0471",
+    "nombre": "MARADIAGA",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0472",
+    "nombre": "MARIA CRISTINA",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0473",
+    "nombre": "METRO MALL",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0474",
+    "nombre": "ERENDIDA",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0475",
+    "nombre": "GRANJITAS LAS VEGAS",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0476",
+    "nombre": "LA VEGA 12",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0477",
+    "nombre": "LA VEGA 172",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0478",
+    "nombre": "RES. LA VEGA",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0479",
+    "nombre": "VEGAS FECESITLIH",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0480",
+    "nombre": "ROMA",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0481",
+    "nombre": "VEGAS DEL RIO",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0482",
+    "nombre": "MONTERREY NORTE",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0483",
+    "nombre": "FLOR DEL CAMPO",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0484",
+    "nombre": "21 DE FEBRERO (PARTE ALTA)",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0485",
+    "nombre": "21 DE FEBRERO SECTOR 6",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0486",
+    "nombre": "VILLAS DE TILOARQUE",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0487",
+    "nombre": "PLAN DE LOMAS DE TILOARQUE (JUNTA DE AGUA)",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0488",
+    "nombre": "NUEVA ESPERANZA (PARTE ALTA)",
+    "sector": "ESTIQUIRIN",
+    "aliases": []
+  },
+  {
+    "id": "C0489",
+    "nombre": "PORTAL DEL BOSQUE",
+    "sector": "ROBLES",
+    "aliases": []
+  },
+  {
+    "id": "C0490",
+    "nombre": "ROBLE OESTE (PARTE ALTA)",
+    "sector": "ROBLES",
+    "aliases": []
+  },
+  {
+    "id": "C0491",
+    "nombre": "ROBLE OESTE PARTE BAJA",
+    "sector": "ROBLES",
+    "aliases": []
+  },
+  {
+    "id": "C0492",
+    "nombre": "ROBLE ALTO",
+    "sector": "ROBLES",
+    "aliases": []
+  },
+  {
+    "id": "C0493",
+    "nombre": "LOS ROBLES",
+    "sector": "ROBLES",
+    "aliases": []
+  },
+  {
+    "id": "C0494",
+    "nombre": "VILLA LOS ROBLES",
+    "sector": "ROBLES",
+    "aliases": []
+  },
+  {
+    "id": "C0495",
+    "nombre": "LOS ROBLES V ETAPA",
+    "sector": "ROBLES",
+    "aliases": []
+  },
+  {
+    "id": "C0496",
+    "nombre": "COPACABANA",
+    "sector": "ROBLES",
+    "aliases": []
+  },
+  {
+    "id": "C0497",
+    "nombre": "CASCADA ZONA 1",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0498",
+    "nombre": "CASCADA ZONA 2 Y 3",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0499",
+    "nombre": "HADAS PARTE BAJA CALLE DE TIERRA",
+    "sector": "HADAS",
+    "aliases": []
+  },
+  {
+    "id": "C0500",
+    "nombre": "VILLA SAN RAFAEL",
+    "sector": "HADAS",
+    "aliases": []
+  },
+  {
+    "id": "C0501",
+    "nombre": "AGUA DULCE",
+    "sector": "HADAS",
+    "aliases": []
+  },
+  {
+    "id": "C0502",
+    "nombre": "GATESA",
+    "sector": "HADAS",
+    "aliases": []
+  },
+  {
+    "id": "C0503",
+    "nombre": "ALTOS DE LAS HADAS",
+    "sector": "HADAS",
+    "aliases": []
+  },
+  {
+    "id": "C0504",
+    "nombre": "LOS ANGELES",
+    "sector": "HADAS",
+    "aliases": []
+  },
+  {
+    "id": "C0505",
+    "nombre": "VILLAS MEDITERRANEO",
+    "sector": "HADAS",
+    "aliases": []
+  },
+  {
+    "id": "C0506",
+    "nombre": "VILLAS SANTA MONICA",
+    "sector": "HADAS",
+    "aliases": []
+  },
+  {
+    "id": "C0507",
+    "nombre": "SANTA CECILIA",
+    "sector": "HADAS",
+    "aliases": []
+  },
+  {
+    "id": "C0508",
+    "nombre": "VILLA LAS HADAS",
+    "sector": "HADAS",
+    "aliases": []
+  },
+  {
+    "id": "C0509",
+    "nombre": "HADAS 4TA. ETAPA",
+    "sector": "HADAS",
+    "aliases": []
+  },
+  {
+    "id": "C0510",
+    "nombre": "EL SAUCE (VILLAS TULIPANES",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0511",
+    "nombre": "ORQUIDEAS",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0512",
+    "nombre": "GERANIOS Y HORTENSIAS)",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0513",
+    "nombre": "EL SAUCE (VILLAS PALMERAS",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0514",
+    "nombre": "JASMINES",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0515",
+    "nombre": "PINOS Y ACACIAS)",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0516",
+    "nombre": "UVAS PARTE ALTA (SERVICIO GENERAL)",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0517",
+    "nombre": "UVAS LADO DERECHO",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0518",
+    "nombre": "UVAS (PARTE BAJA)",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0519",
+    "nombre": "AGUA DULCE (PARTE ALTA)",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0520",
+    "nombre": "VILLA EUCALIPTO",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0521",
+    "nombre": "VILLA LIQUIDAMBAR",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0522",
+    "nombre": "VILLA LOS PINOS",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0523",
+    "nombre": "VILLA PALMERAS",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0524",
+    "nombre": "RESIDENCIAL MIRADOR DE LOS ANGELES",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0525",
+    "nombre": "AGUA DULCE II ETAPA",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0526",
+    "nombre": "RES FRANCISCO MORAZAN (PARTE BAJA)",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0527",
+    "nombre": "RES FRANCISCO MORAZAN (PARTE ALTA)",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0528",
+    "nombre": "19 DE SEPTIEMBRE",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0529",
+    "nombre": "LAURELES REAL",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0530",
+    "nombre": "RES. SANTA CRUZ I ETAPA",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0531",
+    "nombre": "RES. SANTA CRUZ II Y III ETAPA",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0532",
+    "nombre": "RES LAS CASITAS",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0533",
+    "nombre": "QUINTA ISABEL",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0534",
+    "nombre": "ALTOS DE LOS LAURELES",
+    "sector": "MOGOTE",
+    "aliases": []
+  },
+  {
+    "id": "C0535",
+    "nombre": "SAN BUENA VENTURA",
+    "sector": "MOGOTE",
+    "aliases": []
+  },
+  {
+    "id": "C0536",
+    "nombre": "ALTOS DE SAN FRANCISCO",
+    "sector": "MOGOTE",
+    "aliases": []
+  },
+  {
+    "id": "C0537",
+    "nombre": "ARTURO QUEZADA PARTE ALTA PEGADO A LA ARCIERY",
+    "sector": "MOGOTE",
+    "aliases": []
+  },
+  {
+    "id": "C0538",
+    "nombre": "ARTURO QUEZADA PARTE BAJA",
+    "sector": "MOGOTE",
+    "aliases": []
+  },
+  {
+    "id": "C0539",
+    "nombre": "ISRAEL SUR",
+    "sector": "MOGOTE",
+    "aliases": []
+  },
+  {
+    "id": "C0540",
+    "nombre": "CIUDAD LEMPIRA",
+    "sector": "MOGOTE",
+    "aliases": []
+  },
+  {
+    "id": "C0541",
+    "nombre": "HEREDEROS LOPEZ (PARTE BAJA)",
+    "sector": "MOGOTE",
+    "aliases": []
+  },
+  {
+    "id": "C0542",
+    "nombre": "HEREDEROS LOPEZ (PARTE ALTA)",
+    "sector": "MOGOTE",
+    "aliases": []
+  },
+  {
+    "id": "C0543",
+    "nombre": "AUSTRALIA",
+    "sector": "MOGOTE",
+    "aliases": []
+  },
+  {
+    "id": "C0544",
+    "nombre": "BRISAS DEL MOGOTE",
+    "sector": "MOGOTE",
+    "aliases": []
+  },
+  {
+    "id": "C0545",
+    "nombre": "NUEVA ESPAÑA",
+    "sector": "MOGOTE",
+    "aliases": []
+  },
+  {
+    "id": "C0546",
+    "nombre": "NUEVA GALILEA",
+    "sector": "MOGOTE",
+    "aliases": []
+  },
+  {
+    "id": "C0547",
+    "nombre": "ARCIERY",
+    "sector": "MOGOTE",
+    "aliases": []
+  },
+  {
+    "id": "C0548",
+    "nombre": "DAVID BETANCOURD",
+    "sector": "MOGOTE",
+    "aliases": []
+  },
+  {
+    "id": "C0549",
+    "nombre": "NUEVA JERUSALEN",
+    "sector": "MOGOTE",
+    "aliases": []
+  },
+  {
+    "id": "C0550",
+    "nombre": "RAMON AMAYA AMADOR",
+    "sector": "MOGOTE",
+    "aliases": []
+  },
+  {
+    "id": "C0551",
+    "nombre": "LA HUERTA",
+    "sector": "MOGOTE",
+    "aliases": []
+  },
+  {
+    "id": "C0552",
+    "nombre": "ALTOS DE LA QUEZADA",
+    "sector": "MOGOTE",
+    "aliases": []
+  },
+  {
+    "id": "C0553",
+    "nombre": "ALTOS DEL MIRADOR",
+    "sector": "MOGOTE",
+    "aliases": []
+  },
+  {
+    "id": "C0554",
+    "nombre": "VILLAS SAN MIGUEL",
+    "sector": "MOGOTE",
+    "aliases": []
+  },
+  {
+    "id": "C0555",
+    "nombre": "NUEVA OROCUINA",
+    "sector": "MOGOTE",
+    "aliases": []
+  },
+  {
+    "id": "C0556",
+    "nombre": "23 DE JUNIO",
+    "sector": "MOGOTE",
+    "aliases": []
+  },
+  {
+    "id": "C0557",
+    "nombre": "FATIMA",
+    "sector": "MOGOTE",
+    "aliases": []
+  },
+  {
+    "id": "C0558",
+    "nombre": "ISRAEL NORTE",
+    "sector": "MOGOTE",
+    "aliases": []
+  },
+  {
+    "id": "C0559",
+    "nombre": "ALTOS DE SAN FRANCISCO (ZONA EL MAICILLAL)",
+    "sector": "SAN FCO.",
+    "aliases": []
+  },
+  {
+    "id": "C0560",
+    "nombre": "SANTA EDUVIGES",
+    "sector": "SAN FCO.",
+    "aliases": []
+  },
+  {
+    "id": "C0561",
+    "nombre": "SAN FRANCISCO (PARTE BAJA)",
+    "sector": "SAN FCO.",
+    "aliases": []
+  },
+  {
+    "id": "C0562",
+    "nombre": "SAN FRANCISCO",
+    "sector": "SAN FCO.",
+    "aliases": []
+  },
+  {
+    "id": "C0563",
+    "nombre": "EL RETIRO",
+    "sector": "SAN FCO.",
+    "aliases": []
+  },
+  {
+    "id": "C0564",
+    "nombre": "SAN FRANCISCO PARTE ALTA",
+    "sector": "SAN FCO.",
+    "aliases": []
+  },
+  {
+    "id": "C0565",
+    "nombre": "LA FUENTE",
+    "sector": "FU",
+    "aliases": []
+  },
+  {
+    "id": "C0566",
+    "nombre": "NUEVA ERA",
+    "sector": "FU",
+    "aliases": []
+  },
+  {
+    "id": "C0567",
+    "nombre": "21 DE FEBRERO SECTOR 6 PARTE ALTA",
+    "sector": "FU",
+    "aliases": []
+  },
+  {
+    "id": "C0568",
+    "nombre": "LA FUENTE II",
+    "sector": "FU",
+    "aliases": []
+  },
+  {
+    "id": "C0569",
+    "nombre": "CENTRO AMERICA OESTE ZONA 3",
+    "sector": "C.A.",
+    "aliases": []
+  },
+  {
+    "id": "C0570",
+    "nombre": "4 Y 5",
+    "sector": "C.A.",
+    "aliases": []
+  },
+  {
+    "id": "C0571",
+    "nombre": "CENTRO AMERICA OESTE ZONA 1 Y 2",
+    "sector": "C.A.",
+    "aliases": []
+  },
+  {
+    "id": "C0572",
+    "nombre": "RES. CENTRO AMERICA IV ETAPA",
+    "sector": "C.A.",
+    "aliases": []
+  },
+  {
+    "id": "C0573",
+    "nombre": "CENTRO AMERICA ANEXO SUR",
+    "sector": "C.A.",
+    "aliases": []
+  },
+  {
+    "id": "C0574",
+    "nombre": "VILLA REYES",
+    "sector": "C.A.",
+    "aliases": []
+  },
+  {
+    "id": "C0575",
+    "nombre": "MONTE CARMELO",
+    "sector": "C.A.",
+    "aliases": []
+  },
+  {
+    "id": "C0576",
+    "nombre": "CENTRO AMERICA ESTE",
+    "sector": "C.A.",
+    "aliases": []
+  },
+  {
+    "id": "C0577",
+    "nombre": "ALTOS DE LA MAYANGLE",
+    "sector": "C.A.",
+    "aliases": []
+  },
+  {
+    "id": "C0578",
+    "nombre": "CERRO GRANDE ZONA 4",
+    "sector": "CERROGRANDE",
+    "aliases": []
+  },
+  {
+    "id": "C0579",
+    "nombre": "CERRO GRANDE ZONA 3 Y 2 (PARTE BAJA)",
+    "sector": "CERROGRANDE",
+    "aliases": []
+  },
+  {
+    "id": "C0580",
+    "nombre": "CERRO GRANDE ZONA 2 (PARTE ALTA)",
+    "sector": "CERROGRANDE",
+    "aliases": []
+  },
+  {
+    "id": "C0581",
+    "nombre": "ALEMANIA",
+    "sector": "CERROGRANDE",
+    "aliases": []
+  },
+  {
+    "id": "C0582",
+    "nombre": "VILLA UNION (PARTE)",
+    "sector": "CERROGRANDE",
+    "aliases": []
+  },
+  {
+    "id": "C0583",
+    "nombre": "LOS AMATES",
+    "sector": "CERROGRANDE",
+    "aliases": []
+  },
+  {
+    "id": "C0584",
+    "nombre": "LAS PAVAS",
+    "sector": "CERROGRANDE",
+    "aliases": []
+  },
+  {
+    "id": "C0585",
+    "nombre": "BUENAS NUEVAS",
+    "sector": "CERROGRANDE",
+    "aliases": []
+  },
+  {
+    "id": "C0586",
+    "nombre": "BRISAS DE LA LAGUNA",
+    "sector": "CERROGRANDE",
+    "aliases": []
+  },
+  {
+    "id": "C0587",
+    "nombre": "GARCIA (PARTE PARTE ALTA)",
+    "sector": "CERROGRANDE",
+    "aliases": []
+  },
+  {
+    "id": "C0588",
+    "nombre": "GRACIAS A DIOS",
+    "sector": "CERROGRANDE",
+    "aliases": []
+  },
+  {
+    "id": "C0589",
+    "nombre": "TOROCAGUA NORTE",
+    "sector": "OLIMPO I",
+    "aliases": []
+  },
+  {
+    "id": "C0590",
+    "nombre": "LA ESPERANZA",
+    "sector": "OLIMPO I",
+    "aliases": []
+  },
+  {
+    "id": "C0591",
+    "nombre": "1 DE DICIEMBRE",
+    "sector": "OLIMPO I",
+    "aliases": []
+  },
+  {
+    "id": "C0592",
+    "nombre": "IBERIA (PARTE ALTA)",
+    "sector": "OLIMPO I",
+    "aliases": []
+  },
+  {
+    "id": "C0593",
+    "nombre": "BELLA VISTA",
+    "sector": "OLIMPO I",
+    "aliases": []
+  },
+  {
+    "id": "C0594",
+    "nombre": "SAN CRISTOBAL",
+    "sector": "OLIMPO I",
+    "aliases": []
+  },
+  {
+    "id": "C0595",
+    "nombre": "CRUCITAS",
+    "sector": "OLIMPO I",
+    "aliases": []
+  },
+  {
+    "id": "C0596",
+    "nombre": "PEDREGALITO",
+    "sector": "OLIMPO I",
+    "aliases": []
+  },
+  {
+    "id": "C0597",
+    "nombre": "GRANADA",
+    "sector": "OLIMPO I",
+    "aliases": []
+  },
+  {
+    "id": "C0598",
+    "nombre": "PIRAMIDE",
+    "sector": "OLIMPO I",
+    "aliases": []
+  },
+  {
+    "id": "C0599",
+    "nombre": "TOROCAGUA SUR",
+    "sector": "OLIMPO I",
+    "aliases": []
+  },
+  {
+    "id": "C0600",
+    "nombre": "SANTA FE",
+    "sector": "OLIMPO I",
+    "aliases": []
+  },
+  {
+    "id": "C0601",
+    "nombre": "INDEPENDENCIA (PARTE ALTA)",
+    "sector": "OLIMPO I",
+    "aliases": []
+  },
+  {
+    "id": "C0602",
+    "nombre": "ROSARIO",
+    "sector": "OLIMPO I",
+    "aliases": []
+  },
+  {
+    "id": "C0603",
+    "nombre": "POLICARPO PAZ (PARTE BAJA)",
+    "sector": "OLIMPO I",
+    "aliases": []
+  },
+  {
+    "id": "C0604",
+    "nombre": "RAFAEL LEONARDO CALLEJAS",
+    "sector": "OLIMPO I",
+    "aliases": []
+  },
+  {
+    "id": "C0605",
+    "nombre": "ZONA DE CLINICA PERIFERICA IHSS",
+    "sector": "OLIMPO I",
+    "aliases": []
+  },
+  {
+    "id": "C0606",
+    "nombre": "LA LAGUNA",
+    "sector": "OLIMPO I",
+    "aliases": []
+  },
+  {
+    "id": "C0607",
+    "nombre": "3 DE MAYO SECTOR 1",
+    "sector": "OLIMPO I",
+    "aliases": []
+  },
+  {
+    "id": "C0608",
+    "nombre": "2 Y 3",
+    "sector": "OLIMPO I",
+    "aliases": []
+  },
+  {
+    "id": "C0609",
+    "nombre": "AYESTAS",
+    "sector": "OLIMPO I",
+    "aliases": []
+  },
+  {
+    "id": "C0610",
+    "nombre": "INDEPENDENCIA",
+    "sector": "OLIMPO I",
+    "aliases": []
+  },
+  {
+    "id": "C0611",
+    "nombre": "BELLA VISTA NORTE",
+    "sector": "OLIMPO I",
+    "aliases": []
+  },
+  {
+    "id": "C0612",
+    "nombre": "GUAMILITO",
+    "sector": "OLIMPO I",
+    "aliases": []
+  },
+  {
+    "id": "C0613",
+    "nombre": "Bo OBRERO",
+    "sector": "OLIMPO I",
+    "aliases": []
+  },
+  {
+    "id": "C0614",
+    "nombre": "LOS PROFESORES",
+    "sector": "OLIMPO I",
+    "aliases": []
+  },
+  {
+    "id": "C0615",
+    "nombre": "COFRADIA",
+    "sector": "OLIMPO I",
+    "aliases": []
+  },
+  {
+    "id": "C0616",
+    "nombre": "MALL PREMIER",
+    "sector": "OLIMPO I",
+    "aliases": []
+  },
+  {
+    "id": "C0617",
+    "nombre": "BOULEVAR DEL NORTE (PARTE ALTA)",
+    "sector": "CANT.",
+    "aliases": []
+  },
+  {
+    "id": "C0618",
+    "nombre": "MERCEDES (PARTE ALTA)",
+    "sector": "CANT.",
+    "aliases": []
+  },
+  {
+    "id": "C0619",
+    "nombre": "MONSEÑOR FIALLOS (PARTE ALTA)",
+    "sector": "CANT.",
+    "aliases": []
+  },
+  {
+    "id": "C0620",
+    "nombre": "CAMPO CIELO",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0621",
+    "nombre": "FLOR 1",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0622",
+    "nombre": "FUERZAS ARMADAS",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0623",
+    "nombre": "ZAPOTE NORTE Y CENTRO",
+    "sector": "OLIMPO II",
+    "aliases": []
+  },
+  {
+    "id": "C0624",
+    "nombre": "CANADA",
+    "sector": "OLIMPO II",
+    "aliases": []
+  },
+  {
+    "id": "C0625",
+    "nombre": "14 DE FEBRERO",
+    "sector": "OLIMPO II",
+    "aliases": []
+  },
+  {
+    "id": "C0626",
+    "nombre": "FRANCISCO MORAZAN",
+    "sector": "OLIMPO II",
+    "aliases": []
+  },
+  {
+    "id": "C0627",
+    "nombre": "EL PASTEL",
+    "sector": "OLIMPO II",
+    "aliases": []
+  },
+  {
+    "id": "C0628",
+    "nombre": "VILLA UNION PARTE BAJA",
+    "sector": "OLIMPO II",
+    "aliases": []
+  },
+  {
+    "id": "C0629",
+    "nombre": "FLOR 2",
+    "sector": "OLIMPO II",
+    "aliases": []
+  },
+  {
+    "id": "C0630",
+    "nombre": "SAN MARTIN",
+    "sector": "OLIMPO II",
+    "aliases": []
+  },
+  {
+    "id": "C0631",
+    "nombre": "BRISAS DE OLANCHO",
+    "sector": "OLIMPO II",
+    "aliases": []
+  },
+  {
+    "id": "C0632",
+    "nombre": "FLOR I PARTE ALTA",
+    "sector": "OLIMPO II",
+    "aliases": []
+  },
+  {
+    "id": "C0633",
+    "nombre": "3 DE MAYO (SECTOR 4)",
+    "sector": "OLIMPO II",
+    "aliases": []
+  },
+  {
+    "id": "C0634",
+    "nombre": "FLOR No. 1 (BILLARES MICHEL)",
+    "sector": "OLIMPO II",
+    "aliases": []
+  },
+  {
+    "id": "C0635",
+    "nombre": "EL CARRIZAL I Y II",
+    "sector": "OLIMPO II",
+    "aliases": []
+  },
+  {
+    "id": "C0636",
+    "nombre": "EL PEDERNAL",
+    "sector": "OLIMPO II",
+    "aliases": []
+  },
+  {
+    "id": "C0637",
+    "nombre": "SMITH",
+    "sector": "OLIMPO II",
+    "aliases": []
+  },
+  {
+    "id": "C0638",
+    "nombre": "POLICARPO PAZ (PARTE ALTA)",
+    "sector": "OLIMPO II",
+    "aliases": []
+  },
+  {
+    "id": "C0639",
+    "nombre": "VILLA UNION SECTOR DEL TANQUE",
+    "sector": "OLIMPO II",
+    "aliases": []
+  },
+  {
+    "id": "C0640",
+    "nombre": "ESTACION LA SOLEDAD",
+    "sector": "PRR",
+    "aliases": []
+  },
+  {
+    "id": "C0641",
+    "nombre": "MIRALAGO",
+    "sector": "HATILLO",
+    "aliases": []
+  },
+  {
+    "id": "C0642",
+    "nombre": "CIMIENTOS (zona Gabriela Nuñez)",
+    "sector": "HATILLO",
+    "aliases": []
+  },
+  {
+    "id": "C0643",
+    "nombre": "ENTRE PINOS",
+    "sector": "HATILLO",
+    "aliases": []
+  },
+  {
+    "id": "C0644",
+    "nombre": "ALTOS DE CANTERO",
+    "sector": "HATILLO",
+    "aliases": []
+  },
+  {
+    "id": "C0645",
+    "nombre": "SAN ANTONIO",
+    "sector": "HATILLO",
+    "aliases": []
+  },
+  {
+    "id": "C0646",
+    "nombre": "FLORESTA DEL PICACHO",
+    "sector": "HATILLO",
+    "aliases": []
+  },
+  {
+    "id": "C0647",
+    "nombre": "PARTE ALTA CEMENTERIO Y TRIGO",
+    "sector": "HATILLO",
+    "aliases": []
+  },
+  {
+    "id": "C0648",
+    "nombre": "LOMAS DEL HATILLO (EL HOYO)",
+    "sector": "HATILLO",
+    "aliases": []
+  },
+  {
+    "id": "C0649",
+    "nombre": "PINARES",
+    "sector": "HATILLO",
+    "aliases": []
+  },
+  {
+    "id": "C0650",
+    "nombre": "RES. 3 HERMANOS",
+    "sector": "HATILLO",
+    "aliases": []
+  },
+  {
+    "id": "C0651",
+    "nombre": "ACADEMIA PINARES (P.A.)",
+    "sector": "HATILLO",
+    "aliases": []
+  },
+  {
+    "id": "C0652",
+    "nombre": "PILIGUIN",
+    "sector": "HATILLO",
+    "aliases": []
+  },
+  {
+    "id": "C0653",
+    "nombre": "ALTOS DEL PARAISO ALTO",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0654",
+    "nombre": "JOSE A. DUARTE ALTO",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0655",
+    "nombre": "JOSE ANGEL ULLOA BAJO",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0656",
+    "nombre": "VEGAS DEL CARRIZAL",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0657",
+    "nombre": "JOSE A. DUARTE MEDIO",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0658",
+    "nombre": "LOMAS DEL NORTE ALTO",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0659",
+    "nombre": "LOMAS DEL NORTE BAJO",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0660",
+    "nombre": "NUEVA DANLI BAJO",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0661",
+    "nombre": "ALTOS DEL PARAISO BAJO",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0662",
+    "nombre": "NUEVA DANLI ALTO",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0663",
+    "nombre": "FUERZAS UNIDAS V1",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0664",
+    "nombre": "FUERZAS UNIDAS SECTOR #6 (nueva bomba)",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0665",
+    "nombre": "JOSE ANGEL ULLOA ALTO",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0666",
+    "nombre": "JARDINES DEL NORTE (V2)",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0667",
+    "nombre": "14 DE ENERO",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0668",
+    "nombre": "SUPERACION",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0669",
+    "nombre": "CANTARERO LOPEZ BAJO",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0670",
+    "nombre": "JOSE A. DUARTE BAJO",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0671",
+    "nombre": "SAN JUAN BOSCO",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0672",
+    "nombre": "NUEVA PROVIDENCIA",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0673",
+    "nombre": "ABRAHAM LINCOLN",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0674",
+    "nombre": "BRISAS DEL NORTE",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0675",
+    "nombre": "JARDINES DEL CARRIZAL",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0676",
+    "nombre": "SAN EUGENIO",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0677",
+    "nombre": "VISTA HERMOSA NORTE",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0678",
+    "nombre": "LOS ANDES",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0679",
+    "nombre": "CENTENOS 1",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0680",
+    "nombre": "CENTENOS 2",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0681",
+    "nombre": "CANTARERO LOPEZ ALTO",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0682",
+    "nombre": "NUEVOS HORIZONTES",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0683",
+    "nombre": "MANANTIAL",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0684",
+    "nombre": "SMITH 2",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0685",
+    "nombre": "SAN LORENZO",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0686",
+    "nombre": "MELGAR",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0687",
+    "nombre": "EL LOLO",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0688",
+    "nombre": "CARRIZAL 1 A",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0689",
+    "nombre": "CARRIZAL 1 B",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0690",
+    "nombre": "CARRIZAL 1",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0691",
+    "nombre": "SECTOR 4 AMPLIACION",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0692",
+    "nombre": "CUESTA 1",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0693",
+    "nombre": "CUESTA 2",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0694",
+    "nombre": "CUESTA 3",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0695",
+    "nombre": "VILLA FRANCA BAJO",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0696",
+    "nombre": "VILLA CRISTINA MEDIO",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0697",
+    "nombre": "VILLA CRISTINA ALTO",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0698",
+    "nombre": "VILLA CRISTINA BAJO",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0699",
+    "nombre": "VILLA CRISTINA SECTOR 4",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0700",
+    "nombre": "VILLA FRANCA ALTO",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0701",
+    "nombre": "SAN JUAN DEL NORTE 2 Y 3",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0702",
+    "nombre": "SAN JUAN DEL NORTE 1",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0703",
+    "nombre": "ROSALINDA",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0704",
+    "nombre": "BRASILIA",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0705",
+    "nombre": "2026 ELABORADO POR GERARDO CA",
+    "sector": "2026 ELABORADO POR GERARDO CA",
+    "aliases": []
+  },
+  {
+    "id": "C0706",
+    "nombre": "PICACHITO",
+    "sector": "PICACHO",
+    "aliases": []
+  },
+  {
+    "id": "C0707",
+    "nombre": "JAPÓN",
+    "sector": "N/A",
+    "aliases": [
+      "JAPON"
+    ]
+  },
+  {
+    "id": "C0708",
+    "nombre": "SAGASTUME",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0709",
+    "nombre": "SAUCIQUE",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0710",
+    "nombre": "BARRIO LA ESTRELLA",
+    "sector": "N/A",
+    "aliases": [
+      "LA ESTRELLA",
+      "BO. LA ESTRELLA"
+    ]
+  }
+]

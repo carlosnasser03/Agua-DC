@@ -1,6 +1,6 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Application from 'expo-application';
 import * as Device from 'expo-device';
+import type { IStorageProvider } from '../services/storage/IStorageProvider';
 
 export const DEVICE_UUID_KEY = 'device_uuid';
 
@@ -13,13 +13,15 @@ function generateUUID(): string {
 }
 
 /**
- * Garantiza que existe un UUID persistente en AsyncStorage.
+ * Garantiza que existe un UUID persistente en el storage.
  * En dispositivos físicos Android intenta usar el ID nativo del sistema;
  * en emuladores o iOS genera un UUID aleatorio.
  * Idempotente: si ya existe, lo devuelve sin modificarlo.
+ *
+ * @param storageProvider Implementación de IStorageProvider para persistencia
  */
-export async function initDeviceId(): Promise<string> {
-  const stored = await AsyncStorage.getItem(DEVICE_UUID_KEY);
+export async function initDeviceId(storageProvider: IStorageProvider): Promise<string> {
+  const stored = await storageProvider.getItem(DEVICE_UUID_KEY);
   if (stored) return stored;
 
   const nativeId = Device.isDevice
@@ -27,6 +29,6 @@ export async function initDeviceId(): Promise<string> {
     : null;
 
   const uuid = nativeId ?? generateUUID();
-  await AsyncStorage.setItem(DEVICE_UUID_KEY, uuid);
+  await storageProvider.setItem(DEVICE_UUID_KEY, uuid);
   return uuid;
 }

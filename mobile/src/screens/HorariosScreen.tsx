@@ -17,6 +17,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { MotiView } from 'moti';
 import apiClient from '../api/client';
 import { AppFooter } from '../components/AppFooter';
+import { useOffline } from '../context/OfflineContext';
 
 // ─── Paleta oficial Agua DC ────────────────────────────────────────────────────
 const C = {
@@ -153,6 +154,8 @@ function DayCard({ entry, index }: { entry: ScheduleEntry; index: number }) {
 
 // ─── Pantalla principal ───────────────────────────────────────────────────────
 export const HorariosScreen = () => {
+  const { isConnected, saveHorariosCache, getHorariosCache } = useOffline();
+
   const [query, setQuery]     = useState('');
   const [entries, setEntries] = useState<ScheduleEntry[]>([]);
   const [loading, setLoading] = useState(false);
@@ -164,9 +167,22 @@ export const HorariosScreen = () => {
     if (!term) return;
     setLoading(true);
     setSearched(true);
+
     try {
-      const res = await apiClient.get('/schedules/search', { params: { colony: term } });
-      setEntries(res.data || []);
+      if (!isConnected) {
+        // Modo offline: leer de caché
+        const cachedData = await getHorariosCache(term);
+        if (cachedData) {
+          setEntries(cachedData);
+        } else {
+          setEntries([]);
+        }
+      } else {
+        // Modo online: fetch y guardar en caché
+        const res = await apiClient.get('/schedules/search', { params: { colony: term } });
+        setEntries(res.data || []);
+        await saveHorariosCache(term, res.data || []);
+      }
     } catch {
       setEntries([]);
     } finally {

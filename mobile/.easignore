@@ -1,0 +1,22 @@
+node_modules/
+.expo/
+dist/
+web-build/
+android/
+ios/
+
+.env
+.env.local
+.env.*.local
+
+.DS_Store
+
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore any root level node_modules if being packaged as monorepo
+../node_modules/
+../backend/
+../admin-panel/

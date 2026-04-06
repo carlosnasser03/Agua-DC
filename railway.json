@@ -1,0 +1,46 @@
+{
+  "$schema": "https://railway.app/schema.json",
+  "build": {
+    "builder": "dockerfile",
+    "context": "./backend"
+  },
+  "deploy": {
+    "startCommand": "npm run start:prod",
+    "restartPolicyMaxRetries": 5,
+    "restartPolicyMaxRetryDelay": 300
+  },
+  "env": {
+    "PORT": {
+      "description": "Server port",
+      "value": "3000"
+    },
+    "NODE_ENV": {
+      "description": "Node environment",
+      "value": "production"
+    },
+    "JWT_SECRET": {
+      "description": "JWT secret for token signing",
+      "required": true
+    },
+    "JWT_EXPIRATION": {
+      "description": "JWT token expiration time",
+      "value": "24h"
+    },
+    "DATABASE_URL": {
+      "description": "PostgreSQL connection string",
+      "required": true
+    },
+    "ADMIN_PANEL_URL": {
+      "description": "Admin panel frontend URL",
+      "required": true
+    },
+    "INITIAL_ADMIN_USER": {
+      "description": "Initial admin email for seed",
+      "value": "carlos_admin"
+    },
+    "INITIAL_ADMIN_PASS": {
+      "description": "Initial admin password for seed",
+      "required": true
+    }
+  }
+}

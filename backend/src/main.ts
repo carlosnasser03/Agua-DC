@@ -1,39 +1,90 @@
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe, Logger } from '@nestjs/common';
+import { ExpressAdapter } from '@nestjs/platform-express';
 import { AppModule } from './app.module';
+import { AllExceptionsFilter } from './common/filters/http-exception.filter';
+import { CustomValidationPipe } from './common/pipes/validation.pipe';
+import { WinstonModule } from 'nest-winston';
+import { winstonConfig } from './common/config/logger.config';
+import express from 'express';
+import { Request, Response } from 'express';
+import helmet from 'helmet';
 
-async function bootstrap() {
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+
+// ─── Instancia Express compartida (serverless + local) ───────────────────────
+const expressApp = express();
+let nestApp: any;
+
+async function createNestServer() {
+  if (nestApp) return nestApp;
+
   const logger = new Logger('Bootstrap');
-  const app = await NestFactory.create(AppModule, { bufferLogs: true });
+  nestApp = await NestFactory.create(AppModule, new ExpressAdapter(expressApp), {
+    bufferLogs: true,
+    logger: WinstonModule.createLogger(winstonConfig),
+  });
+
+  // Seguridad: Helmet
+  nestApp.use(helmet());
 
   // CORS — permite llamadas desde el admin panel y la app móvil
-  app.enableCors({
+  // La app móvil (React Native) no está sujeta a CORS; solo el panel de admin.
+  nestApp.enableCors({
     origin: [
-      'http://localhost:5173', // Vite dev server
-      'http://localhost:4173', // Vite preview
+      'http://localhost:5173',
+      'http://localhost:4173',
       'http://localhost:3001',
       process.env.ADMIN_PANEL_URL || '',
+      // URLs de producción del panel de admin (Vercel u otro hosting)
+      'https://agua-dc.vercel.app',
     ].filter(Boolean),
     methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'x-device-id', 'x-device-fingerprint'],
     credentials: true,
   });
 
-  // Prefijo global de la API
-  app.setGlobalPrefix('api');
+  nestApp.setGlobalPrefix('api');
+  
+  // Registrar el filtro de excepciones global
+  nestApp.useGlobalFilters(new AllExceptionsFilter());
 
-  // Validación automática de DTOs con class-validator
-  app.useGlobalPipes(
-    new ValidationPipe({
-      whitelist: true,
-      forbidNonWhitelisted: false,
-      transform: true,
-      transformOptions: { enableImplicitConversion: true },
-    }),
-  );
+  nestApp.useGlobalPipes(new CustomValidationPipe());
 
-  const port = process.env.PORT ?? 3000;
-  await app.listen(port);
-  logger.log(`AguaDC API corriendo en: http://localhost:${port}/api`);
+  // ─── Documentación Swagger ────────────────────────────────────────────────
+  const config = new DocumentBuilder()
+    .setTitle('AguaDC API')
+    .setDescription('La API oficial para consultar la calendarización de racionamiento de AguaDC')
+    .setVersion('1.0')
+    .addBearerAuth()
+    .addTag('schedules')
+    .addTag('reports')
+    .addTag('auth')
+    .build();
+
+  const document = SwaggerModule.createDocument(nestApp, config);
+  SwaggerModule.setup('api/docs', nestApp, document);
+
+  await nestApp.init();
+  logger.log('AguaDC API inicializada');
+  logger.log('Swagger UI disponible en: http://0.0.0.0:' + (process.env.PORT || 3000) + '/api/docs');
+  return nestApp;
 }
-bootstrap();
+
+// ─── Handler para Vercel (serverless) ────────────────────────────────────────
+export default async (req: Request, res: Response) => {
+  await createNestServer();
+  expressApp(req, res);
+};
+
+// ─── Servidor HTTP (Railway, Docker, desarrollo local) ───────────────────────
+// Solo Vercel usa el handler serverless exportado arriba.
+// En Railway/Docker arrancamos el servidor normalmente.
+if (!process.env.VERCEL) {
+  const logger = new Logger('Bootstrap');
+  createNestServer().then(async (app) => {
+    const port = process.env.PORT ?? 3000;
+    await app.listen(port, '0.0.0.0');
+    logger.log(`AguaDC API corriendo en: http://0.0.0.0:${port}/api`);
+  });
+}

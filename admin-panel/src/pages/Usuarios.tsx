@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Users, Plus, RefreshCcw, Loader2, UserCheck, UserX } from 'lucide-react';
+import { Plus, RefreshCcw, Loader2, UserCheck, UserX } from 'lucide-react';
 import apiClient from '../api/client';
 
 export const Usuarios = () => {

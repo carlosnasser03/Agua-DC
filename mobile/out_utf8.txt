@@ -1,0 +1,35 @@
+﻿env: load .env
+env: export EXPO_PUBLIC_API_URL_DEV EXPO_PUBLIC_API_URL_PROD
+Starting project at C:\Users\LENOVO\Desktop\Nueva carpeta\Proyecto\AguaDC V2\mobile
+Starting Metro Bundler
+node.exe : CommandError: No 
+Android connected device found, 
+and no emulators could be started 
+automatically.
+En línea: 1 Carácter: 1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program Files\nodejs/node_mo 
+...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~
+    + CategoryInfo          : Not 
+   Specified: (CommandError: N..  
+  . automatically.:String) [],    
+ RemoteException
+    + FullyQualifiedErrorId : Nat 
+   iveCommandError
+ 
+Connect a device or create an 
+emulator (https://docs.expo.dev/wo
+rkflow/android-studio-emulator).
+Then follow the instructions here 
+to enable USB debugging:
+https://developer.android.com/stud
+io/run/device.html#developer-devic
+e-options. If you are using 
+Genymotion go to Settings -> ADB, 
+select "Use custom Android SDK 
+tools", and point it at your 
+Android SDK directory.

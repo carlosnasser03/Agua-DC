@@ -1,0 +1,5 @@
+# Railway CLI Configuration
+# This file is used by the railway CLI for local development and deployment
+
+# Token will be stored here after `railway login`
+# Format: token=your_railway_token_here

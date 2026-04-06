@@ -22,7 +22,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
     { icon: LayoutDashboard, label: 'Dashboard',          to: '/' },
     { icon: Calendar,        label: 'Horarios',           to: '/horarios' },
     { icon: ClipboardList,   label: 'Reportes',           to: '/reportes' },
-    { icon: Users,           label: 'Usuarios y Permisos', to: '/usuarios' },
+    { icon: Users,           label: 'Usuarios',           to: '/usuarios' },
     { icon: ShieldCheck,     label: 'Auditoría',          to: '/auditoria' },
     { icon: Settings,        label: 'Configuración',      to: '/configuracion' },
   ];

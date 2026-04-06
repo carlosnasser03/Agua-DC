@@ -1,0 +1,9 @@
+﻿
+> backend@0.0.1 test:e2e
+> jest --config ./test/jest-e2e.json test/citizen-flow.e2e-spec.ts
+
+  console.log
+    Error Response saved to test-error.json
+
+      at Object.<anonymous> (citizen-flow.e2e-spec.ts:83:17)
+

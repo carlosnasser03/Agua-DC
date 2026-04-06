@@ -22,7 +22,7 @@
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.aguadc.hn",
-      "versionCode": 1,
+      "versionCode": 3,
       "permissions": [
         "INTERNET"
       ]

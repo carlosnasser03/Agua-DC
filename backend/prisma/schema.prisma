@@ -146,6 +146,7 @@ model Report {
   publicId          String                @unique @default(dbgenerated("gen_random_uuid()"))
   deviceProfileId   String
   colonyId          String
+  reportTypeId      String?
   type              String                @default("OTHER")
   description       String
   reportDate        DateTime              @default(now())
@@ -158,6 +159,7 @@ model Report {
   reporterPhone     String?
   colony            Colony                @relation(fields: [colonyId], references: [id])
   deviceProfile     DeviceProfile         @relation(fields: [deviceProfileId], references: [id])
+  reportType        ReportType?           @relation(fields: [reportTypeId], references: [id])
   statusHistory     ReportStatusHistory[]
 
   @@index([status])
@@ -183,4 +185,60 @@ model GlobalConfig {
   description String?
   type        String   @default("number")
   updatedAt   DateTime @updatedAt
+}
+
+model StatusTransition {
+  id         String @id @default(uuid())
+  fromStatus String
+  toStatus   String
+  createdAt  DateTime @default(now())
+
+  @@unique([fromStatus, toStatus])
+  @@index([fromStatus])
+}
+
+model ExcelValidationRule {
+  id           String   @id @default(uuid())
+  name         String   @unique
+  description  String
+  enabled      Boolean  @default(true)
+  errorMessage String
+  ruleType     String
+  ruleConfig   Json?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([enabled])
+}
+
+model ReportType {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  label       String
+  icon        String
+  description String?
+  enabled     Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  reports     Report[]
+
+  @@index([enabled])
+}
+
+model ThemeConfig {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  description String?
+  isDefault   Boolean  @default(false)
+
+  // JSONB fields for theme data
+  colors      Json     // { primary, secondary, accent, status, borders, backgrounds }
+  typography  Json     // { fontFamily, sizes: { sm, base, lg, xl, 2xl } }
+  spacing     Json     // { unit, scale: { 1, 2, 3, 4, 6, 8, 12, 16 } }
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([isDefault])
+  @@map("theme_configs")
 }

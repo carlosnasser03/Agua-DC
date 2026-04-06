@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { ClipboardList, Search, Filter, RefreshCcw, Loader2, ChevronDown } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { ClipboardList, Search, RefreshCcw, Loader2 } from 'lucide-react';
 import apiClient from '../api/client';
 
 const STATUS_LABELS: Record<string, { label: string; color: string }> = {

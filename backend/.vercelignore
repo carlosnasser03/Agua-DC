@@ -1,0 +1,9 @@
+# Vercel ignore — dist NO está excluido (necesario para el deployment)
+node_modules
+*.log
+.env
+coverage
+.nyc_output
+src
+test
+prisma/migrations

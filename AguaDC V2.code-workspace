@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "AguaDC V2",
+			"path": "."
+		},
+		{
+			"name": ".agent",
+			"path": "../Agua DC/.agent"
+		}
+	],
+	"settings": {}
+}

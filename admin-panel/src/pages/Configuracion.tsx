@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {
   Settings, Save, RefreshCcw, Loader2, CheckCircle2,
-  AlertCircle, Clock, Shield, Trash2, Users
+  AlertCircle, Clock, Shield, Trash2
 } from 'lucide-react';
 import apiClient from '../api/client';
 

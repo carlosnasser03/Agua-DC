@@ -1,18 +1,20 @@
-import { IsString, IsOptional, IsEnum, IsUUID, MaxLength } from 'class-validator';
+import { IsString, IsOptional, IsEmail, IsEnum, IsUUID, MaxLength } from 'class-validator';
 
 export class UpdateUserDto {
-  @IsString()
   @IsOptional()
-  @MaxLength(120)
+  @IsEmail({}, { message: 'El formato del email es inválido' })
+  email?: string;
+
+  @IsOptional()
+  @IsString({ message: 'El nombre debe ser texto' })
+  @MaxLength(120, { message: 'El nombre es demasiado largo' })
   fullname?: string;
 
-  @IsUUID('4', { message: 'El roleId debe ser un UUID válido' })
   @IsOptional()
+  @IsUUID('4', { message: 'El ID de rol debe ser un UUID válido' })
   roleId?: string;
 
-  @IsEnum(['ACTIVE', 'INACTIVE', 'BLOCKED'], {
-    message: 'El estado debe ser ACTIVE, INACTIVE o BLOCKED',
-  })
   @IsOptional()
+  @IsEnum(['ACTIVE', 'INACTIVE', 'SUSPENDED'], { message: 'Estado inválido' })
   status?: string;
 }

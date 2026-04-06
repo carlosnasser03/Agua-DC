@@ -1,13 +1,13 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { Layout } from './components/Layout';
+import { ProtectedRoute } from './components/ProtectedRoute';
 import { Login } from './pages/Login';
 import { Horarios } from './pages/Horarios';
 import { Reportes } from './pages/Reportes';
 import { Usuarios } from './pages/Usuarios';
 import { Auditoria } from './pages/Auditoria';
 import { Configuracion } from './pages/Configuracion';
-import { Loader2 } from 'lucide-react';
 
 // Dashboard con stats reales
 import { useEffect, useState } from 'react';
@@ -58,21 +58,6 @@ const Dashboard = () => {
   );
 };
 
-// Guard de ruta privada
-const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
-  const { isAuthenticated, isLoading } = useAuth();
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-agua-smoke">
-        <Loader2 className="animate-spin text-agua-deep" size={40} />
-      </div>
-    );
-  }
-
-  return isAuthenticated ? <>{children}</> : <Navigate to="/login" replace />;
-};
-
 function AppRoutes() {
   const { isAuthenticated } = useAuth();
 
@@ -85,7 +70,7 @@ function AppRoutes() {
       <Route
         path="/*"
         element={
-          <PrivateRoute>
+          <ProtectedRoute>
             <Layout>
               <Routes>
                 <Route index element={<Dashboard />} />
@@ -97,7 +82,7 @@ function AppRoutes() {
                 <Route path="*"             element={<Navigate to="/" replace />} />
               </Routes>
             </Layout>
-          </PrivateRoute>
+          </ProtectedRoute>
         }
       />
     </Routes>

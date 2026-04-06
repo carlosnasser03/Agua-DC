@@ -22,7 +22,10 @@ COPY --from=build /usr/src/app/dist ./dist
 COPY --from=build /usr/src/app/prisma ./prisma
 COPY --from=build /usr/src/app/node_modules/.prisma ./node_modules/.prisma
 
+# Archivo maestro de colonias para NormalizationService
+COPY --from=build /usr/src/app/data ./data
+
 EXPOSE 3000
 
-# Entry point scripts for migrations
-CMD [ "node", "dist/main" ]
+# Corre migraciones de Prisma y luego inicia la API
+CMD ["sh", "-c", "npx prisma migrate deploy && node dist/main"]

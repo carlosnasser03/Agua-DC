@@ -1,0 +1,7 @@
+[build]
+# Railway detectará el Dockerfile automáticamente.
+# Si el repo raíz apunta a la carpeta backend/, no hace falta nada más.
+
+[deploy]
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3

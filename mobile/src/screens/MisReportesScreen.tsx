@@ -1,16 +1,7 @@
-/**
- * © 2026 AguaDC - Propiedad Privada.
- * Queda prohibida la reproducción, distribución o modificación total o parcial
- * de este código sin autorización expresa del autor.
- *
- * Proyecto  : AguaDC — Horario de Agua para el Distrito Central
- * Entidad   : U.M.A.P.S. — Unidad Municipal de Agua Potable y Saneamiento
- * Municipio : Distrito Central, Honduras
- */
 import React, { useState, useCallback } from 'react';
 import {
   View, Text, FlatList, TouchableOpacity, StyleSheet,
-  ActivityIndicator, RefreshControl
+  ActivityIndicator, RefreshControl, StatusBar, Platform
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { MotiView } from 'moti';
@@ -18,27 +9,17 @@ import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import apiClient from '../api/client';
 import type { RootStackParamList } from '../navigation';
+import { Colors, Fonts } from '../theme';
+import { useOffline } from '../context/OfflineContext';
 
-const COLORS = {
-  navy:  '#001F3F',
-  deep:  '#003366',
-  mid:   '#0055A5',
-  sky:   '#00AAEE',
-  pale:  '#7FDBFF',
-  tint:  '#E8F4FD',
-  bg:    '#F0F8FF',
-  gray:  '#546E7A',
-  white: '#FFFFFF',
-};
-
-type StatusConfig = { label: string; colors: [string, string]; text: string };
+type StatusConfig = { label: string; colors: [string, string]; text: string; icon: string };
 
 const STATUS_CONFIG: Record<string, StatusConfig> = {
-  ENVIADO:     { label: 'Enviado',       colors: ['#1565C0', '#1E88E5'], text: '#fff' },
-  EN_REVISION: { label: 'En Revisión',   colors: ['#E65100', '#FB8C00'], text: '#fff' },
-  VALIDADO:    { label: 'Validado',      colors: ['#4527A0', '#7B1FA2'], text: '#fff' },
-  RESUELTO:    { label: 'Resuelto',      colors: ['#1B5E20', '#388E3C'], text: '#fff' },
-  RECHAZADO:   { label: 'Rechazado',     colors: ['#B71C1C', '#E53935'], text: '#fff' },
+  ENVIADO:     { label: 'Enviado',     colors: ['#1565C0', '#1E88E5'], text: '#fff', icon: '📨' },
+  EN_REVISION: { label: 'En Revisión', colors: ['#E65100', '#FB8C00'], text: '#fff', icon: '🔍' },
+  VALIDADO:    { label: 'Validado',    colors: ['#4527A0', '#7B1FA2'], text: '#fff', icon: '✅' },
+  RESUELTO:    { label: 'Resuelto',    colors: ['#1B5E20', '#388E3C'], text: '#fff', icon: '🎉' },
+  RECHAZADO:   { label: 'Rechazado',   colors: ['#B71C1C', '#E53935'], text: '#fff', icon: '❌' },
 };
 
 const TYPE_LABEL: Record<string, string> = {
@@ -51,6 +32,8 @@ const TYPE_LABEL: Record<string, string> = {
 type Nav = NativeStackNavigationProp<RootStackParamList>;
 
 export const MisReportesScreen = () => {
+  const { isConnected, pendingSync, isSyncing, getMyReportsCache, saveMyReportsCache } = useOffline();
+  
   const navigation = useNavigation<Nav>();
   const [reports, setReports]     = useState<any[]>([]);
   const [loading, setLoading]     = useState(true);
@@ -58,108 +41,153 @@ export const MisReportesScreen = () => {
 
   const fetchReports = async () => {
     try {
-      const res = await apiClient.get('/reports/app');
-      setReports(res.data || []);
-    } catch {
-      setReports([]);
+      if (!isConnected) {
+        const cached = await getMyReportsCache();
+        if (cached) setReports(cached);
+      } else {
+        const res = await apiClient.get('/reports/app');
+        setReports(res.data || []);
+        await saveMyReportsCache(res.data || []);
+      }
+    } catch (err) {
+      console.error('Error fetching reports:', err);
     } finally {
       setLoading(false);
       setRefreshing(false);
     }
   };
 
-  useFocusEffect(useCallback(() => { fetchReports(); }, []));
+  useFocusEffect(useCallback(() => { fetchReports(); }, [isConnected]));
 
   const onRefresh = () => { setRefreshing(true); fetchReports(); };
 
-  if (loading) {
+  if (loading && !refreshing) {
     return (
       <View style={styles.center}>
-        <ActivityIndicator size="large" color={COLORS.mid} />
+        <ActivityIndicator size="large" color={Colors.primary} />
+        <Text style={styles.loadingText}>Cargando tus reportes...</Text>
       </View>
     );
   }
 
   return (
-    <View style={{ flex: 1, backgroundColor: COLORS.bg }}>
+    <View style={styles.flex}>
+      <StatusBar barStyle="light-content" />
+      
+      {/* Indicador Offline / Sincronización */}
+      {!isConnected && (
+        <View style={[styles.syncBanner, { backgroundColor: '#F57C00' }]}>
+          <Text style={styles.syncBannerText}>📶 Estás sin conexión (Modo Offline)</Text>
+        </View>
+      )}
+      {isConnected && pendingSync && (
+        <View style={[styles.syncBanner, { backgroundColor: isSyncing ? '#1976D2' : '#FBC02D' }]}>
+          <Text style={styles.syncBannerText}>
+             {isSyncing ? '🔄 Sincronizando reportes pendientes...' : '⚠️ Tienes reportes pendientes por subir.'}
+          </Text>
+        </View>
+      )}
+
       {/* Header */}
-      <LinearGradient colors={[COLORS.navy, COLORS.deep, COLORS.mid]} style={styles.header}>
-        <Text style={styles.headerTitle}>Mis Reportes</Text>
-        <Text style={styles.headerSub}>
-          {reports.length === 0
-            ? 'Aún no has enviado reportes'
-            : `${reports.length} reporte${reports.length !== 1 ? 's' : ''} registrado${reports.length !== 1 ? 's' : ''}`}
-        </Text>
+      <LinearGradient 
+        colors={[Colors.primaryDark, Colors.primary, Colors.primaryMid]} 
+        style={styles.header}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+      >
+        <MotiView
+          from={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ type: 'timing', duration: 400 }}
+        >
+          <Text style={styles.headerTitle}>Mis Reportes</Text>
+          <Text style={styles.headerSub}>
+            {reports.length === 0
+              ? 'Aún no has enviado reportes'
+              : `${reports.length} reporte${reports.length !== 1 ? 's' : ''} registrado${reports.length !== 1 ? 's' : ''}`}
+          </Text>
+        </MotiView>
       </LinearGradient>
 
       <FlatList
         data={reports}
         keyExtractor={r => r.id}
-        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={[COLORS.mid]} tintColor={COLORS.mid} />}
-        contentContainerStyle={reports.length === 0 ? styles.emptyContainer : { padding: 16, gap: 12 }}
+        refreshControl={
+          <RefreshControl 
+            refreshing={refreshing} 
+            onRefresh={onRefresh} 
+            colors={[Colors.primary]} 
+            tintColor={Colors.primary} 
+          />
+        }
+        contentContainerStyle={reports.length === 0 ? styles.emptyContainer : styles.listContent}
         ListEmptyComponent={
           <View style={styles.center}>
             <MotiView
-              from={{ translateY: 0 }}
-              animate={{ translateY: -10 }}
-              transition={{ type: 'timing', duration: 1800, loop: true, repeatReverse: true }}
+              from={{ translateY: 0, opacity: 0.5 }}
+              animate={{ translateY: -15, opacity: 1 }}
+              transition={{ type: 'timing', duration: 2000, loop: true, repeatReverse: true }}
             >
               <Text style={styles.emptyEmoji}>📋</Text>
             </MotiView>
             <Text style={styles.emptyTitle}>Sin reportes aún</Text>
             <Text style={styles.emptySubtitle}>
-              Cuando envíes un reporte aparecerá aquí con su estado actualizado en tiempo real.
+              Cuando envíes un reporte aparecerá aquí para que puedas seguir su progreso.
             </Text>
           </View>
         }
         renderItem={({ item: r, index }) => {
-          const sc = STATUS_CONFIG[r.status] ?? { label: r.status, colors: ['#546E7A', '#78909C'] as [string,string], text: '#fff' };
+          const sc = STATUS_CONFIG[r.status] ?? { label: r.status, colors: ['#546E7A', '#78909C'] as [string,string], text: '#fff', icon: '●' };
           const lastNote = r.statusHistory?.[0]?.publicNote;
 
           return (
             <MotiView
-              from={{ opacity: 0, translateY: 28 }}
-              animate={{ opacity: 1, translateY: 0 }}
-              transition={{ type: 'timing', duration: 400, delay: index * 80 }}
+              from={{ opacity: 0, translateX: -20 }}
+              animate={{ opacity: 1, translateX: 0 }}
+              transition={{ type: 'timing', duration: 400, delay: index * 60 }}
             >
               <TouchableOpacity
                 style={styles.card}
                 onPress={() => navigation.navigate('ReporteDetalle', { publicId: r.publicId })}
-                activeOpacity={0.8}
+                activeOpacity={0.7}
               >
-                {/* Card top row */}
-                <View style={styles.cardTop}>
-                  <Text style={styles.colony} numberOfLines={1}>{r.colony?.name ?? 'Colonia'}</Text>
+                <View style={styles.cardHeader}>
+                  <View style={styles.cardHeaderLeft}>
+                    <Text style={styles.colony} numberOfLines={1}>{r.colony?.name ?? 'Colonia'}</Text>
+                    <Text style={styles.publicId}>ID: {r.publicId?.slice(0, 8).toUpperCase()}</Text>
+                  </View>
                   <LinearGradient
                     colors={sc.colors}
                     start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}
                     style={styles.badge}
                   >
-                    <Text style={[styles.badgeText, { color: sc.text }]}>{sc.label}</Text>
+                    <Text style={[styles.badgeText, { color: sc.text }]}>{sc.icon} {sc.label}</Text>
                   </LinearGradient>
                 </View>
 
-                {/* Type pill */}
-                <View style={styles.typePill}>
-                  <Text style={styles.typePillText}>{TYPE_LABEL[r.type] ?? r.type}</Text>
+                <View style={styles.divider} />
+
+                <View style={styles.typeRow}>
+                  <View style={styles.typePill}>
+                    <Text style={styles.typePillText}>{TYPE_LABEL[r.type] ?? r.type}</Text>
+                  </View>
+                  <Text style={styles.date}>
+                    {new Date(r.createdAt).toLocaleDateString('es-HN', { day: '2-digit', month: 'short' })}
+                  </Text>
                 </View>
 
-                {/* Description */}
                 <Text style={styles.description} numberOfLines={2}>{r.description}</Text>
 
-                {/* Last public note */}
                 {lastNote ? (
                   <View style={styles.noteBox}>
+                    <Text style={styles.noteLabel}>Respuesta UMAPS:</Text>
                     <Text style={styles.noteText} numberOfLines={2}>{lastNote}</Text>
                   </View>
                 ) : null}
 
-                {/* Footer */}
                 <View style={styles.cardFooter}>
-                  <Text style={styles.date}>
-                    {new Date(r.createdAt).toLocaleDateString('es-HN', { day: '2-digit', month: 'short', year: 'numeric' })}
-                  </Text>
-                  <Text style={styles.detailLink}>Ver detalle →</Text>
+                  <Text style={styles.detailLink}>Toca para ver historial completo</Text>
+                  <Text style={styles.arrow}>→</Text>
                 </View>
               </TouchableOpacity>
             </MotiView>
@@ -171,50 +199,187 @@ export const MisReportesScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  header: { paddingTop: 56, paddingBottom: 24, paddingHorizontal: 20 },
-  headerTitle: { fontSize: 22, fontWeight: '800', color: COLORS.white, marginBottom: 4 },
-  headerSub: { fontSize: 13, color: COLORS.pale, opacity: 0.9 },
-  center: { flex: 1, alignItems: 'center', justifyContent: 'center', padding: 32 },
-  emptyContainer: { flex: 1 },
-  emptyEmoji: { fontSize: 56, marginBottom: 12, textAlign: 'center' },
-  emptyTitle: { fontSize: 18, fontWeight: '700', color: '#1A2B3C', marginBottom: 8, textAlign: 'center' },
-  emptySubtitle: { fontSize: 14, color: COLORS.gray, textAlign: 'center', lineHeight: 20 },
-  card: {
-    backgroundColor: COLORS.white,
-    borderRadius: 18,
-    padding: 16,
-    elevation: 3,
-    shadowColor: COLORS.deep,
-    shadowOpacity: 0.08,
-    shadowRadius: 10,
-    shadowOffset: { width: 0, height: 3 },
-  },
-  cardTop: { flexDirection: 'row', alignItems: 'center', marginBottom: 8, gap: 8 },
-  colony: { fontSize: 15, fontWeight: '800', color: COLORS.deep, flex: 1 },
-  badge: { paddingHorizontal: 10, paddingVertical: 5, borderRadius: 20 },
-  badgeText: { fontSize: 11, fontWeight: '800', letterSpacing: 0.3 },
-  typePill: {
-    alignSelf: 'flex-start',
-    backgroundColor: COLORS.tint,
-    borderRadius: 20,
-    paddingHorizontal: 10,
-    paddingVertical: 3,
-    marginBottom: 8,
-    borderWidth: 1,
-    borderColor: '#C5DCF0',
-  },
-  typePillText: { fontSize: 11, fontWeight: '700', color: COLORS.mid },
-  description: { fontSize: 13, color: '#4A5568', lineHeight: 19, marginBottom: 8 },
-  noteBox: {
-    backgroundColor: COLORS.tint,
-    borderRadius: 10,
+  flex: { flex: 1, backgroundColor: Colors.background },
+  syncBanner: {
     padding: 10,
-    marginBottom: 8,
-    borderLeftWidth: 3,
-    borderLeftColor: COLORS.sky,
+    paddingTop: Platform.OS === 'ios' ? 50 : 25,
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 10,
   },
-  noteText: { fontSize: 12, color: COLORS.deep, lineHeight: 17 },
-  cardFooter: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 4 },
-  date: { fontSize: 12, color: COLORS.gray },
-  detailLink: { fontSize: 12, fontWeight: '700', color: COLORS.mid },
+  syncBannerText: {
+    fontFamily: Fonts.bodyBold,
+    fontSize: 12,
+    color: '#FFF',
+    textAlign: 'center',
+  },
+  header: { 
+    paddingTop: Platform.OS === 'ios' ? 20 : 15, 
+    paddingBottom: 24, 
+    paddingHorizontal: 24,
+    borderBottomLeftRadius: 30,
+    borderBottomRightRadius: 30,
+    elevation: 10,
+    shadowColor: Colors.primary,
+    shadowOpacity: 0.3,
+    shadowRadius: 15,
+    shadowOffset: { width: 0, height: 5 },
+  },
+  headerTitle: { 
+    fontFamily: Fonts.headingBold, 
+    fontSize: 26, 
+    color: Colors.white, 
+    marginBottom: 4,
+    letterSpacing: 0.5 
+  },
+  headerSub: { 
+    fontFamily: Fonts.body, 
+    fontSize: 14, 
+    color: Colors.accentPale, 
+    opacity: 0.9 
+  },
+  center: { 
+    flex: 1, 
+    alignItems: 'center', 
+    justifyContent: 'center', 
+    padding: 40 
+  },
+  loadingText: {
+    fontFamily: Fonts.body,
+    fontSize: 14,
+    color: Colors.textMuted,
+    marginTop: 12
+  },
+  emptyContainer: { flex: 1, justifyContent: 'center' },
+  emptyEmoji: { fontSize: 80, marginBottom: 16, textAlign: 'center' },
+  emptyTitle: { 
+    fontFamily: Fonts.headingBold, 
+    fontSize: 20, 
+    color: Colors.primaryDark, 
+    marginBottom: 10, 
+    textAlign: 'center' 
+  },
+  emptySubtitle: { 
+    fontFamily: Fonts.body, 
+    fontSize: 15, 
+    color: Colors.textMuted, 
+    textAlign: 'center', 
+    lineHeight: 22 
+  },
+  listContent: { padding: 20, gap: 16 },
+  card: {
+    backgroundColor: Colors.white,
+    borderRadius: 24,
+    padding: 20,
+    elevation: 4,
+    shadowColor: Colors.primary,
+    shadowOpacity: 0.1,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 4 },
+    borderWidth: 1,
+    borderColor: 'rgba(0, 71, 171, 0.05)',
+  },
+  cardHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 12 },
+  cardHeaderLeft: { flex: 1, marginRight: 10 },
+  colony: { 
+    fontFamily: Fonts.headingBold, 
+    fontSize: 18, 
+    color: Colors.primaryDark, 
+    marginBottom: 2 
+  },
+  publicId: { 
+    fontFamily: Fonts.body, 
+    fontSize: 11, 
+    color: Colors.textMuted,
+    letterSpacing: 1
+  },
+  badge: { 
+    paddingHorizontal: 12, 
+    paddingVertical: 6, 
+    borderRadius: 12,
+    elevation: 2
+  },
+  badgeText: { 
+    fontFamily: Fonts.bodyBold, 
+    fontSize: 11, 
+    textTransform: 'uppercase',
+    letterSpacing: 0.5
+  },
+  divider: {
+    height: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.05)',
+    marginBottom: 12
+  },
+  typeRow: { 
+    flexDirection: 'row', 
+    justifyContent: 'space-between', 
+    alignItems: 'center',
+    marginBottom: 10
+  },
+  typePill: {
+    backgroundColor: Colors.primaryLight,
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderWidth: 1,
+    borderColor: 'rgba(0, 71, 171, 0.1)',
+  },
+  typePillText: { 
+    fontFamily: Fonts.bodyBold, 
+    fontSize: 11, 
+    color: Colors.primary 
+  },
+  date: { 
+    fontFamily: Fonts.body, 
+    fontSize: 12, 
+    color: Colors.textMuted 
+  },
+  description: { 
+    fontFamily: Fonts.body, 
+    fontSize: 14, 
+    color: '#4A5568', 
+    lineHeight: 20, 
+    marginBottom: 14 
+  },
+  noteBox: {
+    backgroundColor: '#F7FAFC',
+    borderRadius: 16,
+    padding: 14,
+    marginBottom: 14,
+    borderLeftWidth: 4,
+    borderLeftColor: Colors.primary,
+  },
+  noteLabel: {
+    fontFamily: Fonts.bodyBold,
+    fontSize: 11,
+    color: Colors.primary,
+    marginBottom: 4,
+    textTransform: 'uppercase'
+  },
+  noteText: { 
+    fontFamily: Fonts.body, 
+    fontSize: 13, 
+    color: Colors.primaryDark, 
+    lineHeight: 18,
+    fontStyle: 'italic'
+  },
+  cardFooter: { 
+    flexDirection: 'row', 
+    justifyContent: 'space-between', 
+    alignItems: 'center', 
+    marginTop: 4,
+    paddingTop: 12,
+    borderTopWidth: 1,
+    borderTopColor: 'rgba(0, 0, 0, 0.03)'
+  },
+  detailLink: { 
+    fontFamily: Fonts.bodySemiBold, 
+    fontSize: 12, 
+    color: Colors.primary 
+  },
+  arrow: {
+    fontSize: 16,
+    color: Colors.primary,
+    fontWeight: 'bold'
+  }
 });

@@ -95,6 +95,115 @@ async function main() {
 
   console.log('Roles y permisos configurados.');
 
+  // --- TEMAS ---
+  const lightTheme = await prisma.themeConfig.upsert({
+    where: { name: 'light' },
+    create: {
+      name: 'light',
+      description: 'Default light theme with agua-deep primary',
+      isDefault: true,
+      colors: {
+        primary: '#003366',      // agua-deep
+        secondary: '#00AEEF',    // agua-sky
+        accent: '#F5F5F5',       // agua-smoke
+        textPrimary: '#1F2937',
+        textSecondary: '#6B7280',
+        borders: '#E5E7EB',
+        backgrounds: {
+          primary: '#FFFFFF',
+          secondary: '#F9FAFB',
+          tertiary: '#F5F5F5',
+        },
+        status: {
+          success: '#4CAF50',
+          warning: '#FFC107',
+          error: '#F44336',
+          info: '#2196F3',
+        },
+      },
+      typography: {
+        fontFamily: 'Inter, system-ui, sans-serif',
+        sizes: {
+          xs: '12px',
+          sm: '14px',
+          base: '16px',
+          lg: '18px',
+          xl: '20px',
+          '2xl': '24px',
+        },
+      },
+      spacing: {
+        unit: 4,
+        scale: {
+          '1': 4,
+          '2': 8,
+          '3': 12,
+          '4': 16,
+          '6': 24,
+          '8': 32,
+          '12': 48,
+          '16': 64,
+        },
+      },
+    },
+    update: {},
+  });
+
+  const darkTheme = await prisma.themeConfig.upsert({
+    where: { name: 'dark' },
+    create: {
+      name: 'dark',
+      description: 'Dark theme with adjusted colors for low-light environments',
+      isDefault: false,
+      colors: {
+        primary: '#00AEEF',      // agua-sky (inverted for dark mode)
+        secondary: '#003366',    // agua-deep (inverted)
+        accent: '#2D3748',       // Dark gray
+        textPrimary: '#F3F4F6',
+        textSecondary: '#D1D5DB',
+        borders: '#374151',
+        backgrounds: {
+          primary: '#1F2937',
+          secondary: '#111827',
+          tertiary: '#0F172A',
+        },
+        status: {
+          success: '#86EFAC',
+          warning: '#FFD700',
+          error: '#FF6B6B',
+          info: '#60A5FA',
+        },
+      },
+      typography: {
+        fontFamily: 'Inter, system-ui, sans-serif',
+        sizes: {
+          xs: '12px',
+          sm: '14px',
+          base: '16px',
+          lg: '18px',
+          xl: '20px',
+          '2xl': '24px',
+        },
+      },
+      spacing: {
+        unit: 4,
+        scale: {
+          '1': 4,
+          '2': 8,
+          '3': 12,
+          '4': 16,
+          '6': 24,
+          '8': 32,
+          '12': 48,
+          '16': 64,
+        },
+      },
+    },
+    update: {},
+  });
+
+  console.log(`${lightTheme.name} and ${darkTheme.name} themes configured.`);
+
   // --- USUARIO ADMINISTRADOR INICIAL ---
   const adminEmail = process.env.SEED_ADMIN_EMAIL || 'admin@aguadc.hn';
   const adminPassword = process.env.SEED_ADMIN_PASSWORD || 'AguaDC_Admin_2026!';
