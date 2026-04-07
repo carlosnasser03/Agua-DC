@@ -240,5 +240,5 @@ model ThemeConfig {
   updatedAt   DateTime @updatedAt
 
   @@index([isDefault])
-  @@map("theme_configs")
+
 }
