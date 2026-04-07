@@ -13,7 +13,7 @@ COPY nest-cli.json ./
 COPY tsconfig.json ./
 
 # Install all dependencies (including dev)
-RUN npm install
+RUN npm ci --legacy-peer-deps
 
 # Copy source code and Prisma schema
 COPY . .
@@ -33,7 +33,7 @@ COPY --from=build /usr/src/app/prisma ./prisma
 COPY --from=build /usr/src/app/node_modules/.prisma ./node_modules/.prisma
 
 # Install only production dependencies
-RUN npm install --only=production
+RUN npm ci --legacy-peer-deps --only=production
 
 EXPOSE 3000
 
