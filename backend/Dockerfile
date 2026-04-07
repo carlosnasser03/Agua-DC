@@ -39,3 +39,6 @@ EXPOSE 3000
 
 # Run migrations then start the compiled Nest application
 CMD ["sh", "-c", "npx prisma migrate deploy && node dist/main"]
+
+# HARD REBUILD TRIGGER - 2026-04-07 14:34:29
+# This forces Railway to ignore Docker cache completely
