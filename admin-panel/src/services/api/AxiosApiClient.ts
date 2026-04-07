@@ -7,8 +7,9 @@
  * Entidad   : U.M.A.P.S. — Unidad Municipal de Agua Potable y Saneamiento
  * Municipio : Distrito Central, Honduras
  */
-import axios, { AxiosInstance } from 'axios';
-import { IApiClient } from './IApiClient';
+import axios from 'axios';
+import type { AxiosInstance } from 'axios';
+import type { IApiClient } from './IApiClient';
 
 /**
  * AxiosApiClient
