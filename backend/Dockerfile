@@ -1,44 +1,38 @@
 # Build stage
-FROM node:20-alpine AS build
+FROM node:20-alpine AS builder
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
-# Install dev dependencies (Nest CLI, TypeScript) for building
-ARG NODE_ENV=development
-ENV NODE_ENV=$NODE_ENV
-
-# Copy package files and Nest/TS config
+# Copy package files
 COPY package*.json ./
-COPY nest-cli.json ./
-COPY tsconfig.json ./
 
-# Install all dependencies (including dev)
+# Install ALL dependencies (including devDependencies)
 RUN npm install
 
-# Copy source code and Prisma schema
+# Copy source code
 COPY . .
 
-# Generate Prisma client and build the Nest app
+# Generate Prisma client and build
 RUN npx prisma generate
 RUN npm run build
 
 # Production stage
 FROM node:20-alpine
-WORKDIR /usr/src/app
 
-# Copy production artifacts from build stage
-COPY --from=build /usr/src/app/package*.json ./
-COPY --from=build /usr/src/app/dist ./dist
-COPY --from=build /usr/src/app/prisma ./prisma
-COPY --from=build /usr/src/app/node_modules/.prisma ./node_modules/.prisma
+WORKDIR /app
+
+# Copy package files for production install
+COPY package*.json ./
 
 # Install only production dependencies
 RUN npm install --omit=dev
 
+# Copy built app and required artifacts from builder
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/prisma ./prisma
+COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
+
 EXPOSE 3000
 
-# Run migrations then start the compiled Nest application
-CMD ["sh", "-c", "npx prisma migrate deploy && node dist/main"]
-
-# HARD REBUILD TRIGGER - 2026-04-07 14:34:29
-# This forces Railway to ignore Docker cache completely
+# Start the compiled Nest application
+CMD ["node", "dist/main"]
