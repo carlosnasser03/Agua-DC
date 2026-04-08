@@ -1,5 +1,5 @@
 import { NestFactory } from '@nestjs/core';
-import { ValidationPipe, Logger } from '@nestjs/common';
+import { Logger } from '@nestjs/common';
 import { ExpressAdapter } from '@nestjs/platform-express';
 import { AppModule } from './app.module';
 import { AllExceptionsFilter } from './common/filters/http-exception.filter';
@@ -45,7 +45,7 @@ async function createNestServer() {
   });
 
   nestApp.setGlobalPrefix('api');
-  
+
   // Registrar el filtro de excepciones global
   nestApp.useGlobalFilters(new AllExceptionsFilter());
 
@@ -71,20 +71,26 @@ async function createNestServer() {
   return nestApp;
 }
 
+// ─── Bootstrap estándar (Railway, Docker, desarrollo local) ──────────────────
+// Punto de entrada principal cuando se ejecuta con `node dist/main`.
+async function bootstrap() {
+  const logger = new Logger('Bootstrap');
+  const app = await createNestServer();
+  const port = process.env.PORT ?? 3000;
+  await app.listen(port, '0.0.0.0');
+  logger.log(`AguaDC API corriendo en: http://0.0.0.0:${port}/api`);
+}
+
 // ─── Handler para Vercel (serverless) ────────────────────────────────────────
+// Exportado como default para que api/server.js lo cargue en Vercel.
 export default async (req: Request, res: Response) => {
   await createNestServer();
   expressApp(req, res);
 };
 
-// ─── Servidor HTTP (Railway, Docker, desarrollo local) ───────────────────────
-// Solo Vercel usa el handler serverless exportado arriba.
-// En Railway/Docker arrancamos el servidor normalmente.
+// ─── Arranque del servidor HTTP ───────────────────────────────────────────────
+// En Vercel el runtime importa el handler exportado arriba y nunca llega aquí.
+// En Railway/Docker este bloque inicia el servidor en el puerto configurado.
 if (!process.env.VERCEL) {
-  const logger = new Logger('Bootstrap');
-  createNestServer().then(async (app) => {
-    const port = process.env.PORT ?? 3000;
-    await app.listen(port, '0.0.0.0');
-    logger.log(`AguaDC API corriendo en: http://0.0.0.0:${port}/api`);
-  });
+  bootstrap();
 }
