@@ -77,7 +77,6 @@
     "typescript": "^5.7.3"
   },
   "overrides": {
-    "path-to-regexp": "^0.1.12",
     "lodash": "^4.17.21",
     "picomatch": "^2.3.1"
   }
