@@ -12,9 +12,18 @@ RUN npm install
 # Copy source code
 COPY . .
 
-# Generate Prisma client and build
+# Generate Prisma client
 RUN npx prisma generate
-RUN npm run build
+
+# Build with verbose output so we can see what the compiler is doing
+RUN echo ">>> Starting nest build..." && \
+    npm run build -- --verbose && \
+    echo ">>> nest build finished."
+
+# Verify dist was actually populated — fail fast if it's empty
+RUN echo ">>> Contents of dist/:" && \
+    ls -la dist/ && \
+    test -f dist/main.js || (echo "ERROR: dist/main.js was not generated!" && exit 1)
 
 # Production stage
 FROM node:20-alpine
