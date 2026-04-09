@@ -5,7 +5,7 @@
     "context": "./backend"
   },
   "deploy": {
-    "startCommand": "npm run start:prod",
+    "startCommand": "npx prisma migrate deploy && node dist/src/main.js",
     "restartPolicyMaxRetries": 5,
     "restartPolicyMaxRetryDelay": 300
   },
