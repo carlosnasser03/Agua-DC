@@ -30,9 +30,17 @@ RUN npm install --omit=dev
 # Copy built app and required artifacts from builder
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/prisma ./prisma
-COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
+COPY --from=builder /app/node_modules ./node_modules
 
+# Copy data files required by the app
+COPY --from=builder /app/data ./data
+
+# Expose port for the API
 EXPOSE 3000
 
-# Start the compiled Nest application
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
+  CMD node -e "require('http').get('http://localhost:3000/api/health', (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})"
+
+# Start the application
 CMD ["node", "dist/src/main.js"]
