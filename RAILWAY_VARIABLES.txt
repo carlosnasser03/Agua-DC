@@ -1,0 +1,81 @@
+====================================
+VARIABLES PARA RAILWAY UI - COPIA EXACTA
+====================================
+
+Ve a: https://railway.app → Tu proyecto AguaDC → Variables
+
+Agrega EXACTAMENTE estas variables:
+
+─────────────────────────────────────
+1. NODE_ENV
+─────────────────────────────────────
+Valor: production
+
+─────────────────────────────────────
+2. PORT
+─────────────────────────────────────
+Valor: 3000
+
+─────────────────────────────────────
+3. JWT_SECRET (⚠️ CRÍTICA)
+─────────────────────────────────────
+Genera uno nuevo con este comando en terminal:
+
+node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+
+[Copia y pega aquí el resultado]
+
+EJEMPLO (NO USES ESTE):
+a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0
+
+─────────────────────────────────────
+4. DATABASE_URL (⚠️ CRÍTICA)
+─────────────────────────────────────
+Valor: postgresql://neondb_owner:npg_8GD1nboAOzNr@ep-icy-paper-anwrb2gm.c-6.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require
+
+─────────────────────────────────────
+5. JWT_EXPIRATION
+─────────────────────────────────────
+Valor: 24h
+
+─────────────────────────────────────
+6. ADMIN_PANEL_URL
+─────────────────────────────────────
+Valor: http://localhost:5173
+
+O si tienes dominio ya:
+Valor: https://admin.tudominio.com
+
+─────────────────────────────────────
+7. INITIAL_ADMIN_USER
+─────────────────────────────────────
+Valor: carlos_admin
+
+─────────────────────────────────────
+8. INITIAL_ADMIN_PASS
+─────────────────────────────────────
+Valor: Tu_Clave_Secreta_Aqui_2026!
+
+⚠️ NOTA: Esta es solo para dev. En producción cambiar a algo muy fuerte.
+
+====================================
+ORDEN DE CONFIGURACIÓN:
+====================================
+1. Abre Railway Dashboard: https://railway.app
+2. Selecciona proyecto "AguaDC"
+3. Click en "Variables" (en el menú izquierdo)
+4. Agrega cada variable EXACTAMENTE como arriba
+5. Click "Save" después de cada una
+6. Espera 2-3 segundos
+7. Railway auto-redeploy automáticamente
+
+====================================
+ESTO HABILITA:
+====================================
+✅ La app puede conectarse a la base de datos
+✅ El servidor genera tokens JWT seguros
+✅ Los usuarios pueden hacer login
+✅ Los reportes se guardan correctamente
+✅ El panel admin se puede conectar al backend
+
+====================================
