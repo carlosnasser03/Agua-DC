@@ -4265,17 +4265,21 @@
     "nombre": "BARRIO LA ESTRELLA",
     "sector": "N/A",
     "aliases": [
-      "LA ESTRELLA",
-      "BO. LA ESTRELLA"
+      "LA ESTRELLA"
     ]
   },
   {
     "id": "C0711",
     "nombre": "CUEVA",
-    "sector": "Sector Sur",
+    "sector": "N/A",
+    "aliases": []
+  },
+  {
+    "id": "C0712",
+    "nombre": "LA CABAÑA (PARTE ALTA)",
+    "sector": "PICACHO",
     "aliases": [
-      "CUEVA",
-      "LA CUEVA"
+      "CABAÑA (PARTE ALTA)"
     ]
   }
 ]
