@@ -2,8 +2,11 @@
   {
     "id": "C0001",
     "nombre": "VIERA",
-    "sector": "PICACHO",
-    "aliases": []
+    "sector": "Sector Norte",
+    "aliases": [
+      "VIERA",
+      "BARRIO VIERA"
+    ]
   },
   {
     "id": "C0002",
@@ -4264,6 +4267,15 @@
     "aliases": [
       "LA ESTRELLA",
       "BO. LA ESTRELLA"
+    ]
+  },
+  {
+    "id": "C0711",
+    "nombre": "CUEVA",
+    "sector": "Sector Sur",
+    "aliases": [
+      "CUEVA",
+      "LA CUEVA"
     ]
   }
 ]
