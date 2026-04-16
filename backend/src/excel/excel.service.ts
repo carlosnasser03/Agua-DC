@@ -235,7 +235,16 @@ export class ExcelService {
         }
       });
 
-      return { periodId: period.id, entriesCreated: entries.length, days: metadata.summary.daysProcessed };
+      const skippedRows = metadata.results.filter((r: any) => !r.isValid).length;
+      return {
+        periodId: period.id,
+        entriesCreated: entries.length,
+        daysProcessed: metadata.summary.daysProcessed,
+        totalRows: metadata.results.length,
+        processedRows: metadata.summary.validRows,
+        skippedRows: skippedRows,
+        warnings: metadata.validationWarnings
+      };
     });
   }
 }

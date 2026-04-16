@@ -45,7 +45,8 @@ export class ExcelValidationService {
     for (const rule of rules) {
       switch (rule.ruleType) {
         case 'COLONY_MATCH':
-          this.validateColonyMatch(rows, errors, rule);
+          const colonyWarnings = this.validateColonyMatch(rows, rule);
+          warnings.push(...colonyWarnings);
           break;
         case 'VALID_DATE':
           this.validateValidDate(periodData, errors, rule);
