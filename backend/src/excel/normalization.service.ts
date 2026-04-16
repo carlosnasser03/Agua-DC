@@ -1,23 +1,46 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
+import { PrismaService } from '../prisma/prisma.service';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as fuzzy from 'fuzzy';
 
 @Injectable()
-export class NormalizationService {
+export class NormalizationService implements OnModuleInit {
   private readonly logger = new Logger(NormalizationService.name);
   private coloniesMaster: any[] = [];
 
-  constructor() {
-    this.loadMasterData();
+  constructor(private prisma: PrismaService) {}
+
+  async onModuleInit() {
+    await this.refreshMasterData();
   }
 
-  private loadMasterData() {
+  /**
+   * Loads data from DB or JSON file as backup
+   */
+  async refreshMasterData() {
     try {
+      // 1. Try to load from Database (Primary source now that we seeded)
+      const dbColonies = await this.prisma.colony.findMany({
+        include: { aliases: true }
+      });
+
+      if (dbColonies.length > 0) {
+        this.coloniesMaster = dbColonies.map(c => ({
+          id: c.id,
+          nombre: c.name,
+          aliases: c.aliases.map(a => a.name)
+        }));
+        this.logger.log(`Cargadas ${this.coloniesMaster.length} colonias desde la Base de Datos.`);
+        return;
+      }
+
+      // 2. Fallback to JSON file if DB is empty
       const candidates = [
         process.env.COLONIES_MASTER_PATH,
         path.join(process.cwd(), 'data', 'colonias_master.json'),
         path.join(process.cwd(), '..', 'data', 'colonias_master.json'),
+        path.join(__dirname, '../../data/colonias_master.json'),
         '/app/data/colonias_master.json',
       ].filter(Boolean) as string[];
 
@@ -30,9 +53,9 @@ export class NormalizationService {
         }
       }
 
-      this.logger.warn('colonias_master.json no encontrado. El matching de colonias no funcionará.');
+      this.logger.warn('No se encontraron colonias ni en DB ni en JSON. El matching no funcionará.');
     } catch (error) {
-      this.logger.error('Error cargando datos maestros de colonias', error);
+      this.logger.error('Error cargando datos de colonias', error);
     }
   }
 
@@ -41,22 +64,25 @@ export class NormalizationService {
 
     const searchStr = input.toLowerCase().trim();
 
+    // Direct match (Exact match)
     const exactMatch = this.coloniesMaster.find(c =>
       c.nombre.toLowerCase() === searchStr ||
-      c.aliases.some((a: string) => a.toLowerCase() === searchStr)
+      (c.aliases && c.aliases.some((a: string) => a.toLowerCase() === searchStr))
     );
 
     if (exactMatch) {
       return { original: input, matchedId: exactMatch.id, score: 1 };
     }
 
-    const allNames = this.coloniesMaster.flatMap(c => [c.nombre, ...c.aliases]);
+    // Fuzzy match
+    const allNames = this.coloniesMaster.flatMap(c => [c.nombre, ...(c.aliases || [])]);
     const results = fuzzy.filter(searchStr, allNames);
     const bestMatch = results[0];
 
+    // Increased threshold for better accuracy
     if (bestMatch && bestMatch.score > 20) {
       const parentColony = this.coloniesMaster.find(c =>
-        c.nombre === bestMatch.original || c.aliases.includes(bestMatch.original)
+        c.nombre === bestMatch.original || (c.aliases && c.aliases.includes(bestMatch.original))
       );
       return { original: input, matchedId: parentColony?.id || null, score: bestMatch.score / 100 };
     }
