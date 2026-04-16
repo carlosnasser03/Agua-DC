@@ -66,29 +66,12 @@ export class ExcelValidationService {
     };
   }
 
-  /**
-   * Validate that all colonies match known colonies
-   */
-  private validateColonyMatch(
-    rows: any[],
-    errors: ValidationError[],
-    rule: any,
-  ) {
-    rows.forEach((result) => {
-      if (!result.isValid) {
-        const errorMessage = rule.errorMessage
-          .replace('{colonyName}', result.original.colonyName)
-          .replace('{rowNumber}', result.row);
-
-        errors.push({
-          rowNumber: result.row,
-          fieldName: 'colonyName',
-          value: result.original.colonyName,
-          message: errorMessage,
-          ruleType: rule.ruleType,
-        });
-      }
-    });
+  private validateColonyMatch(rows: any[], rule: any): string[] {
+    const warnings: string[] = [];
+    const notFound = new Set<string>();
+    rows.forEach(r => { if (!r.isValid) notFound.add(r.original.colonyName); });
+    if (notFound.size > 0) warnings.push(`WARNING: ${notFound.size} colonias no encontradas`);
+    return warnings;
   }
 
   /**
