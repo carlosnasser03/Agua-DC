@@ -15,6 +15,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import Constants from 'expo-constants';
 import { EntityBrand } from '../components/EntityBrand';
 import { AppFooter } from '../components/AppFooter';
+import { BitnovaFooter } from '../components/BitnovaFooter';
 import { Colors, Fonts } from '../theme';
 
 const APP_VERSION = Constants.expoConfig?.version ?? '1.0.0';
@@ -110,6 +111,7 @@ export function AcercaDeScreen() {
 
         {/* ── Pie de página con copyright ── */}
         <AppFooter />
+        <BitnovaFooter />
 
         <View style={{ height: 32 }} />
       </ScrollView>

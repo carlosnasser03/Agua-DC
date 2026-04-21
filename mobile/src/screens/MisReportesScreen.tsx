@@ -11,6 +11,7 @@ import apiClient from '../api/client';
 import type { RootStackParamList } from '../navigation';
 import { Colors, Fonts } from '../theme';
 import { useOffline } from '../context/OfflineContext';
+import { BitnovaFooter } from '../components/BitnovaFooter';
 
 type StatusConfig = { label: string; colors: [string, string]; text: string; icon: string };
 
@@ -113,14 +114,15 @@ export const MisReportesScreen = () => {
         data={reports}
         keyExtractor={r => r.id}
         refreshControl={
-          <RefreshControl 
-            refreshing={refreshing} 
-            onRefresh={onRefresh} 
-            colors={[Colors.primary]} 
-            tintColor={Colors.primary} 
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+            colors={[Colors.primary]}
+            tintColor={Colors.primary}
           />
         }
         contentContainerStyle={reports.length === 0 ? styles.emptyContainer : styles.listContent}
+        ListFooterComponent={<BitnovaFooter />}
         ListEmptyComponent={
           <View style={styles.center}>
             <MotiView

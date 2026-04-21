@@ -19,6 +19,7 @@ import NetInfo from '@react-native-community/netinfo';
 import { useAuth } from '../context/AuthContext';
 import { Colors, Fonts } from '../theme';
 import { EntityBrand } from '../components/EntityBrand';
+import { BitnovaFooter } from '../components/BitnovaFooter';
 
 export const ProfileScreen = () => {
   const { deviceId, isAuthenticated, authPending, authenticateDevice, logout, isLoading } = useAuth();
@@ -266,6 +267,7 @@ export const ProfileScreen = () => {
       {/* Footer */}
       <View style={styles.footer}>
         <EntityBrand compact />
+        <BitnovaFooter />
       </View>
     </ScrollView>
   );

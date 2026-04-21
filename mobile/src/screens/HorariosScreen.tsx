@@ -17,6 +17,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { MotiView } from 'moti';
 import apiClient from '../api/client';
 import { AppFooter } from '../components/AppFooter';
+import { BitnovaFooter } from '../components/BitnovaFooter';
 import { useOffline } from '../context/OfflineContext';
 
 // ─── Paleta oficial Agua DC ────────────────────────────────────────────────────
@@ -312,7 +313,12 @@ export const HorariosScreen = () => {
         keyExtractor={item => item.id}
         renderItem={renderDayCard}
         ListHeaderComponent={ListHeader}
-        ListFooterComponent={<AppFooter />}
+        ListFooterComponent={
+          <>
+            <AppFooter />
+            <BitnovaFooter />
+          </>
+        }
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={[C.accent]} tintColor={C.accent} />
         }

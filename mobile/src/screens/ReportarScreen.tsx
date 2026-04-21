@@ -7,6 +7,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { MotiView } from 'moti';
 import apiClient from '../api/client';
 import { EntityBrand } from '../components/EntityBrand';
+import { BitnovaFooter } from '../components/BitnovaFooter';
 import { ColonySearchInput } from '../components/ColonySearchInput';
 import { ReportForm } from '../components/ReportForm';
 import { Colors, Fonts } from '../theme';
@@ -153,6 +154,7 @@ export const ReportarScreen = () => {
             ¿Tienes una emergencia de fuga masiva?{'\n'}
             Llama directamente a la línea oficial.
           </Text>
+          <BitnovaFooter />
         </MotiView>
       </ScrollView>
     </KeyboardAvoidingView>
