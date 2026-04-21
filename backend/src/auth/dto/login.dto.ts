@@ -22,7 +22,7 @@ export class LoginDto {
 
   // Device Strategy fields (optional if using JWT strategy)
   @ApiProperty({ description: 'UUID del dispositivo (requerido para device strategy)', example: '71b70d38-abc3-61f4-1234-567890abcdef', required: false })
-  @IsUUID()
+  @IsString()
   @IsOptional()
   deviceUuid?: string;
 
