@@ -7,7 +7,7 @@
  * Entidad   : U.M.A.P.S. — Unidad Municipal de Agua Potable y Saneamiento
  * Municipio : Distrito Central, Honduras
  */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -19,6 +19,8 @@ import { MisReportesScreen } from '../screens/MisReportesScreen';
 import { ReporteDetalleScreen } from '../screens/ReporteDetalleScreen';
 import { AcercaDeScreen } from '../screens/AcercaDeScreen';
 import { ProfileScreen } from '../screens/ProfileScreen';
+import { SplashLoadingScreen } from '../screens/SplashLoadingScreen';
+import { useAuth } from '../context/AuthContext';
 
 export type RootStackParamList = {
   Tabs: undefined;
@@ -101,6 +103,21 @@ function TabNavigator() {
 }
 
 export function AppNavigator() {
+  const { isLoading } = useAuth();
+  const [showSplash, setShowSplash] = useState(true);
+
+  useEffect(() => {
+    if (!isLoading) {
+      // Mantener splash visible 1 segundo más para que se vea la animación
+      const timer = setTimeout(() => setShowSplash(false), 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [isLoading]);
+
+  if (showSplash || isLoading) {
+    return <SplashLoadingScreen />;
+  }
+
   return (
     <NavigationContainer>
       <Stack.Navigator>
