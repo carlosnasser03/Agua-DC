@@ -406,7 +406,7 @@ const styles = StyleSheet.create({
   // Etiqueta de sección
   sectionLabel: {
     fontSize: 12, fontWeight: '700', color: C.textMuted,
-    textTransform: 'uppercase', letterSpacing: 1.2, marginBottom: 10,
+    textTransform: 'uppercase', letterSpacing: 1.2, marginBottom: 10, marginTop: 20,
   },
 
   // Tarjeta de hoy

@@ -202,6 +202,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 12,
+    marginTop: 20,
     marginBottom: 20,
     paddingBottom: 12,
     borderBottomWidth: 1,
