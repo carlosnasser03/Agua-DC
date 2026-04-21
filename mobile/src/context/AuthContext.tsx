@@ -14,10 +14,12 @@ import NetInfo from '@react-native-community/netinfo';
 import { SecureStorageProvider } from '../services/storage/SecureStorageProvider';
 import { AsyncStorageProvider } from '../services/storage/AsyncStorageProvider';
 import { DEVICE_UUID_KEY } from '../utils/deviceId';
+import { API_BASE_URL } from '../config/api';
 import axios from 'axios';
 
 const TOKENS_KEY = 'auth_tokens';
 const AUTH_PENDING_KEY = 'auth_pending_sync';
+const BASE_URL = API_BASE_URL;
 
 interface Tokens {
   accessToken: string;
@@ -41,10 +43,6 @@ const AuthContext = createContext<AuthContextType | null>(null);
 
 const secureStorage = new SecureStorageProvider();
 const asyncStorage = new AsyncStorageProvider();
-
-const BASE_URL = __DEV__
-  ? (process.env.EXPO_PUBLIC_API_URL_DEV ?? 'http://192.168.56.1:3000/api')
-  : (process.env.EXPO_PUBLIC_API_URL_PROD ?? 'https://api.aguadc.hn/api');
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [deviceId, setDeviceId] = useState<string | null>(null);
@@ -111,18 +109,22 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
       if (!isConnected) {
         // Sin internet: marcar como pendiente
+        console.log('[AUTH] Sin conexión, marcando como pendiente');
         await asyncStorage.setItem(AUTH_PENDING_KEY, 'true');
         setAuthPending(true);
         return;
       }
 
       // Con internet: intentar autenticación
+      console.log('[AUTH] Intentando autenticación con device UUID:', deviceId);
       const response = await axios.post(`${BASE_URL}/auth/login`, {
         strategyName: 'device',
         deviceUuid: deviceId,
         platform: Device.isDevice ? 'android' : 'ios',
         appVersion: '1.0.0',
       });
+
+      console.log('[AUTH] Autenticación exitosa:', response.status);
 
       const tokens: Tokens = {
         accessToken: response.data.accessToken,
@@ -133,9 +135,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       await saveTokens(tokens);
       setAuthPending(false);
       await asyncStorage.removeItem(AUTH_PENDING_KEY);
+      console.log('[AUTH] Tokens guardados correctamente');
     } catch (err: any) {
-      const message = err?.response?.data?.message || err.message;
-      console.error('Device auth error:', message);
+      const message = err?.response?.data?.message || err?.message;
+      const status = err?.response?.status;
+      console.error('[AUTH] Error en autenticación:', { status, message, error: err });
 
       // Marcar como pendiente para reintentar después
       await asyncStorage.setItem(AUTH_PENDING_KEY, 'true');

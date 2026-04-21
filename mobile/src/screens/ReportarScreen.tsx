@@ -30,7 +30,6 @@ export const ReportarScreen = () => {
     try {
       const payload: any = {
         colonyId: selectedColony!.id,
-        colonyName: selectedColony!.name, // added for visual reference in queue
         type: reportType,
         description: description.trim(),
       };

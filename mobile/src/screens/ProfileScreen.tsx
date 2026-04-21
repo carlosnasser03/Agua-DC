@@ -12,6 +12,7 @@ import {
   View, Text, ScrollView, StyleSheet, Alert, TouchableOpacity, StatusBar, Platform,
   ActivityIndicator,
 } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LinearGradient } from 'expo-linear-gradient';
 import { MotiView } from 'moti';
 import NetInfo from '@react-native-community/netinfo';
@@ -39,16 +40,31 @@ export const ProfileScreen = () => {
   const handleAuthenticate = async () => {
     setAuthenticating(true);
     try {
-      await authenticateDevice();
       if (!isConnected) {
         Alert.alert(
           '📶 Sin conexión',
           'Tu dispositivo se autenticará cuando recuperes la conexión a internet.',
         );
-      } else {
+        await authenticateDevice();
+        return;
+      }
+
+      await authenticateDevice();
+
+      // Esperar un momento para que el estado se actualice
+      await new Promise(resolve => setTimeout(resolve, 500));
+
+      // Verificar si fue exitoso
+      const tokensJson = await AsyncStorage.getItem('auth_tokens');
+      if (tokensJson) {
         Alert.alert(
           '✅ Autenticación completada',
           'Tu dispositivo ha sido registrado exitosamente.',
+        );
+      } else {
+        Alert.alert(
+          '⚠️ Autenticación pendiente',
+          'Tu dispositivo se sincronizará cuando haya conexión estable.',
         );
       }
     } catch (err) {

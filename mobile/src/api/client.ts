@@ -10,13 +10,10 @@
 import axios, { AxiosError } from 'axios';
 import { SecureStorageProvider } from '../services/storage/SecureStorageProvider';
 import { DEVICE_UUID_KEY } from '../utils/deviceId';
+import { API_BASE_URL } from '../config/api';
 import type { IStorageProvider } from '../services/storage/IStorageProvider';
 
-// URLs leídas desde variables de entorno Expo (EXPO_PUBLIC_*)
-// Crea mobile/.env y define EXPO_PUBLIC_API_URL_DEV y EXPO_PUBLIC_API_URL_PROD
-const BASE_URL = __DEV__
-  ? (process.env.EXPO_PUBLIC_API_URL_DEV ?? 'http://192.168.56.1:3000/api')
-  : (process.env.EXPO_PUBLIC_API_URL_PROD ?? 'https://api.aguadc.hn/api');
+const BASE_URL = API_BASE_URL;
 
 const apiClient = axios.create({
   baseURL: BASE_URL,
