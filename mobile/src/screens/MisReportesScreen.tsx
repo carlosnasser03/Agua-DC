@@ -213,24 +213,23 @@ const styles = StyleSheet.create({
     color: '#FFF',
     textAlign: 'center',
   },
-  header: { 
-    paddingTop: Platform.OS === 'ios' ? 20 : 15, 
-    paddingBottom: 24, 
+  header: {
+    paddingTop: Platform.OS === 'ios' ? 60 : 40,
+    paddingBottom: 24,
     paddingHorizontal: 24,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
-    elevation: 10,
+    elevation: 8,
     shadowColor: Colors.primary,
     shadowOpacity: 0.3,
-    shadowRadius: 15,
-    shadowOffset: { width: 0, height: 5 },
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: 4 },
   },
-  headerTitle: { 
-    fontFamily: Fonts.headingBold, 
-    fontSize: 26, 
-    color: Colors.white, 
+  headerTitle: {
+    fontFamily: Fonts.headingBold,
+    fontSize: 24,
+    color: Colors.white,
     marginBottom: 4,
-    letterSpacing: 0.5 
   },
   headerSub: { 
     fontFamily: Fonts.body, 
