@@ -18,6 +18,7 @@ import { ReportarScreen } from '../screens/ReportarScreen';
 import { MisReportesScreen } from '../screens/MisReportesScreen';
 import { ReporteDetalleScreen } from '../screens/ReporteDetalleScreen';
 import { AcercaDeScreen } from '../screens/AcercaDeScreen';
+import { ProfileScreen } from '../screens/ProfileScreen';
 
 export type RootStackParamList = {
   Tabs: undefined;
@@ -28,6 +29,7 @@ export type TabParamList = {
   Horarios: undefined;
   Reportar: undefined;
   MisReportes: undefined;
+  Profile: undefined;
   AcercaDe: undefined;
 };
 
@@ -46,6 +48,7 @@ function TabIcon({ name, focused }: { name: string; focused: boolean }) {
     Horarios:   '📅',
     Reportar:   '📢',
     MisReportes:'📋',
+    Profile:    '👤',
     AcercaDe:   'ℹ️',
   };
   return (
@@ -82,6 +85,11 @@ function TabNavigator() {
         name="MisReportes"
         component={MisReportesScreen}
         options={{ title: 'Mis Reportes', headerShown: false }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{ title: 'Mi Perfil', headerShown: false }}
       />
       <Tab.Screen
         name="AcercaDe"

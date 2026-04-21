@@ -26,6 +26,7 @@ import { AppNavigator } from './src/navigation';
 import { useDeviceId } from './src/hooks/useDeviceId';
 import { Colors } from './src/theme';
 import { OfflineProvider } from './src/context/OfflineContext';
+import { AuthProvider } from './src/context/AuthContext';
 
 export default function App() {
   const { loading: deviceLoading } = useDeviceId();
@@ -49,9 +50,11 @@ export default function App() {
   }
 
   return (
-    <OfflineProvider>
-      <StatusBar style="light" backgroundColor={Colors.primary} />
-      <AppNavigator />
-    </OfflineProvider>
+    <AuthProvider>
+      <OfflineProvider>
+        <StatusBar style="light" backgroundColor={Colors.primary} />
+        <AppNavigator />
+      </OfflineProvider>
+    </AuthProvider>
   );
 }
