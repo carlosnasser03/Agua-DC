@@ -1,22 +1,30 @@
+# Dependencies
 node_modules/
 .expo/
+
+# Build outputs
 dist/
 web-build/
 android/
 ios/
 
+# Environment
 .env
 .env.local
 .env.*.local
 
+# System
 .DS_Store
+Thumbs.db
 
+# Logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Ignore any root level node_modules if being packaged as monorepo
-../node_modules/
-../backend/
-../admin-panel/
+# Monorepo - exclude other projects completely
+../backend
+../admin-panel
+../node_modules
+../.git
